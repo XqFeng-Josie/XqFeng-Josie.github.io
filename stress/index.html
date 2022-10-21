@@ -29,9 +29,9 @@
 <section class="main-content">
       <h1 id=""><center>STRESS PREDICTION BASED ON MULTI-GRANULARITY LINGUISTIC KNOWLEDGE</center></h1>
 
-<center> Wenjiang Chi, Xiaoqin Feng, Yunlin Chen, Lei Xie;  </center>
-<center>  Mobvoi AI Lab </center>
-<center> Northwestern Polytechnical University </center>
+<center> <i>Wenjiang Chi, Xiaoqin Feng, Yunlin Chen, Lei Xie </i></center>
+<center> Mobvoi AI Lab, Suzhou, China. </center>
+<center> Audio, Speech and Language Processing Group (ASLP@NPU). </center>
 
 
 <h2>0. Contents</h2>
@@ -39,40 +39,33 @@
   <li><a href="#abstract">Abstract</a></li>
   <li><a href="#Comparison">Demos -- Comparison with other methods</a></li>
   <li><a href="#ablation 3.4.1">Demos -- Contribution Of Coarse-Grained Model</a></li>
-  <li><a href="#ablation 3.4.2">Demos -- Contribution of Coarse-Grained supervised loss(L<sub>cgce</sub>)</a></li>
-  <li><a href="#paragraph demo">Additional demos --  Stress demo on paragraph TTS </a></li>
+  <li><a href="#ablation 3.4.2">Demos -- Contribution of Coarse-Grained supervised loss(<i>L<sub>cgce</sub></i>)</a></li>
+  <li><a href="#paragraph demo">Demos --  Stress demo on paragraph TTS </a></li>
 </ol>
-
-<br><br>
 <h2 id="abstract">1. Abstract<a name="abstract"></a></h2>
-<p>Stress is essential to processing in text-to-speech(TTS). However,
-    there is currently no clear definition of stress, and it is challenging
-    to obtain available annotated data. This paper proposes a coarse-
-    grained to fine-grained two-stage stress model to demonstrate the
-    effectiveness of progressively granular stress prediction in speech
-    synthesis. The first stage builds a stress coarse-grained attention
-    model; the second stage builds a stress fine-grained attention model
-    combined with the auxiliary information provided by the coarse-
-    grained model. Our method has the following features: First, the
-    stress data is acquired in two stages to reduce the difficulty of data
-    acquisition. Second, introducing a two-stage granularity model can
-    effectively reduce the model deviation. Compared with the one-stage
-    stress model, the F1 score is also improved by 3%-4%. Third, the
-    stress model dramatically improves the Expression, Emotion, and
-    Naturalness of speech synthesis using ABTest and MOS subjective
-    evaluation on different models. Finally, combined with knowledge
-    distillation, the model achieves a user-acceptable balance in per-
-    formance and realizes an industrial-level deployment system Auto
-    Stress MeetVoice
+<p>Stress is essential to speech synthesis. However, there is currently
+  no clear definition of text-based stress, and it is challenging to obtain available annotated data. This paper proposes a coarse-to-fine
+  model to demonstrate the effectiveness of progressively granular
+  stress prediction in speech synthesis. The first stage builds a stress
+  coarse-grained attention model, the second stage combines the auxiliary information provided by the coarse-grained model to build a
+  stress fine-grained attention model. Our method has the following
+  attributes: First, dividing the stress corpus into two parts with different granularities can reduce the difficulty of data acquisition and
+  improve the model’s performance. Second, introducing a two-stage
+  granularity model can effectively lessen the model deviation. Compared with the one-stage stress model, the F1 score is also improved
+  by 13%-14%. Third, the stress model dramatically improves speech
+  synthesis’s expression, emotion, and naturalness using ABTest
+  and MOS evaluation on different models. Finally, incorporated with
+  knowledge distillation, the model achieves a user-acceptable balance
+  in efficiency and quality and realizes an industrial-level deployment
+  system.
 </p>
 <h3>1.1 The structure of the Stress Model:</h3>
-	<center><img src='images/structure.png' width="50%"></center>
+	<center><img src='images/demo_stress_structure.png' width="50%"></center>
 <!-- <br><br> -->
 <h3>1.2 The structure of Two-Stage Stress Pipeline:</h3>
-	<center><img src='images/two_line.png' width="50%" ></center>
-<br><br>
+	<center><img src='images/demo_stress_two.png' width="50%" ></center>
 
-<h2>2. Demos -- Comparison with other methods<a name="Comparison"></a></h2>
+<h2>2. Demos -- Comparison with Other Methods<a name="Comparison"></a></h2>
 <h3>Corresponding to section 3.2 in the paper, several samples synthesized by the proposed FSM and other compared methods on the stress task are listed below.</h3>
 <table>
   <thead>
@@ -81,213 +74,258 @@
       <th style="text-align: center"><strong>Original</strong></th>
       <th style="text-align: center"><strong>FSM(Proposed)</strong></th>
       <th style="text-align: center"><strong>GSM</strong></th>
-      <th style="text-align: center"><strong>User-define</strong></th>
-      <th style="text-align: center"><strong>GSM-random</strong></th>
     </tr>
   </thead>
   <tbody>
 	<tr>
 	  <td style="text-align: left" rowspan=2>demo1</td>
-	  <td style="text-align: left" colspan=3>Text: 什么？大个居然变成石头啦！(English: What? big guy turned to stone!)</td>
+	  <td style="text-align: left" colspan=3>Text:大哥出国家里没钱，你宁可卖房子也要支持，苏明成结婚，你为这两个儿子砸锅卖铁也心甘情愿，那我呢？你们为我呢？</td>
 	</tr>
     <tr>
-      <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-      <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="demo/demo1/1_1.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="demo/demo1/1_2.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="demo/demo1/1_3.wav" controls="" preload=""></audio></td>
     </tr>
     <tr>
       <td style="text-align: left" rowspan=2>demo2</td>
-	  <td style="text-align: left" colspan=3>Text: 谢谢您，我会争取做得更好，也欢迎你随时来提问。  (English: Thank you. I will try to do better, and you are welcome to ask questions at any time.)</td>
+	  <td style="text-align: left" colspan=3>Text: 广告魔音魔声京东影音娱乐，轻薄之躯，澎湃能量，告别繁杂走线，让您的心情“无线愉快”。  </td>
 	</tr>
 	<tr>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="demo/demo1/2_1.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="demo/demo1/2_2.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="demo/demo1/2_3.wav" controls="" preload=""></audio></td>
+       
     </tr>
     <tr>
       <td style="text-align: left" rowspan=2>demo3</td>
-	  <td style="text-align: left" colspan=3>Text: 新买的键盘，回车键就坏了。 (English: The new keyboard, the enter key is broken.)</td>
+	  <td style="text-align: left" colspan=3>Text: 强势的母亲暴跳如雷，我们给你吃给你穿养你这么大了，我们有罪了是不是？你要是有能耐，你就别用我们的钱哪！</td>
 	</tr>
 	<tr>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="demo/demo1/3_1.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="demo/demo1/3_2.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="demo/demo1/3_3.wav" controls="" preload=""></audio></td>
     </tr>
     <tr>
       <td style="text-align: left" rowspan=2>demo4</td>
-	  <td style="text-align: left" colspan=3>Text: 这人如此狂妄。(English: This man is so arrogant.)</td>
+	  <td style="text-align: left" colspan=3>Text: 生命从海洋登上陆地是地球生物进化的一个里程碑，但那些上岸的鱼再也不是鱼了； 同样，真正进入太空的人，再也不是人了</td>
 	</tr>
 	<tr>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="demo/demo1/4_1.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="demo/demo1/4_2.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="demo/demo1/4_3.wav" controls="" preload=""></audio></td>
     </tr>
    <tr>
       <td style="text-align: left" rowspan=2>demo5</td>
-	  <td style="text-align: left" colspan=3>Text: 见到她能绕道走，就尽量绕道走。(English: When you see that she can make a detour, try to make a detour.)</td>
+	  <td style="text-align: left" colspan=3>Text: 拥有一颗感恩的心，我们就会拥有欢乐、拥有幸福，拥有一个完美的未来！</td>
 	</tr>
 	<tr>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="demo/demo1/5_1.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="demo/demo1/5_2.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="demo/demo1/5_3.wav" controls="" preload=""></audio></td>
     </tr>
     <tr>
       <td style="text-align: left" rowspan=2>demo6</td>
-	  <td style="text-align: left" colspan=3>Text: 孩子如果你害怕的话就别看吧。(English: Son, if you're scared, don't look.)</td>
+	  <td style="text-align: left" colspan=3>Text: 所爱隔山海，山海皆可平</td>
 	</tr>
 	<tr>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="demo/demo1/6_1.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="demo/demo1/6_2.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="demo/demo1/6_3.wav" controls="" preload=""></audio></td>
     </tr>
-   
   </tbody>
 </table>
-<h3>Short summary: It can be found that compared with Multi-R, CSET, and PB, the proposed CSPC can achieve a good balance between maintaining the target speaker's timbre and enriching the transferred emotional expression.</a></h2>
 
-<br><br>
-<h2>3. Demos -- Contribution Of Coarse-Grained Model<a name="ablation 3.4.1"></a></h2>
-<h3>Corresponding to section 3.4.1 in the paper, samples synthesized by FSM and also FSM' variants that without GSM (w/o GSM) on the stress task are listed below.</h3>
+<p>Short summary: We observe that our proposed model achieves the best performance
+   synthetically, even outperforming user-defined results, presumably due to differences
+   in user criteria. At the same time, we found that the coarse-grained model is not good,
+   making the speech unnatural and weird. We speculate that the coarse-grained model focusing
+   on longer phrase words will make the whole sentence emotional bias. Our proposed model
+   achieved excellent results in pleasantness and listening comfort, proving that our model
+   improves the expressiveness of TTS</p>
+<br>
+<h2>3. Demos -- Contribution of Coarse-Grained Model<a name="ablation 3.4.1"></a></h2>
+<h3>Corresponding to section 3.4.1 in the paper, samples synthesized by FSM and FSM' variants that without GSM (w/o GSM) on the stress task are listed below.</h3>
 
 <table>
   <thead>
     <tr>
       <th style="text-align: center"><strong>number</strong></th>
-      <th style="text-align: center"><strong> w/o GSM </strong></th>
+      <th style="text-align: center"><strong> FSM (w/o GSM) </strong></th>
       <th style="text-align: center"><strong> FSM (Proposed) </strong></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align: left" rowspan=2>demo1</td>
-	  <td style="text-align: left" colspan=2>Text: 天哪！梦中的一切成真了！(English: My god! Everything in the dream came true!)</td>
+	  <td style="text-align: left" colspan=2>Text: 听了孩子如此忤逆的话，强势的母亲暴跳如雷!</td>
 	</tr>
 	<tr>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="demo/ablation1/1_0.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="demo/ablation1/1_1.wav" controls="" preload=""></audio></td>
     </tr>
     <tr>
       <td style="text-align: left" rowspan=2>demo2</td>
-	  <td style="text-align: left" colspan=2>Text: 散散步，呼吸下新鲜空气，整个人都神清气爽了呢。(English: Take a walk and get some fresh air, i feel refreshed and refreshed.)</td>
+	  <td style="text-align: left" colspan=2>Text: 母亲轻飘飘的说了句，这是大人的事儿，根本懒得搭理她。</td>
 	</tr>
 	<tr>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="demo/ablation1/2_0.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="demo/ablation1/2_1.wav" controls="" preload=""></audio></td>
     </tr>
       <tr>
       <td style="text-align: left" rowspan=2>demo3</td>
-	  <td style="text-align: left" colspan=2>Text: 我的显示器又花屏了。(English: My monitor is blurred again.)</td>
+	  <td style="text-align: left" colspan=2>Text: 能折磨你的，从来不是别人的绝情，而是你心中的幻想和期待。</td>
 	</tr>
 	<tr>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="demo/ablation1/3_0.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="demo/ablation1/3_1.wav" controls="" preload=""></audio></td>
     </tr>
     <tr>
       <td style="text-align: left" rowspan=2>demo4</td>
-	  <td style="text-align: left" colspan=2>Text: 快跟我回去！(English: Come back with me!)</td>
+	  <td style="text-align: left" colspan=2>Text: 一个没踩稳飞了出去。)</td>
 	</tr>
 	<tr>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="demo/ablation1/4_0.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="demo/ablation1/4_1.wav" controls="" preload=""></audio></td>
     </tr>
    <tr>
       <td style="text-align: left" rowspan=2>demo5</td>
-	  <td style="text-align: left" colspan=2>Text: 看见你我就想踹飞你。(English: When I see you, I want to kick you.)</td>
+	  <td style="text-align: left" colspan=2>Text: 成为了他一生中最正确的决定。</td>
 	</tr>
 	<tr>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="demo/ablation1/5_0.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="demo/ablation1/5_1.wav" controls="" preload=""></audio></td>
     </tr>
-   
+    <tr>
+      <td style="text-align: left" rowspan=2>demo6</td>
+	  <td style="text-align: left" colspan=2>Text: 立刻掉头向着两人狂追过来。</td>
+	</tr>
+	<tr>
+        <td style="text-align: left"><audio src="demo/ablation1/6_0.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="demo/ablation1/6_1.wav" controls="" preload=""></audio></td>
+    </tr>
   </tbody>
 </table>
-<h3>Short summary: It can be found that the prosody compensation embedding can provide extra emotion information to the emotion embedding, and the proposed prosody compensation method can effectively improve the emotion transfer performance and mean-while maintain the target speaker’s voice.</a></h2>
+<p>Short summary: As expected, introducing coarse-grained information improves
+  our ability when we train fine-grained stress models. Because the
+  RoBERTa only contains semantic information, the CGM model also
+  provides the attention information of the key phrases in the sentence,
+  making it easier for FSM to find the keywords in the sentence</p>
 
-<br><br>
-<h2>4. Demos -- Contribution of Coarse-Grained supervised loss(L<sub>cgce</sub>)<a name="ablation 3.4.2"></a></h2>
-	<center><img src='images/weight.png' width="50%"></center>
-<h4>We can observe changes in L<sub>cgce</sub> under the supervision of FSM
-    and CGM. We divide it into two groups according to the ground-truth
-    labels of the FSM. When the true label of FSM is 1, L<sub>cgce</sub> will not
-    change; When the true label of FSM is 0, CGM will take effect, and
-    the direction of L<sub>cgce</sub> change is consistent with CGM. Note that we
-    do not perform CGM supervision at all locations because we want
-    to ensure the persistence of CGM supervision information and the
-    diversity of the FSM itself.</h3>
-<h3>Corresponding to section 3.4.2 in the paper, samples synthesized by FSM and also FSM' variants that without GSM supervised loss(w/o L<sub>cgce</sub>) on the stress task are listed below.</h3>
+<br>
+<h2>4. Demos -- Contribution of Coarse-Grained Supervised Loss(<i>L<sub>cgce</sub></i>)<a name="ablation 3.4.2"></a></h2><br>
+	<center><img src='images/demo_stress_weight.png' width="50%"></center>
+  <p>We can observe
+changes in FSM_<i>Lcgce</i>  under the supervision of FSM and CGM. We
+divide it into two groups according to the ground-truth labels of the
+x<sub>i</sub>: (1) When the true label of x<sub>i</sub> is 1(stressed), FSM Lcgce will not
+be affected. (2) When the true label of x<sub>i</sub> is 0(unstressed), CGM(w) 
+will take effect, and the direction of FSM_<i>Lcgce</i> change is consistent with CGM(w),
+ when the corresponding coarse-grained position
+belongs to 1(stressed), FSM_<i>Lcgce</i> will be strengthened, and vice
+versa. Note that we do not perform CGM supervision at all locations
+ because we want to ensure the persistence of CGM supervision information and the diversity of the FSM itself.</p>
+
+<h3>Corresponding to section 3.4.2 in the paper, samples synthesized by FSM and also FSM' variants that without GSM supervised loss(w/o <i>Lcgce</i>) on the stress task are listed below.</h3>
 
 <table>
   <thead>
     <tr>
-        <th style="text-align: center"><strong>number</strong></th>
-        <th style="text-align: center"><strong> w/o L<sub>cgce</sub> </strong></th>
+        <th style="text-align: center" ><strong>number</strong></th>
+        <th style="text-align: center"><strong> FSM （w/o <i>Lcgce</i>） </strong></th>
         <th style="text-align: center"><strong> FSM (Proposed) </strong></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align: left" rowspan=2>demo1</td>
-	  <td style="text-align: left" colspan=2>Text: 啊!真残忍！(English: Aah! How cruel!)</td>
+	  <td style="text-align: left" colspan=2>Text: 这衣服是好，就是贵了点。</td>
 	</tr>
 	<tr>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="demo/ablation2/1_0.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="demo/ablation2/1_1.wav" controls="" preload=""></audio></td>
     </tr>
     <tr>
       <td style="text-align: left" rowspan=2>demo2</td>
-	  <td style="text-align: left" colspan=2>Text: 姐姐说话温柔细声细气的，给人的感觉态度很好哦。(English: The elder sister speaks softly and softly, which gives people the impression that the attitude is very good.)</td>
+	  <td style="text-align: left" colspan=2>Text: 远征星辰大海，归来仍是少年</td>
 	</tr>
 	<tr>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="demo/ablation2/2_0.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="demo/ablation2/2_1.wav" controls="" preload=""></audio></td>
     </tr>
       <tr>
       <td style="text-align: left" rowspan=2>demo3</td>
-	  <td style="text-align: left" colspan=2>Text: 我的显示器又花屏了。(English: My monitor is blurred again.)</td>
+	  <td style="text-align: left" colspan=2>Text: 虽然代价巨大，可依然有很多人。为了这一时的欢愉，而献出灵魂。
+    </td>
 	</tr>
 	<tr>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="demo/ablation2/3_1.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="demo/ablation2/3_2.wav" controls="" preload=""></audio></td>
     </tr>
     <tr>
       <td style="text-align: left" rowspan=2>demo4</td>
-	  <td style="text-align: left" colspan=2>Text: 还有什么事！(English: Is there anything else!)</td>
+	  <td style="text-align: left" colspan=2>Text: 华哥刚夸完达子还没一分钟。</td>
 	</tr>
 	<tr>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="demo/ablation2/4_1.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="demo/ablation2/4_2.wav" controls="" preload=""></audio></td>
     </tr>
    <tr>
       <td style="text-align: left" rowspan=2>demo5</td>
-	  <td style="text-align: left" colspan=2>Text: 我受不了了，赶紧滚！(English: I can't take it anymore. Get out of here!)</td>
+	  <td style="text-align: left" colspan=2>Text: 你为什么会出现在这里！</td>
 	</tr>
 	<tr>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
-        <td style="text-align: left"><audio src="demo/style_tag.mp3" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="demo/ablation2/5_1.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="demo/ablation2/5_2.wav" controls="" preload=""></audio></td>
     </tr>
-   
    
   </tbody>
 </table>
-<h3>Short summary: It can be found that in terms of emotional expressiveness, CSPC significantly outperforms the variant w/o GC without significant influence on speaker similarity.</a></h2>
-<br>
+<p>Short summary: As expected, when we introduce the supervision information for
+  the CGM, the effect of the FSM is significantly improved. We not only need to 
+  introduce coarse-grained information but also need to strengthen its weight during the training process
+  to prevent the continuous dispersion of information during the training process</p>
 
-<h2> 5. Additional demos --  Stress demo on paragraph TTS <a name="paragraph demo"></a></h2>
-<h3> Following samples are synthesized with stress prediction for long text.</h3>
+<h2> 5. Demos --  Stress Demo on Paragraph TTS <a name="paragraph demo"></a></h2>
+<h3> Following samples are synthesized with stress prediction for long paragraph.</h3>
 
-<h3>Short summary: It can be found that the model we proposed can be well generalized to the new target speaker who only has a small amount of data through simple fine-tuning, which transfers the emotion to the new target speaker while maintaining the target speaker’s timbre.</a></h2>
+
+<table>
+  <thead>
+    <tr>
+        <th style="text-align: center"><strong>number</strong></th>
+        <th style="text-align: center"><strong>Original</strong></th>
+        <th style="text-align: center"><strong> FSM (Proposed) </strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left" rowspan=2>demo1</td>
+	  <td style="text-align: left" colspan=2>Text: 女人刚离开姐妹家，就看见加班的丈夫出现在姐妹楼下。她懵逼了？昨天还好心劝导姐妹，不要像亲妹妹一样做傻事。无论靠偷，靠抢，也要当上正宫，可居然抢的是自己的丈夫。为了证实猜测，她来到姐妹门前。事实证明，巧合太多就不是巧合。她强装镇定打开大门，摸了进来，地上果然摆着丈夫的鞋，屋里到处都是狗男女的嬉笑声，桌上还剩着没吃完的桃，但她的目标却在刀上，她起了杀心。她无法接受这个现实，哪怕是幻想，突然一个电话提醒了她，是她的母亲。她回家后就拿着姐妹的手链问丈夫，果然是老戏骨，干啥啥不行，演戏第一名。虽然看似天衣无缝，但女人心里已种下怀疑的种子。妻子的这种行为也引起了丈夫的警惕，立马打电话问小三，手链还在吗？小三心虚了，但为了不被对象发现她接近原配的事，她告诉对象，自己一直戴着。不料第二天一大早，原配就找上了门，不是姐妹叙旧，而是找丈夫的踪迹。</td>
+	</tr>
+	<tr>
+        <td style="text-align: left"><audio src="demo/para_demo_origin.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="demo/para_demo_stress.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <tr>
+        <td style="text-align: left" rowspan=2>demo2</td>
+      <td style="text-align: left" colspan=2>Text: 北国风光，千里冰封，万里雪飘。
+        望长城内外，惟余莽莽；大河上下，顿失滔滔。
+        山舞银蛇，原驰蜡象，欲与天公试比高。
+        须晴日，看红装素裹，分外妖娆。
+        江山如此多娇，引无数英雄竞折腰。
+        惜秦皇汉武，略输文采；唐宗宋祖，稍逊风骚。
+        一代天骄，成吉思汗，只识弯弓射大雕。
+        俱往矣，数风流人物，还看今朝。</td>
+    </tr>
+    <tr>
+          <td style="text-align: left"><audio src="demo/para_demo_origin_2.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo/para_demo_stress_2.wav" controls="" preload=""></audio></td>
+      </tr>
+      <tr>
+    </tbody>
+  </table>
+  <p>Short summary: We can see that integrated with stress, the expressiveness of the overall article is enhanced. At the same time, the combination of stress makes the poems perform better. <span style="color:red ;">(note: the speaker uses a non-poetry corpus).</span> </p>
       <footer class="site-footer">
         </footer>
       </section>
