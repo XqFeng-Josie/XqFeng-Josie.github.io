@@ -160,8 +160,6 @@ Springer, Cham,2019(AIED’19), 5 pages</em>
 
 ## Teaching
 
-Lecture - Embedded System Design Practice 
-As teaching assistant at BJUT, for M.Sc. students, approx. 80 students each year. Winter 2018
+- Lecture - Embedded System Design Practice <br>As teaching assistant at BJUT, for M.Sc. students, approx. 80 students each year. Winter 2018
 
-Company - Speech & NLP
-As a mentor at Mobvoi, for interns (students), avg. 3 students each year. Annual  2021-2022
+- Company - Speech & NLP <br>As a mentor at Mobvoi, for interns (students), avg. 3 students each year. Annual  2021-2022
