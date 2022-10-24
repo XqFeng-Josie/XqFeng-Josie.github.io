@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)https://leiyi420.github.io/HierarchicalEmoTTS/ -->
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+  <title>STRESS PREDICTION BASED ON MULTI-GRANULARITY LINGUISTIC KNOWLEDGE</title>
+  <meta name="generator" content="Jekyll v3.9.0">
+  <meta property="og:title" content="TODO: title">
+  <meta property="og:locale" content="en_US">
+  <link rel="canonical" href="https://xqfeng-josie.github.io/stress">
+  <meta property="og:url" content="https://xqfeng-josie.github.io/stress/">
+  <meta name="twitter:card" content="summary">
+  <!-- End Jekyll SEO tag -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#157878">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1001.0" data-gr-ext-installed="">
+  <section class="page-header">
+    <!-- <h1 class="project-name">Demo PAGE</h1> -->
+    <!-- <h2 class="project-tagline"></h2> -->
+
+
+  </section>
+
+  <section class="main-content">
+    <h1 id="">
+      <center>STRESS PREDICTION BASED ON MULTI-GRANULARITY LINGUISTIC KNOWLEDGE</center>
+    </h1>
+
+    <center> <i>Wenjiang Chi, Xiaoqin Feng, Yunlin Chen, Lei Xie </i></center>
+    <center> Mobvoi AI Lab, Suzhou, China. </center>
+    <center> Audio, Speech and Language Processing Group (ASLP@NPU). </center>
+
+
+    <h2>0. Contents</h2>
+    <ol>
+      <li><a href="#abstract">Abstract</a></li>
+      <li><a href="#Comparison">Demos -- Comparison with different methods</a></li>
+      <li><a href="#ablation 3.4.1">Demos -- Contribution Of Coarse-Grained Model</a></li>
+      <li><a href="#ablation 3.4.2">Demos -- Contribution of Coarse-Grained supervised loss(<i>L<sub>cgce</sub></i>)</a>
+      </li>
+      <li><a href="#paragraph demo">Demos -- Stress demo on paragraph TTS </a></li>
+    </ol>
+    <h2 id="abstract">1. Abstract<a name="abstract"></a></h2>
+    <p>Stress is essential to speech synthesis. However, there is currently
+      no clear definition of text-based stress, and it is challenging to obtain available annotated data. This paper
+      proposes a coarse-to-fine
+      model to demonstrate the effectiveness of progressively granular
+      stress prediction in speech synthesis. The first stage builds a stress
+      coarse-grained attention model, the second stage combines the auxiliary information provided by the coarse-grained
+      model to build a
+      stress fine-grained attention model. Our method has the following
+      attributes: First, dividing the stress corpus into two parts with different granularities can reduce the
+      difficulty of data acquisition and
+      improve the model’s performance. Second, introducing a two-stage
+      granularity model can effectively lessen the model deviation. Compared with the one-stage stress model, the F1
+      score is also improved
+      by 13%-14%. Third, the stress model dramatically improves speech
+      synthesis’s expression, emotion, and naturalness using ABTest
+      and MOS evaluation on different models. Finally, incorporated with
+      knowledge distillation, the model achieves a user-acceptable balance
+      in efficiency and quality and realizes an industrial-level deployment
+      system.
+    </p>
+    <h3>1.1 The structure of the Stress Model:</h3>
+    <center><img src='images/demo_stress_structure.png' width="50%"></center>
+    <!-- <br><br> -->
+    <h3>1.2 The structure of Two-Stage Stress Pipeline:</h3>
+    <center><img src='images/demo_stress_two.png' width="50%"></center>
+
+    <h2>2. Demos -- Comparison with Different Methods<a name="Comparison"></a></h2>
+    <h3>Corresponding to section 3.2 in the paper, several samples synthesized by the proposed FSM and other compared
+      methods on the stress task are listed below.</h3>
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center"><strong>number</strong></th>
+          <th style="text-align: center"><strong>Original</strong></th>
+          <th style="text-align: center"><strong>FSM(Proposed)</strong></th>
+          <th style="text-align: center"><strong>CGM</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo1</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>大哥出国家里没钱，你宁可卖房子也要支持，苏明成结婚，你为这两个儿子砸锅卖铁也心甘情愿，那我呢？你们为我呢？
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            大哥出<span style="color: red;">国</span>家里没钱，你宁可<span style="color: red;">卖</span>房子也要支持，<span
+              style="color: red;">苏</span>明成结婚，你为这两个儿子<span style="color: red;">砸</span>锅卖铁也<span
+              style="color: red;">心</span>甘情愿，<span style="color: red;">那我</span>呢？你们<span
+              style="color: red;">为我</span>呢？
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            大哥出国家里<span style="color: red;">没钱</span>，你宁可卖房子也要<span style="color: red;">支持</span>，苏明成<span
+              style="color: red;">结婚</span>，你为这两个儿子砸锅卖铁也<span style="color: red;">心甘情愿</span>，那我呢？<span
+              style="color: red;">你们为我呢？</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/demo1/1_1.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/demo1/1_2.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/demo1/1_3.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo2</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>广告魔音魔声,京东影音娱乐，轻薄之躯，澎湃能量，告别繁杂走线，让您的心情“无线愉快”。
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            广告魔音魔声,<span style="color: red;">京</span>东影音娱乐，<span style="color: red;">轻</span>薄之躯，<span
+              style="color: red;">澎湃</span>能量，告别<span style="color: red;">繁</span>杂走线，让您的心情“<span
+              style="color: red;">无</span>线愉快”。
+
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            广告魔音<span style="color: red;">魔声</span>,京东<span style="color: red;">影音娱乐</span>，<span
+              style="color: red;">轻薄之躯</span>，<span style="color: red;">澎湃能量</span>，告别<span
+              style="color: red;">繁杂走线</span>，让您的心情“<span style="color: red;">无线愉快</span>”。
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/demo1/2_1.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/demo1/2_2.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/demo1/2_3.wav" controls="" preload=""></audio></td>
+
+        </tr>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo3</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>强势的母亲暴跳如雷，我们给你吃给你穿养你这么大，我们有罪了是不是？你要是有能耐，你就别用我们的钱哪！
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            强势的母亲<span style="color: red;">暴跳如雷</span>，我们给你吃给你穿养你<span style="color: red;">这</span>么大，我们有<span
+              style="color: red;">罪</span>了是不是</span>？你要是<span style="color: red;">有能耐</span>，你就<span
+              style="color: red;">别</span>用我们的钱哪！
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            强势的母亲<span style="color: red;">暴跳如雷</span>，我们<span style="color: red;">给你吃给你穿养你这么大</span>，我们<span
+              style="color: red;">有罪了是不是</span>？你要是<span style="color: red;">有能耐</span>，你就别用我们的钱哪！
+          </td>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/demo1/3_1.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/demo1/3_2.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/demo1/3_3.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo4</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1> 生命从海洋登上陆地是地球生物进化的一个里程碑，但那些上岸的鱼再也不是鱼了； 同样，真正进入太空的人，再也不是人了
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            生命从海洋登上陆地是地球生物进化的一个<span style="color: red;">里</span>程碑，但那些上岸的鱼<span style="color: red;">再</span>也不是鱼了； 同样，真正进入太空的人，<span style="color: red;">再</span>也不是人了
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            生命从海洋登上陆地是地球生物进化的一个里程碑，但那些上岸的鱼再也不是鱼了； 同样，真正进入太空的人，再也不是人了<span style="color: red;">[none
+              predicted]</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/demo1/4_1.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/demo1/4_2.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/demo1/4_3.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo5</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>拥有一颗感恩的心我们就会拥有欢乐、拥有幸福，拥有一个完美的未来！
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            拥有一颗<span style="color: red;">感</span>恩的心，我们就会拥有欢乐、拥有<span style="color: red;">幸</span>福，拥有一个<span
+              style="color: red;">完</span>美的未来！
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            拥有一颗<span style="color: red;">感恩的心</span>，我们就会拥有欢乐、<span style="color: red;">拥有幸福</span>，拥有一个完美的未来！
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/demo1/5_1.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/demo1/5_2.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/demo1/5_3.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo6</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>所爱隔山海，山海皆可平
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            <span style="color: red;">所</span>爱<span style="color: red;">隔</span>山海，山海<span
+              style="color: red;">皆</span>可平
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            所爱隔山海，山海皆可<span style="color: red;">平</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/demo1/6_1.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/demo1/6_2.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/demo1/6_3.wav" controls="" preload=""></audio></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Short summary: We observe that our proposed model achieves the best performance
+      synthetically, even outperforming user-defined results, presumably due to differences
+      in user criteria. At the same time, we found that the coarse-grained model is not good,
+      making the speech unnatural and weird. We speculate that the coarse-grained model focusing
+      on longer phrase words will make the whole sentence emotional bias. Our proposed model
+      achieved excellent results in pleasantness and listening comfort, proving that our model
+      improves the expressiveness of TTS</p>
+    <br>
+    <h2>3. Demos -- Contribution of Coarse-Grained Model<a name="ablation 3.4.1"></a></h2>
+    <h3>Corresponding to section 3.4.1 in the paper, samples synthesized by FSM and FSM' variants that without CGM (w/o
+      CGM) on the stress task are listed below.</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center"><strong>number</strong></th>
+          <th style="text-align: center"><strong> FSM (w/o CGM) </strong></th>
+          <th style="text-align: center"><strong> FSM (Proposed) </strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo1</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            听了孩子如此忤逆的话，强势的母亲<span style="color: red;">暴</span>跳如雷!
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+           听了孩子<span style="color: red;">如</span>此忤逆的话，强势的母亲<span style="color: red;">暴</span>跳如雷!
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/ablation1/1_0.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/ablation1/1_1.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo2</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+           母亲轻飘飘的说了句，这是大人的事儿，<span style="color: red;">根</span>本懒得搭理她。
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+           母亲<span style="color: red;">轻</span>飘飘的说了句，这是大人的事儿，根本<span
+              style="color: red;">懒</span>得搭理她。
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/ablation1/2_0.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/ablation1/2_1.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo3</td>
+          
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+           <span style="color: red;">能</span>折磨你的，<span style="color: red;">从</span>来不是<span
+              style="color: red;">别</span>人的绝情，而是你心中的<span style="color: red;">幻</span>想和<span
+              style="color: red;">期</span>待。
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            能<span style="color: red;">折</span>磨你的，<span style="color: red;">从来</span>不是别人的绝情，而是你心中的<span
+               style="color: red;">幻</span>想和<span style="color: red;">期</span>待。
+            
+           </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/ablation1/3_0.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/ablation1/3_1.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo4</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            <span style="color: red;">一</span>个没踩稳飞了出去。
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+           <span style="color: red;">一</span>个没踩稳<span style="color: red;">飞</span>了出去。
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/ablation1/4_0.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/ablation1/4_1.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo5</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+           成为了他一生中<span style="color: red;">最正确</span>的决定。
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+          成为了他一生中<span style="color: red;">最</span>正确的决定。
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/ablation1/5_0.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/ablation1/5_1.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo6</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+             <span style="color: red;">立</span>刻掉头向着两人<span style="color: red;">狂</span>追过来。
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+          立刻掉头向着两人<span style="color: red;">狂</span>追过来。
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/ablation1/6_0.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/ablation1/6_1.wav" controls="" preload=""></audio></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Short summary: As expected, introducing coarse-grained information improves
+      our ability when we train fine-grained stress models. Because the
+      RoBERTa only contains semantic information, the CGM model also
+      provides the attention information of the key phrases in the sentence,
+      making it easier for FSM to find the keywords in the sentence</p>
+
+    <br>
+    <h2>4. Demos -- Contribution of Coarse-Grained Supervised Loss(<i>L<sub>cgce</sub></i>)<a name="ablation 3.4.2"></a>
+    </h2><br>
+    <center><img src='images/demo_stress_weight.png' width="50%"></center>
+    <p>We can observe
+      changes in FSM_<i>Lcgce</i> under the supervision of FSM and CGM. We
+      divide it into two groups according to the ground-truth labels of the
+      x<sub>i</sub>: (1) When the true label of x<sub>i</sub> is 1(stressed), FSM Lcgce will not
+      be affected. (2) When the true label of x<sub>i</sub> is 0(unstressed), CGM(w)
+      will take effect, and the direction of FSM_<i>Lcgce</i> change is consistent with CGM(w),
+      when the corresponding coarse-grained position
+      belongs to 1(stressed), FSM_<i>Lcgce</i> will be strengthened, and vice
+      versa. Note that we do not perform CGM supervision at all locations
+      because we want to ensure the persistence of CGM supervision information and the diversity of the FSM itself.</p>
+
+    <h3>Corresponding to section 3.4.2 in the paper, samples synthesized by FSM and also FSM' variants that without CGM
+      supervised loss(w/o <i>Lcgce</i>) on the stress task are listed below.</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center"><strong>number</strong></th>
+          <th style="text-align: center"><strong> FSM (w/o <i>Lcgce</i>) </strong></th>
+          <th style="text-align: center"><strong> FSM (Proposed) </strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo1</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+           这衣服<span style="color: red;">是</span>好，就是贵了点。
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+          这衣服是好，就是<span style="color: red;">贵</span>了点。
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/ablation2/1_0.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/ablation2/1_1.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo2</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            <span style="color: red;">远征星</span>辰大海，归来<span style="color: red;">仍是少</span>年
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+           远征<span style="color: red;">星</span>辰大海，归来<span style="color: red;">仍是</span>少年
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/ablation2/2_0.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/ablation2/2_1.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo3</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+           虽然代价巨大，可<span style="color: red;">依</span>然有很多人。为了这一时的欢愉，而<span
+              style="color: red;">献</span>出<span style="color: red;">灵</span>魂。
+            
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+          虽然代价巨大，可<span style="color: red;">依</span>然有很多人。为了这一时的欢愉，而献出<span
+              style="color: red;">灵</span>魂。
+
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/ablation2/3_0.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/ablation2/3_1.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo4</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+          华哥刚夸完达子还没<span style="color: red;">一</span>分钟。
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            华哥<span style="color: red;">刚</span>夸完达子还没一分钟。
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/ablation2/4_0.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/ablation2/4_1.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo5</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+        <span style="color: red;">你为</span>什么会出现在<span style="color: red;">这</span>里！
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+          你<span style="color: red;">为</span>什么会出现在<span style="color: red;">这</span>里！
+          </td>
+
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/ablation2/5_0.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/ablation2/5_1.wav" controls="" preload=""></audio></td>
+        </tr>
+
+      </tbody>
+    </table>
+    <p>Short summary: As expected, when we introduce the supervision information for
+      the CGM, the effect of the FSM is significantly improved. We not only need to
+      introduce coarse-grained information but also need to strengthen its weight during the training process
+      to prevent the continuous dispersion of information during the training process</p>
+
+    <h2> 5. Demos -- Stress Demo on Paragraph TTS <a name="paragraph demo"></a></h2>
+    <h3> Following samples are synthesized with stress prediction for long paragraph.</h3>
+
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center"><strong>number</strong></th>
+          <th style="text-align: center"><strong>Original</strong></th>
+          <th style="text-align: center"><strong> FSM (Proposed) </strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo1</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>Text:
+            女人刚离开姐妹家，就看见加班的丈夫出现在姐妹楼下。她懵逼了？昨天还好心劝导姐妹，不要像亲妹妹一样做傻事。无论靠偷，靠抢，也要当上正宫，可居然抢的是自己的丈夫。为了证实猜测，她来到姐妹门前。事实证明，巧合太多就不是巧合。她强装镇定打开大门，摸了进来，地上果然摆着丈夫的鞋，屋里到处都是狗男女的嬉笑声，桌上还剩着没吃完的桃，但她的目标却在刀上，她起了杀心。她无法接受这个现实，哪怕是幻想，突然一个电话提醒了她，是她的母亲。她回家后就拿着姐妹的手链问丈夫，果然是老戏骨，干啥啥不行，演戏第一名。虽然看似天衣无缝，但女人心里已种下怀疑的种子。妻子的这种行为也引起了丈夫的警惕，立马打电话问小三，手链还在吗？小三心虚了，但为了不被对象发现她接近原配的事，她告诉对象，自己一直戴着。不料第二天一大早，原配就找上了门，不是姐妹叙旧，而是找丈夫的踪迹。
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>Text:
+            女人<span style="color: red;">刚</span>离开姐妹家，就看见加班的丈夫出现在姐妹楼下。她<span style="color: red;">懵</span>逼了。昨天还好心劝导姐妹，不要像亲妹妹一样做<span style="color: red;">傻</span>事。无论靠<span style="color: red;">偷</span>，靠<span style="color: red;">抢</span>，也要当上正宫，可居然抢的是<span style="color: red;">自</span>己的丈夫。为了<span style="color: red;">证</span>实猜测，她来到姐妹门前。事实证明，巧合太多就<span style="color: red;">不</span>是巧合。她<span style="color: red;">强</span>装镇定打开大门，<span style="color: red;">摸</span>了进来。地上<span style="color: red;">果</span>然摆着丈夫的鞋。屋里<span style="color: red;">到</span>处都是<span style="color: red;">狗</span>男女的嬉笑声。桌上还剩着<span style="color: red;">没</span>吃完的<span style="color: red;">桃</span>，但她的目标却在<span style="color: red;">刀</span>上，她起了<span style="color: red;">杀</span>心。她<span style="color: red;">无</span>法接受这个现实。<span style="color: red;">哪</span>怕是<span style="color: red;">幻</span>想。<span style="color: red;">突</span><span style="color: red;">然</span>一个电话提醒了她，是她的母亲。她回家后就拿着姐妹的手链<span style="color: red;">问</span>丈夫。<span style="color: red;">果</span>然是<span style="color: red;">老</span>戏骨，<span style="color: red;">干</span>啥啥不行，演戏第<span style="color: red;">一</span>名。虽然<span style="color: red;">看</span>似<span style="color: red;">天</span>衣无缝，但女人心里<span style="color: red;">已</span>种下怀疑的种子。妻子的这种行为也引起了丈夫的警<span style="color: red;">惕</span>，<span style="color: red;">立</span>马打电话问小三，手链<span style="color: red;">还</span><span style="color: red;">在</span>吗。小三<span style="color: red;">心</span>虚了。但为了不被对象发现她接近原配的事，她告诉对象，自己<span style="color: red;">一</span>直戴着。不料第二天<span style="color: red;">一</span>大早。原配就<span style="color: red;">找</span>上了门。不是姐妹叙<span style="color: red;">旧</span>，而是找<span style="color: red;">丈</span>夫的<span style="color: red;">踪</span>迹。
+          </td> 
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/para_demo_origin.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/para_demo_stress.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo2</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>北国风光，千里冰封，万里雪飘。
+            望长城内外，惟余莽莽；大河上下，顿失滔滔。
+            山舞银蛇，原驰蜡象，欲与天公试比高。
+            须晴日，看红装素裹，分外妖娆。
+            江山如此多娇，引无数英雄竞折腰。
+            惜秦皇汉武，略输文采；唐宗宋祖，稍逊风骚。
+            一代天骄，成吉思汗，只识弯弓射大雕。
+            俱往矣，数风流人物，还看今朝。</td>
+            <td style="text-align: left;font-size: smaller;" colspan=1>
+              北国风<span style="color: red;">光</span>，<span style="color: red;">千</span>里冰<span style="color: red;">封</span>，<span style="color: red;">万</span>里雪飘。望长城内外，<span style="color: red;">惟</span><span style="color: red;">余</span>莽莽；<span style="color: red;">大</span><span style="color: red;">河</span>上下，<span style="color: red;">顿</span>失滔滔。<span style="color: red;">山</span>舞银蛇，<span style="color: red;">原</span>驰蜡象，欲与天公试比<span style="color: red;">高</span>。<span style="color: red;">须</span><span style="color: red;">晴</span><span style="color: red;">日</span>，看红装素裹，<span style="color: red;">分</span>外妖娆。江山<span style="color: red;">如</span>此多娇，<span style="color: red;">引</span>无数英雄竞折腰。<span style="color: red;">惜</span>秦皇<span style="color: red;">汉</span>武，略输文采；唐宗宋祖，<span style="color: red;">稍</span><span style="color: red;">逊</span>风骚。一代天骄，成吉思汗，只识<span style="color: red;">弯</span>弓射大雕。<span style="color: red;">俱</span><span style="color: red;">往</span><span style="color: red;">矣</span>，<span style="color: red;">数</span><span style="color: red;">风</span><span style="color: red;">流</span><span style="color: red;">人</span><span style="color: red;">物</span>，<span style="color: red;">还</span>看今朝。
+            </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/para_demo_origin_2.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/para_demo_stress_2.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+      </tbody>
+    </table>
+    <p>Short summary: We can see that integrated with stress, the expressiveness of the overall article is enhanced. At
+      the same time, the combination of stress makes the poems perform better. <span style="color:red ;">(note: the
+        speaker uses a non-poetry corpus).</span> </p>
+    <footer class="site-footer">
+    </footer>
+  </section>
+</body>
+
+</html>
