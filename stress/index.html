@@ -49,25 +49,15 @@
       <li><a href="#paragraph demo">Demos -- Stress demo on paragraph TTS </a></li>
     </ol>
     <h2 id="abstract">1. Abstract<a name="abstract"></a></h2>
-    <p>Stress is essential to speech synthesis. However, there is currently
-      no clear definition of text-based stress, and it is challenging to obtain available annotated data. This paper
-      proposes a coarse-to-fine
-      model to demonstrate the effectiveness of progressively granular
-      stress prediction in speech synthesis. The first stage builds a stress
-      coarse-grained attention model, the second stage combines the auxiliary information provided by the coarse-grained
-      model to build a
-      stress fine-grained attention model. Our method has the following
-      attributes: First, dividing the stress corpus into two parts with different granularities can reduce the
-      difficulty of data acquisition and
-      improve the model’s performance. Second, introducing a two-stage
-      granularity model can effectively lessen the model deviation. Compared with the one-stage stress model, the F1
-      score is also improved
-      by 13%-14%. Third, the stress model dramatically improves speech
-      synthesis’s expression, emotion, and naturalness using ABTest
-      and MOS evaluation on different models. Finally, incorporated with
-      knowledge distillation, the model achieves a user-acceptable balance
-      in efficiency and quality and realizes an industrial-level deployment
-      system.
+    <p>Stress prediction is challenging since it is hard to obtain available text-based annotated corpus. This paper
+      proposes a coarse-to-fine model to demonstrate the effectiveness of progressively granular stress prediction in
+      speech synthesis. Our method has the following attributes: First, dividing the stress corpus into two parts with
+      different granularities can reduce the difficulty of data acquisition and improve the model’s performance. Second,
+      introducing a two-stage granularity model can effectively lessen the model deviation. Compared with the one-stage
+      stress model, the F1 score is improved by 13\%-14\% relatively. Third, the experiments show that our proposed
+      model dramatically improves speech synthesis’s expression, emotion, and naturalness. Finally, incorporated with
+      knowledge distillation, we realize an industrial-level deployment system in which the model achieves a
+      user-acceptable balance in efficiency and quality.
     </p>
     <h3>1.1 The structure of the Stress Model:</h3>
     <center><img src='images/demo_stress_structure.png' width="50%"></center>
