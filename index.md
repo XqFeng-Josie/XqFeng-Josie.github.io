@@ -38,6 +38,33 @@ I am a Senior Speech Algorithm Engineer at [Mobvoi AI Lab](https://www.mobvoi.co
 
 <div class="publications">
 <ol class="bibliography">
+
+<li>
+<div class="pub-row">
+  <div class="col-sm-3 abbr" style="position: relative;padding-right: 15px;padding-left: 15px;">
+    <img src="/assets/img/icassp2023.png" class="teaser img-fluid z-depth-1">
+            <abbr class="badge">ICASSP</abbr>
+  </div>
+  <div id="peng2021copo" class="col-sm-9" style="position: relative;width: 100%;padding-right: 15px;padding-left: 20px;">
+      <div class="title">Stress Prediction Based on Multi-granularity Lingustic Knowledge <i><font color=green>reviewing</font></i></div>
+      <div class="author">
+        <strong><u>Xiaoqin Feng</u></strong>, Wenjiang Chi, Yunlin Chen, Lei Xie
+      </div>
+      <div class="periodical"><em>IEEE International Conference on Acoustics,
+Speech and Signal Processing International Conference on Pattern Recognition and Machine Learning，2023(ICASSP’22), 5 pages</em>
+      </div>
+    <div class="links">
+      <a href="" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;"><font color=gray>PDF</font></a>
+      <a href="" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;"><font color=gray>Demo</font></a>
+      <!-- <a href="https://github.com/yaoyao-liu/meta-transfer-learning" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;">Code</a>
+      <a href="https://bibliography.yliu.de/TPAMI22.txt" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;">BibTex</a> -->
+    </div>
+  </div>
+</div>
+</li>
+
+
+
 <li>
 <div class="pub-row">
   <div class="col-sm-3 abbr" style="position: relative;padding-right: 15px;padding-left: 15px;">
