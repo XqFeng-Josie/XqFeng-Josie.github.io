@@ -4,7 +4,7 @@ layout: homepage
 
 ## About Me
 
-I am a Senior Speech Algorithm Engineer at [Mobvoi AI Lab](https://www.mobvoi.com/hk). My working area is text-to-speech(TTS), in which I primarily focus on NLP(TN/G2P/Prosody/Stress/Style/Emotion), model optimization(NLP/TTS), Emotional TTS, and online server application, all of this based on cross-lingual(English, Mandarin, etc.). Personally, my biggest motivation is using the world’s multi-modal information to improve our lives.
+I am a Senior Speech Algorithm Engineer at [Mobvoi AI Lab](https://www.mobvoi.com/hk). My working area is text-to-speech(TTS), in which I primarily focus on NLP(TN/G2P/Prosody/Stress/Style/Emotion), model optimization(NLP/TTS), Emotional TTS, and online server application, all of this based on multi-language(English, Mandarin, etc.). Personally, my biggest motivation is using the world’s multi-modal information to improve our lives.
 
 ## Research Interests
 - **Natural Language Processing:** semantic analysis, knowledge acquisition, knowledge extraction, knowledge representation
@@ -17,7 +17,7 @@ I am a Senior Speech Algorithm Engineer at [Mobvoi AI Lab](https://www.mobvoi.co
 - **[Oct. 2016 – Jan. 2019]** M.Sc. in Software Engineer at [Beijing University of Technology(BJUT)](https://www.bjut.edu.cn/), advised by Zhangqin Huang at Internet of Things AI Lab, overall grade: 86 (max. 100) between “Very Good” and “Good”
 - **[Oct. 2012 – Jan. 2016]** B.Eng. in Computer Science at [Southwest Minzu University(SMU)](https://www.swun.edu.cn/), advised by Jianyin Chen, overall grade: 3.66 (max. 4.0), “Top 5” of 154 students
 
-## Experience
+## Employment & Activity
 - **[Jul. 2019 - Present]** [Mobvoi AI Lab](https://www.mobvoi.com/hk), Senior Speech Engineer
 - **[Aug. 2018 - Dec. 2018]** [TAL AI Lab](https://en.100tal.com/), Algorithm Research Intern
 - **[Jun. 2018 - Aug. 2018]** [DeeCamp AI Lab](https://deecamp.com/#/home), Research Team Member
