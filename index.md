@@ -4,11 +4,12 @@ layout: homepage
 
 ## About Me
 
-I am a Senior Speech Algorithm Engineer at [Mobvoi AI Lab](https://www.mobvoi.com/hk). My working area is text-to-speech(TTS), in which I primarily focus on NLP(TN/G2P/Prosody/Stress/Style/Emotion), model optimization(NLP/TTS), Emotional TTS, and online server application, all of this based on multi-language(English, Mandarin, etc.). Personally, my biggest motivation is using the world’s multi-modal information to improve our lives.
+
+Hello! My name is **<font color=black size=4px>Xiaoqin Feng</font>**. I am currently a Senior Speech Algorithm Engineer at [Mobvoi AI Lab](https://www.mobvoi.com/hk)(Beijing). My working area is text-to-speech(TTS), in which I primarily focus on **<font color=black>text information extraction</font>** to guide the naturalness and expressiveness of TTS.  **<font color=black>I am applying for Ph.D. in computer science.</font>**
 
 ## Research Interests
-- **Natural Language Processing:** semantic analysis, knowledge acquisition, knowledge extraction, knowledge representation
-- **Machine Learning:** robust learning
+- **Natural Language Processing:** natural language understanding, semantic analysis, knowledge acquisition, information representation, information extraction,and application to practical problems. 
+- **Machine Learning:** robust learning, unsupervised learning or semi-supervised learning
 <!--
 <strong style="color:#e74d3c; font-weight:600">I am looking for a postdoc or research scientist position in the US and EU. I would appreciate a ping if you see a job I might fit.</strong>
 -->
@@ -50,8 +51,7 @@ I am a Senior Speech Algorithm Engineer at [Mobvoi AI Lab](https://www.mobvoi.co
       <div class="author">
         <strong><u>Xiaoqin Feng</u></strong>, Wenjiang Chi, Yunlin Chen, Lei Xie
       </div>
-      <div class="periodical"><em>IEEE International Conference on Acoustics,
-Speech and Signal Processing International Conference on Pattern Recognition and Machine Learning，2023(ICASSP’22), 5 pages</em>
+      <div class="periodical"><em>In proceedings of ICASSP 2023, 5 pages</em>
       </div>
     <div class="links">
       <a href="" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;"><font color=gray>PDF</font></a>
@@ -76,7 +76,7 @@ Speech and Signal Processing International Conference on Pattern Recognition and
       <div class="author">
         Jipeng Zhang, Hankiz Yilahun, <strong><u>Xiaoqin Feng</u></strong>, Yunlin Chen, Xipeng Yang, Askar Hamdulla
       </div>
-      <div class="periodical"><em>International Conference on Pattern Recognition and Machine Learning，2022(PRML’22), 5 pages</em>
+      <div class="periodical"><em>In proceedings of PRML 2022, 5 pages</em>
       </div>
     <div class="links">
       <a href="https://ieeexplore.ieee.org/abstract/document/9882251" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;">PDF</a>
@@ -99,8 +99,7 @@ Speech and Signal Processing International Conference on Pattern Recognition and
       <div class="title"><a href="https://arxiv.org/pdf/1909.00372.pdf">Deep knowledge tracing with side information</a></div>
       <div class="author">
         Zhiwei Wang, <strong><u>Xiaoqin Feng</u></strong>, Jiliang Tang, Gale Yan Huang, Zitao Liu</div>
-      <div class="periodical"><em> International conference on artificial intelligence in education.
-Springer, Cham,2019(AIED’19), 5 pages</em>
+      <div class="periodical"><em>In proceedings of AIED 2019, Springer, Cham, 5 pages</em>
       </div>
     <div class="links">
       <a href="https://arxiv.org/pdf/1909.00372.pdf" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;">PDF</a>
@@ -123,7 +122,7 @@ Springer, Cham,2019(AIED’19), 5 pages</em>
   <div id="peng2021copo" class="col-sm-9" style="position: relative;width: 100%;padding-right: 15px;padding-left: 20px;">
       <div class="title"><a href="https://iopscience.iop.org/article/10.1088/1742-6596/1237/2/022045/pdf">Population statistics algorithm based on MobileNet</a></div>
       <div class="author"><strong><u>Xiaoqin Feng</u></strong>, Rong Xie, Junyang Sheng, Shuo Zhang</div>
-      <div class="periodical"><em>Journal of Physics: Conference Series. IOP Publishing, 2019(ICSP’19), 6 pages</em>
+      <div class="periodical"><em>Journal of Physics: Conference Series. ICSP 2019, 6 pages</em>
       </div>
     <div class="links">
       <a href="https://iopscience.iop.org/article/10.1088/1742-6596/1237/2/022045/pdf" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;">PDF</a>
@@ -143,7 +142,7 @@ Springer, Cham,2019(AIED’19), 5 pages</em>
   <div id="peng2021copo" class="col-sm-9" style="position: relative;width: 100%;padding-right: 15px;padding-left: 20px;">
       <div class="title"><a href="https://ieeexplore.ieee.org/document/9032641">A method of quick edge detection based on Zynq</a></div>
       <div class="author">  Rong Xie, <strong><u>Xiaoqin Feng</u></strong></div>
-      <div class="periodical"><em> International Conference on Cloud Computing and Internet of Things, 2018(CCIOT’18), 5 pages.</em>
+      <div class="periodical"><em> In proceedings of CCIOT 2018, 5 pages.</em>
       </div>
     <div class="links">
       <a href="https://ieeexplore.ieee.org/document/9032641" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;">PDF</a>
