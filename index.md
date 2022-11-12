@@ -5,10 +5,11 @@ layout: homepage
 ## About Me
 
 
-Hello! My name is **<font color=black size=4px>Xiaoqin Feng</font>**. I am currently a Senior Speech Algorithm Engineer at [Mobvoi AI Lab](https://www.mobvoi.com/hk)(Beijing). My working area is text-to-speech(TTS), in which I primarily focus on **<font color=black>text information extraction</font>** to guide the naturalness and expressiveness of TTS.  **<font color=black>I am applying for Ph.D. in computer science.</font>**. Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf).
+Hello! My name is **<font color=black size=4px>Xiaoqin Feng</font>**. I am currently a Senior Speech Algorithm Engineer at [Mobvoi AI Lab](https://www.mobvoi.com/hk)(Beijing). My working area is text-to-speech(TTS), in which I primarily focus on **<font color=black>text information extraction</font>** to guide the naturalness and expressiveness of TTS.  **<font color=red>I am applying for Ph.D. in computer science. </font>**Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf).
 
 ## Research Interests
-- **Natural Language Processing:** natural language understanding, semantic analysis, knowledge acquisition, information representation, information extraction,and application to practical problems. 
+- **Natural Language Processing:** natural language understanding, semantic analysis, knowledge acquisition, 
+information extraction, information representation, and application to practical problems. 
 - **Machine Learning:** robust learning, unsupervised learning or semi-supervised learning
 <!--
 <strong style="color:#e74d3c; font-weight:600">I am looking for a postdoc or research scientist position in the US and EU. I would appreciate a ping if you see a job I might fit.</strong>
@@ -49,7 +50,7 @@ Hello! My name is **<font color=black size=4px>Xiaoqin Feng</font>**. I am curre
   <div id="peng2021copo" class="col-sm-9" style="position: relative;width: 100%;padding-right: 15px;padding-left: 20px;">
       <div class="title">Stress Prediction Based on Multi-granularity Lingustic Knowledge <i><font color=green>reviewing</font></i></div>
       <div class="author">
-        <strong><u>Xiaoqin Feng</u></strong>, Wenjiang Chi, Yunlin Chen, Lei Xie
+        Wenjiang Chi, <strong><u>Xiaoqin Feng(*euqal contribution)</u></strong>, Yunlin Chen, Lei Xie
       </div>
       <div class="periodical"><em>In proceedings of ICASSP 2023, 5 pages</em>
       </div>
