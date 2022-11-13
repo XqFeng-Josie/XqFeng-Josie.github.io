@@ -11,8 +11,8 @@ Hello! My name is **<font color=black size=4px>Xiaoqin Feng</font>**. I am curre
 
 ## Research Interests
 - **Natural Language Processing:** natural language understanding, semantic analysis, knowledge acquisition, 
-information extraction, information representation, and application to practical problems. 
-- **Machine Learning:** robust learning, unsupervised learning or semi-supervised learning
+information extraction, information representation, and application to practical problems(crosslingual). 
+- **Machine Learning:** robust learning, unsupervised learning or semi-supervised learning, transfer learning.
 <!--
 <strong style="color:#e74d3c; font-weight:600">I am looking for a postdoc or research scientist position in the US and EU. I would appreciate a ping if you see a job I might fit.</strong>
 -->
@@ -167,7 +167,7 @@ information extraction, information representation, and application to practical
   <div id="peng2021copo" class="col-sm-9" style="position: relative;width: 100%;padding-right: 15px;padding-left: 20px;">
       <div class="title"><a href="https://ieeexplore.ieee.org/document/8691352">Research on the Internet of Things Platform for Smart and Environmental Protection</a></div>
       <div class="author"> Junyang Sheng, <strong><u>Xiaoqin Feng</u></strong></div>
-      <div class="periodical"><em>International Conference on Cloud Computing and Intelligence Systems, 2018(CCIS’18), 5 pages</em>
+      <div class="periodical"><em>In proceedings of CCIS 2018, 5 pages</em>
       </div>
     <div class="links">
       <a href="https://ieeexplore.ieee.org/document/8691352" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;">PDF</a>
