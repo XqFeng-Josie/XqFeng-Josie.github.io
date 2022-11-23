@@ -32,11 +32,11 @@ information extraction, information representation, and application to practical
 ## Research News
 
 - **[Oct. 2022]** Our paper about multi-granularity knowledge(stress) is reviewing to ICASSP 2023.
-- **[Jul. 2022]** Our paper about prompt learning(rhythm) is accepted to PRML 2022.
-- **[Jun. 2019]** Our paper about knowledge tracing is accepted to AIED 2019.
-- **[Jun. 2019]** Our paper about image detection is accepted to Journal of Physics 2019
-- **[Oct. 2018]** Our paper about quick edge detection(image) is accepted to CCIOT 2018.
-- **[Nov. 2018]** Our paper about cloud computing and intelligence system is accepted to CCIS 2018.
+- **[Jul. 2022]** Our paper about prompt learning(rhythm) has been accepted by PRML 2022.
+- **[Jun. 2019]** Our paper about knowledge tracing has been accepted by AIED 2019.
+- **[Jun. 2019]** Our paper about image detection has been accepted by Journal of Physics 2019
+- **[Oct. 2018]** Our paper about quick edge detection(image) has been accepted by CCIOT 2018.
+- **[Nov. 2018]** Our paper about cloud computing and intelligence system has been accepted by CCIS 2018.
 
 <h2 id="publications" style="margin: 2px 0px -15px;">Publications <temp style="font-size:15px;">[</temp><a href="https://scholar.google.com/citations?user=-rW26N0AAAAJ" target="_blank" style="font-size:15px;">Google Scholar</a><temp style="font-size:15px;">]</temp></h2>
 
