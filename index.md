@@ -4,22 +4,23 @@ layout: homepage
 &#x2665; [Education](#education)  &nbsp;｜ [News](#news)  &nbsp;｜ [Publicaitons](#publications) &nbsp;｜ [Teaching](#teaching) &nbsp;｜ [Life Cakes](#life)
 
 ## <span id='about'>About Me</span>
-Hello! My name is **<font color=black size=4px>Xiaoqin Feng</font>**. I am currently a Senior Speech Algorithm Engineer at [Mobvoi AI Lab](https://www.mobvoi.com/hk)(Beijing). My working area is text-to-speech(TTS), in which I primarily focus on <font color=black>text information extraction(NLP of TTS)</font> based on multi- and cross- lingual.
+Hello! My name is **<font color=black size=4px>Xiaoqin Feng</font>**. I am a Senior Speech Algorithm Engineer at [Mobvoi AI Lab](https://www.mobvoi.com/hk)(Beijing). My working area is text-to-speech(TTS), in which I primarily focus on <font color=black>text information extraction(NLP of TTS)</font> based on multi- and cross- lingual.
 
-**<font color=red>&#x1F4EC;I am applying for Ph.D. in computer science. </font>**Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf).
+**<font color=red>&#x1F4EC;I am applying for Ph.D. in computer science. </font>**Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf) and my [personal statement](https://xqfeng-josie.github.io/resume/PS/xiaoqin-ps.pdf).
 
 ## <span id='interests'>Research Interests</span>   
 
 - **Natural Language Processing:** natural language understanding, semantic analysis, knowledge acquisition, 
-information extraction, information representation, and application to practical problems. 
+information extraction, information representation, and application to real-word. 
 - **Machine Learning:** robust learning, unsupervised learning or semi-supervised learning, transfer learning.
+- **Data Science:** data mining, dataset construction.
 <!--
 <strong style="color:#e74d3c; font-weight:600">I am looking for a postdoc or research scientist position in the US and EU. I would appreciate a ping if you see a job I might fit.</strong>
 -->
 
 ## <span id='education'>Education</span>   
-- **[Oct. 2016 – Jan. 2019]** M.Sc. in Software Engineer at [Beijing University of Technology(BJUT)](https://www.bjut.edu.cn/), advised by Zhangqin Huang at Internet of Things AI Lab, overall grade: 86 (max. 100) between “Very Good” and “Good”
-- **[Oct. 2012 – Jan. 2016]** B.Eng. in Computer Science at [Southwest Minzu University(SMU)](https://www.swun.edu.cn/), advised by Jianyin Chen, overall grade: 3.66 (max. 4.0), “Top 5” of 154 students
+- **[Oct. 2016 – Jan. 2019]** M.Sc. in Software Engineer at [Beijing University of Technology(BJUT)](https://english.bjut.edu.cn/), advised by Zhangqin Huang at Internet of Things AI Lab, overall grade: 86 (max. 100) between “Very Good” and “Good”
+- **[Oct. 2012 – Jan. 2016]** B.Eng. in Computer Science at [Southwest Minzu University(SMU)](https://english.swun.edu.cn/), advised by Jianyin Chen, overall grade: 3.66 (max. 4.0), “Top 5” of 154 students
 
 ## <span id='activity'>Employment and Activity</span>   
 - **[Jul. 2019 - Present]** [Mobvoi AI Lab](https://www.mobvoi.com/hk), Senior Speech Engineer. Research on text information extraction of text-to-speech on multi- and cross- lingual domain, including semantic NLP and emotional NLP.
