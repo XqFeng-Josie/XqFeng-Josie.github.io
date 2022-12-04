@@ -4,9 +4,9 @@ layout: homepage
 &#x2665; [Education](#education)  &nbsp;｜ [News](#news)  &nbsp;｜ [Publicaitons](#publications) &nbsp;｜ [Teaching](#teaching) &nbsp;｜ [Life Cakes](#life)
 
 ## <span id='about'>About Me</span>
-Hello! My name is **<font color=black size=4px>Xiaoqin Feng</font>**. I am a Senior Speech Algorithm Engineer at [Mobvoi AI Lab](https://www.mobvoi.com/hk)(Beijing). My working area is text-to-speech(TTS), in which I primarily focus on <font color=black>text information extraction(NLP of TTS)</font> based on multi- and cross- lingual.
+Hello! My name is **<font color=black size=4px>Xiaoqin Feng</font>**. I am a Senior Speech Algorithm Engineer at [Mobvoi AI Lab](https://www.mobvoi.com/hk). My working area is text-to-speech(TTS), in which I primarily focus on <font color=black>text information extraction(NLP of TTS)</font> based on multi- and cross- lingual.
 
-**<font color=red>&#x1F4EC;I am applying for Ph.D. in computer science. </font>**Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf) and my [personal statement](https://xqfeng-josie.github.io/resume/PS/xiaoqin-ps.pdf).
+**<font color=red>&#x1F4EC;I am applying for Ph.D. in computer science. </font>**Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf) and my [personal research statement](https://xqfeng-josie.github.io/resume/PS/xiaoqin-ps.pdf).
 
 ## <span id='interests'>Research Interests</span>   
 
@@ -196,5 +196,5 @@ information extraction, information representation, and application to real-word
 - Company - Speech & NLP <br>As a mentor at Mobvoi, for interns (students), avg. 3 students each year. Annual  2021-2022
 
 ## <span id='life'>Life Cakes</span> 
-
-- I decide to write my life stroy, expecting .....
+- I love music, cooking, reading, traveling...
+- Here is my life stroy, expecting .....
