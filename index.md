@@ -51,11 +51,11 @@ information extraction, information representation, and application to real-word
             <abbr class="badge">ICASSP</abbr>
   </div>
   <div id="peng2021copo" class="col-sm-9" style="position: relative;width: 100%;padding-right: 15px;padding-left: 20px;">
-      <div class="title">Stress Prediction Based on Multi-granularity Lingustic Knowledge <i><font color=green>reviewing</font></i></div>
+      <div class="title">Multi-granularity Semantic and Acoustic Stress Prediction for Expressive TTS <i><font color=green>reviewing</font></i></div>
       <div class="author">
-        Wenjiang Chi, <strong><u>Xiaoqin Feng(*euqal contribution)</u></strong>, Yunlin Chen, Lei Xie
+        Wenjiang Chi, <strong><u>Xiaoqin Feng(*euqal contribution)</u></strong>,et al.
       </div>
-      <div class="periodical"><em>In proceedings of ICASSP 2023, 5 pages</em>
+      <div class="periodical"><em>In proceedings of INTERSPEECH 2023, 5 pages</em>
       </div>
     <div class="links">
       <a href="" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;"><font color=gray>PDF</font></a>
