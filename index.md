@@ -6,7 +6,7 @@ layout: homepage
 ## <span id='about'>About Me</span>
 Hello! My name is **<font color=black size=4px>Xiaoqin Feng</font>**. I am a Senior Speech Algorithm Engineer at [Mobvoi AI Lab](https://www.mobvoi.com/hk). My working area is text-to-speech(TTS), in which I primarily focus on <font color=black>text information extraction(NLP of TTS)</font> based on multi- and cross- lingual.
 
-**<font color=red>&#x1F4EC;I am applying for Ph.D. in computer science. </font>**Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf) and my [personal research statement](https://xqfeng-josie.github.io/resume/PS/xiaoqin-ps.pdf).
+**<font color=red>&#x1F4EC;I am applying for Ph.D. in computer science. </font>**Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf) and my [personal research statement](https://xqfeng-josie.github.io/resume/PS/xiaoqin-ps-general.pdf).
 
 ## <span id='interests'>Research Interests</span>   
 

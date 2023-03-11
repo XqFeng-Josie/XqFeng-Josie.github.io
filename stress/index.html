@@ -7,7 +7,7 @@
 
 
   <!-- Begin Jekyll SEO tag v2.7.1 -->
-  <title>STRESS PREDICTION BASED ON MULTI-GRANULARITY LINGUISTIC KNOWLEDGE</title>
+  <title>Multi-granularity Semantic and Acoustic Stress Prediction for Expressive TTS</title>
   <meta name="generator" content="Jekyll v3.9.0">
   <meta property="og:title" content="TODO: title">
   <meta property="og:locale" content="en_US">
@@ -31,43 +31,54 @@
 
   <section class="main-content">
     <h1 id="">
-      <center>STRESS PREDICTION BASED ON MULTI-GRANULARITY LINGUISTIC KNOWLEDGE</center>
+      <center>Multi-granularity Semantic and Acoustic Stress Prediction for Expressive TTS</center>
     </h1>
 
-    <center> <i>Wenjiang Chi, Xiaoqin Feng, Yunlin Chen, Lei Xie </i></center>
-    <center> Mobvoi AI Lab, Suzhou, China. </center>
+    <center> <i>Wenjiang Chi, Xiaoqin Feng, Liumeng Xue, Yunlin Chen, Lei Xie </i></center>
+    <center> Shanghai Mobvoi Information Technology Co., Ltd, China. </center>
     <center> Audio, Speech and Language Processing Group (ASLP@NPU). </center>
 
 
     <h2>0. Contents</h2>
     <ol>
       <li><a href="#abstract">Abstract</a></li>
-      <li><a href="#Comparison">Demos -- Comparison with different methods</a></li>
-      <li><a href="#ablation 3.4.1">Demos -- Contribution Of Coarse-Grained Model</a></li>
-      <li><a href="#ablation 3.4.2">Demos -- Contribution of Coarse-Grained supervised loss(<i>L<sub>cgce</sub></i>)</a>
-      </li>
+      <li><a href="#Comparison 4.2">Demos -- Comparison with different methods</a></li>
+      <li><a href="#ablation 4.3">Demos -- Contribution of coarse-grained information</a></li>
       <li><a href="#paragraph demo">Demos -- Stress demo on paragraph TTS </a></li>
     </ol>
     <h2 id="abstract">1. Abstract<a name="abstract"></a></h2>
-    <p>Stress prediction is challenging since it is hard to obtain available text-based annotated corpus. This paper
-      proposes a progressively granular approach, which can obtain text-based stress prediction for speech synthesis by
-      a coarse-to-fine model. First, we divide the stress corpus into two parts with different granularities, which aims
-      to reduce the difficulty of data acquisition. Second, we propose to use a two-stage pipeline to construct the
-      coarse-to-fine stress model, which decreases the model deviation. Specifically, we plug auxiliary granularity
-      supervision to compensate for the coarse-grained information dispersion during second-stage training. Experiments
-      show that our proposed approach dramatically improves the expressiveness and naturalness in speech synthesis.
-      Compared with the one-stage stress model, the F1 score is improved by 13%-14%. In addition, we realize an
-      industrial-level deployment system by incorporating knowledge distillation, achieving a user-acceptable balance in
-      efficiency and quality.
+    <p>Stress, as the perceptual prominence within sentences, plays a key role in expressive text-to-speech (TTS). It
+      can be either the semantic focus in text or the acoustic prominence in speech. However, stress labels are always
+      annotated by listening to the speech, lacking semantic information in the corresponding text, which may degrade
+      the accuracy of stress prediction and the expressivity of TTS. This paper proposes a multi-granularity stress
+      prediction method for expressive TTS. Specifically, we first build Chinese Mandarin datasets with both
+      coarse-grained semantic stress and fine-grained acoustic stress. Then, the proposed model progressively predicts
+      semantic stress and acoustic stress. Finally, a TTS model is adopted to synthesize speech with the predicted
+      stress. Experimental results on the proposed model and synthesized speech show that our proposed model achieves
+      good accuracy in stress prediction and improves the expressiveness and naturalness of the synthesized speech.
     </p>
-    <h3>1.1 The structure of the Stress Model:</h3>
-    <center><img src='images/demo_stress_structure.png' width="50%"></center>
+    <h3>1.1 Data Construction</h3>
+    <center><img src='images/data_construction.png' width="60%"></center>
+    <p>
+      In consideration of the nature of multi-grained stress, we construct the dataset with coarse-grained semantic
+      stress and fine-grained acoustic stress to incorporate both the semantic knowledge in the text and the acoustic
+      information in the speech. Compared with the standard stress corpus collection, our approach is more flexible and
+      suitable for real-world scenarios, it also enhances the reliability and diversity of stress labels.
+    </p>
     <!-- <br><br> -->
-    <h3>1.2 The structure of Two-Stage Stress Pipeline:</h3>
-    <center><img src='images/demo_stress_two.png' width="50%"></center>
+    <h3>1.1 System View</h3>
+    <center><img src='images/system_review.png' width="80%"></center>
+    <!-- <br><br> -->
+    <p>The overall architecture of our proposed multi-granularity stress prediction model is presented in
+      figure. The training process of the model is divided into two stages: stage 1
+      predicts coarse-grained semantic stress and stage 2 predicts fine-grained acoustic stress. The models of the two
+      stages have similar structures but they are trained on the dataset with semantic stress and acoustic stress,
+      respectively. Compared with the model trained on the dataset with acoustic stress only, our model incorporates
+      stress from both semantic and acoustic information, improving the diversity of stress and also benefiting
+      expressive speech synthesis.</p>
 
-    <h2>2. Demos -- Comparison with Different Methods<a name="Comparison"></a></h2>
-    <h3>Corresponding to section 3.2 in the paper, several samples synthesized by the proposed FSM and other compared
+    <h2>2. Demos -- Comparison with Different Methods<a name="Comparison 4.2"></a></h2>
+    <h3>Corresponding to section 4.2 in the paper, several samples synthesized by the proposed FSM and other compared
       methods on the stress task are listed below.</h3>
     <table>
       <thead>
@@ -218,24 +229,112 @@
       </tbody>
     </table>
 
-    <p>Short summary: We observe that our proposed model achieves the best performance synthetically, in some
-      dimensions, even outperforming user-defined results(user-defined equals ground truth), presumably due to
-      differences in user criteria. At the same time, we found that the
-      coarse-grained model is not good, making the speech unnatural and
-      weird. We speculate that the coarse-grained model focusing on
-      longer phrase words cause the whole sentence emotional bias. Our proposed model achieved excellent results in
-      pleasantness and listening comfort, proving that our model improves the expressiveness
-      of TTS.</p>
+    <p>Short summary: we can see that CGM performs poorly, resulting in unnatural and abnormal speech. This can be
+      attributed to the fact that CGM solely focuses on semantic stress annotated from the text without considering of
+      acoustic features of the speech. Additionally, the final stress should be at the fine-grained level, which is why
+      CGM<sub>random</sub> outperforms CGM. The result of our proposed model FSM improves the naturalness and
+      expressiveness of TTS by
+      leveraging both semantic and acoustic information.</p>
     <br>
-    <h2>3. Demos -- Contribution of Coarse-Grained Model<a name="ablation 3.4.1"></a></h2>
-    <h3>Corresponding to section 3.4.1 in the paper, samples synthesized by FSM and FSM' variants that without CGM (w/o
-      CGM) on the stress task are listed below.</h3>
+    <h2>3. Demos -- Contribution of Coarse-Grained Information<a name="ablation 4.3"></a></h2>
+    <h3>Corresponding to section 4.3 in the paper, samples synthesized by FSM and FSM' variants that
+      withoutcoarse-grained iupervised information (w/o <i>L<sub>cgce</sub></i>) on the stress task are listed below.
+    </h3>
 
     <table>
       <thead>
         <tr>
           <th style="text-align: center"><strong>number</strong></th>
-          <th style="text-align: center"><strong> FSM (w/o CGM) </strong></th>
+          <th style="text-align: center"><strong> FSM (w/o <i>Lcgce</i>) </strong></th>
+          <th style="text-align: center"><strong> FSM (Proposed) </strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo1</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            这衣服<span style="color: red;">是</span>好，就是贵了点。
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            这衣服是好，就是<span style="color: red;">贵</span>了点。
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/ablation2/1_0.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/ablation2/1_1.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo2</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            <span style="color: red;">远</span><span style="color: red;">征</span><span
+              style="color: red;">星</span>辰大海，归来<span style="color: red;">仍</span><span
+              style="color: red;">是</span><span style="color: red;">少</span>年
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            远征<span style="color: red;">星</span>辰大海，归来<span style="color: red;">仍</span><span
+              style="color: red;">是</span>少年
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/ablation2/2_0.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/ablation2/2_1.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo3</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            虽然代价巨大，可<span style="color: red;">依</span>然有很多人。为了这一时的欢愉，而<span style="color: red;">献</span>出<span
+              style="color: red;">灵</span>魂。
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            虽然代价巨大，可<span style="color: red;">依</span>然有很多人。为了这一时的欢愉，而献出<span style="color: red;">灵</span>魂。
+
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/ablation2/3_0.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/ablation2/3_1.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo4</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            华哥<span style="color: red;">刚</span>夸完达子还没一分钟。
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            华哥<span style="color: red;">刚</span>夸完达子还没一分钟。
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/ablation2/4_0.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/ablation2/4_1.wav" controls="" preload=""></audio></td>
+        </tr>
+        <tr>
+          <td style="text-align: left" rowspan=2>demo5</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            <span style="color: red;">你</span><span style="color: red;">为</span>什么会出现在<span
+              style="color: red;">这</span><span style="color: red;">里</span>！
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            你<span style="color: red;">为</span>什么会出现在<span style="color: red;">这</span>里！
+          </td>
+
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/ablation2/5_0.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/ablation2/5_1.wav" controls="" preload=""></audio></td>
+        </tr>
+
+      </tbody>
+    </table>
+    <h3>Corresponding to section 4.3 in the paper, samples synthesized by FSM and FSM' variants that without
+      coarse-grained supervised information and without CGM (w/o
+      L<i>cgce</i> & CGM) on the stress task are listed
+      below.</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center"><strong>number</strong></th>
+          <th style="text-align: center"><strong> FSM (w/o L<i>cgce</i> & w/o CGM ) </strong></th>
           <th style="text-align: center"><strong> FSM (Proposed) </strong></th>
         </tr>
       </thead>
@@ -326,124 +425,15 @@
       </tbody>
     </table>
     <p>Short summary: As expected, introducing coarse-grained information
-      improves our fine-grained stress model’s ability. Since RoBERTa
-      only contains semantic information, the CGM model also provides
-      the key phrases attention in sentences, making it easier for FSM to
-      find the keywords.</p>
+      improves our fine-grained stress model’s ability.can provide abundant semantic information, the CGM model still
+      offers remarkable stress-related information in the sentence, thereby facilitating the FSM in detecting
+      fine-grained stress keywords. Overall, The results demonstrate that the incorporation of coarse-grained
+      information supervision is an effective approach to preventing stress weight dispersion during training.</p>
     <br>
-    <h2>4. Demos -- Contribution of Coarse-Grained Supervised Loss(<i>L<sub>cgce</sub></i>)<a name="ablation 3.4.2"></a>
-    </h2><br>
-    <center><img src='images/demo_stress_weight.png' width="50%"></center>
-    <p>we can observe
-      changes in FSM_<i>Lcgce</i> under the supervision of FSM and CGM. We
-      divide it into two groups according to the ground-truth labels of the x<sub>i</sub>:
-      (1) When the true label of x<sub>i</sub> is 1(stressed), FSM_<i>Lcgce</i> will not
-      be affected. (2) When the true label of x<sub>i</sub> is 0(unstressed), CGM(w)
-      will take effect, and the direction of  FSM_<i>Lcgce</i> change is consistent with CGM(w),
-      when the corresponding coarse-grained position
-      belongs to 1(stressed), FSM_<i>Lcgce</i> will be strengthened, and vice
-      versa. Note that we do not perform CGM supervision at all locations
-       because we want to ensure the persistence of
-      CGM supervision information and the diversity of the FSM itself.</p>
 
-    <h3>Corresponding to section 3.4.2 in the paper, samples synthesized by FSM and also FSM' variants that without CGM
-      supervised loss(w/o <i>Lcgce</i>) on the stress task are listed below.</h3>
 
-    <table>
-      <thead>
-        <tr>
-          <th style="text-align: center"><strong>number</strong></th>
-          <th style="text-align: center"><strong> FSM (w/o <i>Lcgce</i>) </strong></th>
-          <th style="text-align: center"><strong> FSM (Proposed) </strong></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="text-align: left" rowspan=2>demo1</td>
-          <td style="text-align: left;font-size: smaller;" colspan=1>
-            这衣服<span style="color: red;">是</span>好，就是贵了点。
-          </td>
-          <td style="text-align: left;font-size: smaller;" colspan=1>
-            这衣服是好，就是<span style="color: red;">贵</span>了点。
-          </td>
-        </tr>
-        <tr>
-          <td style="text-align: left"><audio src="demo_meet/ablation2/1_0.wav" controls="" preload=""></audio></td>
-          <td style="text-align: left"><audio src="demo_meet/ablation2/1_1.wav" controls="" preload=""></audio></td>
-        </tr>
-        <tr>
-          <td style="text-align: left" rowspan=2>demo2</td>
-          <td style="text-align: left;font-size: smaller;" colspan=1>
-            <span style="color: red;">远</span><span style="color: red;">征</span><span
-              style="color: red;">星</span>辰大海，归来<span style="color: red;">仍</span><span
-              style="color: red;">是</span><span style="color: red;">少</span>年
-          </td>
-          <td style="text-align: left;font-size: smaller;" colspan=1>
-            远征<span style="color: red;">星</span>辰大海，归来<span style="color: red;">仍</span><span
-              style="color: red;">是</span>少年
-          </td>
-        </tr>
-        <tr>
-          <td style="text-align: left"><audio src="demo_meet/ablation2/2_0.wav" controls="" preload=""></audio></td>
-          <td style="text-align: left"><audio src="demo_meet/ablation2/2_1.wav" controls="" preload=""></audio></td>
-        </tr>
-        <tr>
-          <td style="text-align: left" rowspan=2>demo3</td>
-          <td style="text-align: left;font-size: smaller;" colspan=1>
-            虽然代价巨大，可<span style="color: red;">依</span>然有很多人。为了这一时的欢愉，而<span style="color: red;">献</span>出<span
-              style="color: red;">灵</span>魂。
-          </td>
-          <td style="text-align: left;font-size: smaller;" colspan=1>
-            虽然代价巨大，可<span style="color: red;">依</span>然有很多人。为了这一时的欢愉，而献出<span style="color: red;">灵</span>魂。
-
-          </td>
-        </tr>
-        <tr>
-          <td style="text-align: left"><audio src="demo_meet/ablation2/3_0.wav" controls="" preload=""></audio></td>
-          <td style="text-align: left"><audio src="demo_meet/ablation2/3_1.wav" controls="" preload=""></audio></td>
-        </tr>
-        <tr>
-          <td style="text-align: left" rowspan=2>demo4</td>
-          <td style="text-align: left;font-size: smaller;" colspan=1>
-            华哥<span style="color: red;">刚</span>夸完达子还没一分钟。
-          </td>
-          <td style="text-align: left;font-size: smaller;" colspan=1>
-            华哥<span style="color: red;">刚</span>夸完达子还没一分钟。
-          </td>
-        </tr>
-        <tr>
-          <td style="text-align: left"><audio src="demo_meet/ablation2/4_0.wav" controls="" preload=""></audio></td>
-          <td style="text-align: left"><audio src="demo_meet/ablation2/4_1.wav" controls="" preload=""></audio></td>
-        </tr>
-        <tr>
-          <td style="text-align: left" rowspan=2>demo5</td>
-          <td style="text-align: left;font-size: smaller;" colspan=1>
-            <span style="color: red;">你</span><span style="color: red;">为</span>什么会出现在<span
-              style="color: red;">这</span><span style="color: red;">里</span>！
-          </td>
-          <td style="text-align: left;font-size: smaller;" colspan=1>
-            你<span style="color: red;">为</span>什么会出现在<span style="color: red;">这</span>里！
-          </td>
-
-        </tr>
-        <tr>
-          <td style="text-align: left"><audio src="demo_meet/ablation2/5_0.wav" controls="" preload=""></audio></td>
-          <td style="text-align: left"><audio src="demo_meet/ablation2/5_1.wav" controls="" preload=""></audio></td>
-        </tr>
-
-      </tbody>
-    </table>
-    <p>Short summary:
-      As expected, when we introduce the supervision information from the CGM, the effect of the FSM is significantly
-      improved. We believe that it is not only necessary to introduce
-      coarse-grained effects but also to strengthen its weights to prevent its dispersion during training. Just as the
-      quality of the numerical optimal solution is related to the initial value selection, the different initialization
-      methods of the model parameters will affect the final model.</p>
-
-    <h2> 5. Demos -- Stress Demo on Paragraph TTS <a name="paragraph demo"></a></h2>
+    <h2> 4. Demos -- Stress Demo on Paragraph TTS <a name="paragraph demo"></a></h2>
     <h3> Following samples are synthesized with stress prediction for long paragraph.</h3>
-
-
     <table>
       <thead>
         <tr>
