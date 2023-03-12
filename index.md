@@ -4,14 +4,14 @@ layout: homepage
 &#x2665; [Education](#education)  &nbsp;｜ [News](#news)  &nbsp;｜ [Publicaitons](#publications) &nbsp;｜ [Teaching](#teaching) &nbsp;｜ [Life Cakes](#life)
 
 ## <span id='about'>About Me</span>
-Hello! My name is **<font color=black size=4px>Xiaoqin Feng</font>**. I am a Senior Speech Algorithm Engineer at [Mobvoi AI Lab](https://www.mobvoi.com/hk). My working area is text-to-speech(TTS), in which I primarily focus on <font color=black>text information extraction(NLP of TTS)</font> based on multi- and cross- lingual.
+Hello! My name is **<font color=black size=4px>Xiaoqin Feng</font>**. I am a Senior Speech Algorithm Engineer at [Mobvoi AI Lab](https://www.mobvoi.com/hk). My working area is text-to-speech(TTS), in which I primarily focus on <font color=black>text information extraction(NLP of TTS)</font> based on multi- and cross- lingual aspects.
 
 **<font color=red>&#x1F4EC;I am applying for Ph.D. in computer science. </font>**Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf) and my [personal research statement](https://xqfeng-josie.github.io/resume/PS/xiaoqin-ps-general.pdf).
 
 ## <span id='interests'>Research Interests</span>   
 
 - **Natural Language Processing:** natural language understanding, semantic analysis, knowledge acquisition, 
-information extraction, information representation, and application to real-word. 
+information extraction, information representation, and their practical application. 
 - **Machine Learning:** robust learning, unsupervised learning or semi-supervised learning, transfer learning.
 - **Data Science:** data mining, dataset construction.
 <!--
@@ -19,20 +19,20 @@ information extraction, information representation, and application to real-word
 -->
 
 ## <span id='education'>Education</span>   
-- **[Oct. 2016 – Jan. 2019]** M.Sc. in Software Engineer at [Beijing University of Technology(BJUT)](https://english.bjut.edu.cn/), advised by Zhangqin Huang at Internet of Things AI Lab, overall grade: 86 (max. 100) between “Very Good” and “Good”
-- **[Oct. 2012 – Jan. 2016]** B.Eng. in Computer Science at [Southwest Minzu University(SMU)](https://english.swun.edu.cn/), advised by Jianyin Chen, overall grade: 3.66 (max. 4.0), “Top 5” of 154 students
+- **[Oct. 2016 – Jan. 2019]** M.Sc. in Software Engineer at [Beijing University of Technology(BJUT)](https://english.bjut.edu.cn/), overall grade: 86 (max. 100) between “Very Good” and “Good”
+- **[Oct. 2012 – Jan. 2016]** B.Eng. in Computer Science at [Southwest Minzu University(SMU)](https://english.swun.edu.cn/), overall grade: 3.66 (max. 4.0), “Top 5” of 154 students
 
 ## <span id='activity'>Employment and Activity</span>   
 - **[Jul. 2019 - Present]** [Mobvoi AI Lab](https://www.mobvoi.com/hk), Senior Speech Engineer. Research on text information extraction of text-to-speech on multi- and cross- lingual domain, including semantic NLP and emotional NLP.
-- **[Aug. 2018 - Dec. 2018]** [TAL AI Lab](https://en.100tal.com/), Algorithm Research Intern. Research on deep knowledge tracing based on question-answer series and graph representation learning.
+- **[Aug. 2018 - Dec. 2018]** [TAL AI Lab](https://en.100tal.com/), Algorithm Research Intern. Research on deep knowledge tracing and graph representation learning.
 - **[Jun. 2018 - Aug. 2018]** [DeeCamp AI Lab](https://deecamp.com/#/home), Research Team Member. Research on ‘Movie Recommendation based on Knowledge Graph’. [github](https://github.com/XqFeng-Josie/Recommender-System-RS/tree/master/deecamp2018)
 - **[Jul. 2018 - Aug. 2018]** [TAL FutureCamp AI Lab](https://en.100tal.com), Research Team Member. Research on ‘Recommendation System for Movie’.
 - **[Sep. 2017 – Dec. 2017]** [Ali Tianchi Competition](https://tianchi.aliyun.com/competition/entrance/231620/information), Competitor. Topic was predicting user’s current store location based on user consumption data(one million+). Research on linear model, emsemble model, and big data mining.
-- waitting to be added .....
+- waiting to be added .....
 
 ## <span id='news'>Research News</span>  
 
-- **[Oct. 2022]** Our paper about multi-granularity knowledge(stress) is reviewing to ICASSP 2023.
+- **[Oct. 2022]** Our paper about multi-granularity stress prediction of expressive TTS is reviewing to INTERSPEECH 2023.
 - **[Jul. 2022]** Our paper about prompt learning(rhythm) has been accepted by PRML 2022.
 - **[Jun. 2019]** Our paper about knowledge tracing has been accepted by AIED 2019.
 - **[Jun. 2019]** Our paper about image detection has been accepted by Journal of Physics 2019
@@ -47,8 +47,8 @@ information extraction, information representation, and application to real-word
 <li>
 <div class="pub-row">
   <div class="col-sm-3 abbr" style="position: relative;padding-right: 15px;padding-left: 15px;">
-    <img src="/assets/img/ICASSP2023.png" class="teaser img-fluid z-depth-1">
-            <abbr class="badge">ICASSP</abbr>
+    <img src="/assets/img/INTERSPEECH2023.png" class="teaser img-fluid z-depth-1">
+            <abbr class="badge">INTERSPEECH</abbr>
   </div>
   <div id="peng2021copo" class="col-sm-9" style="position: relative;width: 100%;padding-right: 15px;padding-left: 20px;">
       <div class="title">Multi-granularity Semantic and Acoustic Stress Prediction for Expressive TTS <i><font color=green>reviewing</font></i></div>
@@ -193,7 +193,7 @@ information extraction, information representation, and application to real-word
 
 - Lecture - Embedded System Design Practice <br>As teaching assistant at BJUT, for M.Sc. students, approx. 80 students each year. Winter 2018
 
-- Company - Speech & NLP <br>As a mentor at Mobvoi, for interns (students), avg. 3 students each year. Annual  2021-2022
+- Company - Speech & NLP <br>As a mentor at Mobvoi, for interns (students), avg. 3 students each year. Annual  2021-Present
 
 ## <span id='life'>Life Cakes</span> 
 - I love music, cooking, reading, traveling...
