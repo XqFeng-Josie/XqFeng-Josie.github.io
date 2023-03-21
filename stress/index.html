@@ -33,7 +33,9 @@
     <h1 id="">
       <center>Multi-granularity Semantic and Acoustic Stress Prediction for Expressive TTS</center>
     </h1>
-    <center> <i> Anonymous submission to INTERSPEECH 2023</i></center>
+    <center>
+      <p style="font-size: 20px;"><i> Anonymous submission to INTERSPEECH 2023</i></p>
+    </center>
     <!-- <center> <i>Wenjiang Chi, Xiaoqin Feng, Liumeng Xue, Yunlin Chen, Lei Xie </i></center>
     <center> Shanghai Mobvoi Information Technology Co., Ltd, China. </center>
     <center> Audio, Speech and Language Processing Group (ASLP@NPU). </center> -->
@@ -45,6 +47,8 @@
       <li><a href="#Comparison 4.2">Demos -- Comparison with different methods</a></li>
       <li><a href="#ablation 4.3">Demos -- Contribution of coarse-grained information</a></li>
       <li><a href="#paragraph demo">Demos -- Stress demo on paragraph TTS </a></li>
+      <li><a href="#summary">Conclusion </a></li>
+
     </ol>
     <h2 id="abstract">1. Abstract<a name="abstract"></a></h2>
     <p>Stress, as the perceptual prominence within sentences, plays a key role in expressive text-to-speech (TTS). It
@@ -67,7 +71,7 @@
     </p>
     <!-- <br><br> -->
     <h3>1.1 System View</h3>
-    <center><img src='images/system_review.png' width="80%"></center>
+    <center><img src='images/system_review.png' width="80%" style="left: 150px;position: relative;"></center>
     <!-- <br><br> -->
     <p>The overall architecture of our proposed multi-granularity stress prediction model is presented in
       figure. The training process of the model is divided into two stages: stage 1
@@ -83,17 +87,23 @@
     <table>
       <thead>
         <tr>
-          <th style="text-align: center"><strong>number</strong></th>
-          <th style="text-align: center"><strong>Original</strong></th>
-          <th style="text-align: center"><strong>FSM(Proposed)</strong></th>
-          <th style="text-align: center"><strong>CGM</strong></th>
+          <th style="text-align: left"><strong>number</strong></th>
+          <th style="text-align: left"><strong>Original</strong></th>
+          <th style="text-align: left"><strong>FSM(Proposed)</strong></th>
+          <th style="text-align: left"><strong>CGM</strong></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td style="text-align: left" rowspan=2>demo1</td>
           <td style="text-align: left;font-size: smaller;" colspan=1>
+
             大哥出国家里没钱，你宁可卖房子也要支持，苏明成结婚，你为这两个儿子砸锅卖铁也心甘情愿，那我呢?你们为我呢?
+            <br>
+            <font size="2"> When brother went abroad but we have no money, you would rather sell the house to support
+              him. When Su Mingcheng got married, you were willing to do anything for these two sons. What about me?
+              What will you do for me?</font>
+
           </td>
           <td style="text-align: left;font-size: smaller;" colspan=1>
             大哥出国<span style="color: red;">家</span>里没钱，你宁可<span style="color: red;">卖</span><span
@@ -116,7 +126,12 @@
         </tr>
         <tr>
           <td style="text-align: left" rowspan=2>demo2</td>
-          <td style="text-align: left;font-size: smaller;" colspan=1>广告魔音魔声京东影音娱乐，轻薄之躯，澎湃能量，告别繁杂走线，让您的心情“无线愉快”。
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            广告魔音魔声京东影音娱乐，轻薄之躯，澎湃能量，告别繁杂走线，让您的心情“无线愉快”。
+            <br>
+            <font size="2"> Advertisement - enchanting sounds and voices, JD Video & Entertainment, slim body, powerful
+              energy, saying
+              goodbye to complicated wiring, making your mood 'wirelessly happy'</font>
           </td>
           <td style="text-align: left;font-size: smaller;" colspan=1>
             广告魔音魔声<span style="color: red;">京</span><span style="color: red;">东</span><span
@@ -145,7 +160,11 @@
         </tr>
         <tr>
           <td style="text-align: left" rowspan=2>demo3</td>
-          <td style="text-align: left;font-size: smaller;" colspan=1>强势的母亲暴跳如雷,我们给你吃给你穿养你这么大，我们有罪了是不是?你要是有能耐，你就别用我们的钱哪！
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            强势的母亲暴跳如雷,我们给你吃给你穿养你这么大，我们有罪了是不是?你要是有能耐，你就别用我们的钱哪！
+            <br>
+            <font size="2">The overbearing mother is raging and saying: 'We have fed you, clothed you, and raised you to
+              this age. Are we guilty? If you can, don't use our money!'</font>
           </td>
           <td style="text-align: left;font-size: smaller;" colspan=1>
             强势的母亲<span style="color: red;">暴</span>跳如雷,我们给你吃给你穿养你<span style="color: red;">这</span>么大,我们有<span
@@ -170,10 +189,38 @@
           <td style="text-align: left"><audio src="demo_meet/demo1/3_2.wav" controls="" preload=""></audio></td>
           <td style="text-align: left"><audio src="demo_meet/demo1/3_3.wav" controls="" preload=""></audio></td>
         </tr>
+
         <tr>
           <td style="text-align: left" rowspan=2>demo4</td>
-          <td style="text-align: left;font-size: smaller;" colspan=1> 生命从海洋登上陆地是地球生物进化的一个里程碑，但那些上岸的鱼再也不是鱼了；
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            有本事你再说一遍
+            <br>
+            <font size="2"> If you can, say it again.</font>
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            有本事你<span style="color: red;">再</span>说一遍
+
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            有本事你<span style="color: red;">再说</span>一遍
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/demo1/7_1.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/demo1/7_2.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/demo1/7_3.wav" controls="" preload=""></audio></td>
+        </tr>
+
+        <!-- <tr>
+          <td style="text-align: left" rowspan=2>demo4</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            生命从海洋登上陆地是地球生物进化的一个里程碑，但那些上岸的鱼再也不是鱼了；
             同样，真正进入太空的人，再也不是人了
+            <br>
+            <font size="2"> The emergence of life from the ocean onto land is a milestone in the evolution of Earth's
+              biology, but those
+              fish that made it onto land are no longer fish; similarly, those who truly enter space are no longer
+              human.</font>
           </td>
           <td style="text-align: left;font-size: smaller;" colspan=1>
             生命从海洋登上陆地是地球生物进化的一个<span style="color: red;">里</span>程碑，但那些上岸的鱼<span
@@ -183,15 +230,18 @@
             生命从海洋登上陆地是地球生物进化的一个里程碑，但那些上岸的鱼再也不是鱼了； 同样，真正进入太空的人，再也不是人了
             <span style="color: red;">[none predicted]</span>
           </td>
-        </tr>
-        <tr>
+        </tr> -->
+        <!-- <tr>
           <td style="text-align: left"><audio src="demo_meet/demo1/4_1.wav" controls="" preload=""></audio></td>
           <td style="text-align: left"><audio src="demo_meet/demo1/4_2.wav" controls="" preload=""></audio></td>
           <td style="text-align: left"><audio src="demo_meet/demo1/4_3.wav" controls="" preload=""></audio></td>
-        </tr>
+        </tr> -->
         <tr>
           <td style="text-align: left" rowspan=2>demo5</td>
-          <td style="text-align: left;font-size: smaller;" colspan=1>拥有一颗感恩的心我们就会拥有欢乐、拥有幸福，拥有一个完美的未来！
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            拥有一颗感恩的心我们就会拥有欢乐、拥有幸福，拥有一个完美的未来！
+            <br>
+            <font size="2"> By having a grateful heart, we will have joy, happiness, and a perfect future!</font>
           </td>
           <td style="text-align: left;font-size: smaller;" colspan=1>
             拥有一颗<span style="color: red;">感</span>恩的心，我们就会拥有欢乐、拥有<span style="color: red;">幸</span>福，拥有一个<span
@@ -211,7 +261,10 @@
         </tr>
         <tr>
           <td style="text-align: left" rowspan=2>demo6</td>
-          <td style="text-align: left;font-size: smaller;" colspan=1>所爱隔山海，山海皆可平
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            所爱隔山海，山海皆可平
+            <br>
+            <font size="2">Love can conquer any distance, be it across mountains or oceans.</font>
           </td>
           <td style="text-align: left;font-size: smaller;" colspan=1>
             <span style="color: red;">所</span>爱隔山海，<span style="color: red;">山</span>海<span
@@ -244,9 +297,9 @@
     <table>
       <thead>
         <tr>
-          <th style="text-align: center"><strong>number</strong></th>
-          <th style="text-align: center"><strong> FSM (w/o <i>Lcgce</i>) </strong></th>
-          <th style="text-align: center"><strong> FSM (Proposed) </strong></th>
+          <th style="text-align: left"><strong>number</strong></th>
+          <th style="text-align: left"><strong> FSM (w/o <i>Lcgce</i>) </strong></th>
+          <th style="text-align: left"><strong> FSM (Proposed) </strong></th>
         </tr>
       </thead>
       <tbody>
@@ -254,6 +307,8 @@
           <td style="text-align: left" rowspan=2>demo1</td>
           <td style="text-align: left;font-size: smaller;" colspan=1>
             这衣服<span style="color: red;">是</span>好，就是贵了点。
+            <br>
+            <font size="2">This clothing is good, but it's just a bit expensive.</font>
           </td>
           <td style="text-align: left;font-size: smaller;" colspan=1>
             这衣服是好，就是<span style="color: red;">贵</span>了点。
@@ -265,10 +320,15 @@
         </tr>
         <tr>
           <td style="text-align: left" rowspan=2>demo2</td>
+
           <td style="text-align: left;font-size: smaller;" colspan=1>
             <span style="color: red;">远</span><span style="color: red;">征</span><span
               style="color: red;">星</span>辰大海，归来<span style="color: red;">仍</span><span
               style="color: red;">是</span><span style="color: red;">少</span>年
+            <br>
+            <font size="2">Embarking on a journey across the vast expanse of stars, returning still a youth at heart.
+            </font>
+
           </td>
           <td style="text-align: left;font-size: smaller;" colspan=1>
             远征<span style="color: red;">星</span>辰大海，归来<span style="color: red;">仍</span><span
@@ -284,6 +344,12 @@
           <td style="text-align: left;font-size: smaller;" colspan=1>
             虽然代价巨大，可<span style="color: red;">依</span>然有很多人。为了这一时的欢愉，而<span style="color: red;">献</span>出<span
               style="color: red;">灵</span>魂。
+            <br>
+            <font size="2">
+              Despite the enormous cost, there are still many people who
+              <br> in pursuit of a momentary pleasure, would
+              sacrifice their souls.
+            </font>
           </td>
           <td style="text-align: left;font-size: smaller;" colspan=1>
             虽然代价巨大，可<span style="color: red;">依</span>然有很多人。为了这一时的欢愉，而献出<span style="color: red;">灵</span>魂。
@@ -297,7 +363,29 @@
         <tr>
           <td style="text-align: left" rowspan=2>demo4</td>
           <td style="text-align: left;font-size: smaller;" colspan=1>
+            陈娇的父母为何<span style="color: red;">如</span>此的憎恨女儿,竟然对他们<span style="color: red;">下</span>此狠手?
+            <br>
+            <font size="2">
+              Why do Chen Jiao's parents hate their daughter so much that they resorted to such a cruel act against her?
+            </font>
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            陈娇的父母为何<span style="color: red;">如</span>此的憎恨女儿,竟然对他们<span style="color: red;">下</span>此<span
+              style="color: red;">狠</span>手?
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/ablation2/7_0.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/ablation2/7_1.wav" controls="" preload=""></audio></td>
+        </tr>
+        <!-- <tr>
+          <td style="text-align: left" rowspan=2>demo4</td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
             华哥<span style="color: red;">刚</span>夸完达子还没一分钟。
+            <br>
+            <font size="2">
+              Hua had just praised Da less than a minute ago.
+            </font>
           </td>
           <td style="text-align: left;font-size: smaller;" colspan=1>
             华哥<span style="color: red;">刚</span>夸完达子还没一分钟。
@@ -306,12 +394,17 @@
         <tr>
           <td style="text-align: left"><audio src="demo_meet/ablation2/4_0.wav" controls="" preload=""></audio></td>
           <td style="text-align: left"><audio src="demo_meet/ablation2/4_1.wav" controls="" preload=""></audio></td>
-        </tr>
+        </tr> -->
         <tr>
           <td style="text-align: left" rowspan=2>demo5</td>
+          </td>
           <td style="text-align: left;font-size: smaller;" colspan=1>
             <span style="color: red;">你</span><span style="color: red;">为</span>什么会出现在<span
               style="color: red;">这</span><span style="color: red;">里</span>！
+            <br>
+            <font size="2">
+              Why did you appear here?
+            </font>
           </td>
           <td style="text-align: left;font-size: smaller;" colspan=1>
             你<span style="color: red;">为</span>什么会出现在<span style="color: red;">这</span>里！
@@ -333,16 +426,21 @@
     <table>
       <thead>
         <tr>
-          <th style="text-align: center"><strong>number</strong></th>
-          <th style="text-align: center"><strong> FSM (w/o L<i>cgce</i> & w/o CGM ) </strong></th>
-          <th style="text-align: center"><strong> FSM (Proposed) </strong></th>
+          <th style="text-align: left"><strong>number</strong></th>
+          <th style="text-align: left"><strong> FSM (w/o L<i>cgce</i> & w/o CGM ) </strong></th>
+          <th style="text-align: left"><strong> FSM (Proposed) </strong></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td style="text-align: left" rowspan=2>demo1</td>
+
           <td style="text-align: left;font-size: smaller;" colspan=1>
             听了孩子如此忤逆的话，强势的母亲<span style="color: red;">暴</span>跳如雷。
+            <br>
+            <font size="2">
+              Upon hearing her child's disobedient words, the authoritarian mother flew into a rage.
+            </font>
           </td>
           <td style="text-align: left;font-size: smaller;" colspan=1>
             听了孩子<span style="color: red;">如</span>此忤逆的话，强势的母亲<span style="color: red;">暴</span>跳如雷。
@@ -354,8 +452,14 @@
         </tr>
         <tr>
           <td style="text-align: left" rowspan=2>demo2</td>
+
           <td style="text-align: left;font-size: smaller;" colspan=1>
             母亲轻飘飘的说了句，这是大人的事儿，<span style="color: red;">根</span>本懒得搭理她。
+            <br>
+            <font size="2">
+              The mother casually said :'This is an adult matter,'
+              and didn't bother to pay attention to her.
+            </font>
           </td>
           <td style="text-align: left;font-size: smaller;" colspan=1>
             母亲<span style="color: red;">轻</span>飘飘的说了句，这是大人的事儿，根本<span style="color: red;">懒</span>得搭理她。
@@ -372,6 +476,12 @@
             <span style="color: red;">能</span>折磨你的，<span style="color: red;">从</span>来不是<span
               style="color: red;">别</span>人的绝情，而是你心中的<span style="color: red;">幻</span>想和<span
               style="color: red;">期</span>待。
+            <br>
+            <font size="2">
+              What can torment you is never the heartlessness of others,
+              but the illusions and expectations in your own
+              mind.
+            </font>
           </td>
           <td style="text-align: left;font-size: smaller;" colspan=1>
             能<span style="color: red;">折</span>磨你的，<span style="color: red;">从</span><span
@@ -385,8 +495,14 @@
         </tr>
         <tr>
           <td style="text-align: left" rowspan=2>demo4</td>
+
+
           <td style="text-align: left;font-size: smaller;" colspan=1>
             <span style="color: red;">一</span>个没踩稳飞了出去。
+            <br>
+            <font size="2">
+              One didn't step firmly and flew out.
+            </font>
           </td>
           <td style="text-align: left;font-size: smaller;" colspan=1>
             <span style="color: red;">一</span>个没踩稳<span style="color: red;">飞</span>了出去。
@@ -398,8 +514,13 @@
         </tr>
         <tr>
           <td style="text-align: left" rowspan=2>demo5</td>
+
           <td style="text-align: left;font-size: smaller;" colspan=1>
             成为了他一生中<span style="color: red;">最正确</span>的决定。
+            <br>
+            <font size="2">
+              It became the most correct decision of his life.
+            </font>
           </td>
           <td style="text-align: left;font-size: smaller;" colspan=1>
             成为了他一生中<span style="color: red;">最</span>正确的决定。
@@ -411,8 +532,33 @@
         </tr>
         <tr>
           <td style="text-align: left" rowspan=2>demo6</td>
+
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            我<span style="color: red;">警</span>告你，你要是敢<span style="color: red;">胡</span>言乱语，<span
+              style="color: red;">别</span><span style="color: red;">怪</span>我对你动粗
+            <br>
+            <font size="2">I'm warning you, if you dare to talk nonsense, don't blame me for getting physical with you.
+            </font>
+          </td>
+          <td style="text-align: left;font-size: smaller;" colspan=1>
+            我<span style="color: red;">警</span><span style="color: red;">告</span>你，你要是敢胡言乱<span
+              style="color: red;">语</span>，<span style="color: red;">别</span>怪我对你动粗
+
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="demo_meet/ablation1/7_0.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="demo_meet/ablation1/7_1.wav" controls="" preload=""></audio></td>
+        </tr>
+
+        <!-- <tr>
+          <td style="text-align: left" rowspan=2>demo6</td>
+
           <td style="text-align: left;font-size: smaller;" colspan=1>
             <span style="color: red;">立</span>刻掉头向着两人<span style="color: red;">狂</span>追过来。
+            <br>
+            <font size="2">Immediately turned around and chased towards the two people.
+            </font>
           </td>
           <td style="text-align: left;font-size: smaller;" colspan=1>
             立刻掉头向着两人<span style="color: red;">狂</span>追过来。
@@ -421,7 +567,7 @@
         <tr>
           <td style="text-align: left"><audio src="demo_meet/ablation1/6_0.wav" controls="" preload=""></audio></td>
           <td style="text-align: left"><audio src="demo_meet/ablation1/6_1.wav" controls="" preload=""></audio></td>
-        </tr>
+        </tr> -->
       </tbody>
     </table>
     <p>Short summary: As expected, introducing coarse-grained information
@@ -515,7 +661,21 @@
     </table>
     <p>Short summary: We can see that integrated with stress, the expressiveness of the overall article is enhanced. At
       the same time, the combination of stress makes the poems perform better. <span style="color:red ;">(note: the
-        speaker uses a non-poetry corpus).</span> </p>
+        tts model uses a non-poetry corpus).</span> </p>
+    <h2>5. Conclusion<a name="summary"></a></h2>
+    <p>
+      In this work, we propose a multi-granularity stress prediction model to improve the naturalness and expressiveness
+      of TTS. In consideration of the nature of multi-grained stress, we construct the dataset with coarse-grained
+      semantic stress and fine-grained acoustic stress to incorporate both the semantic knowledge in the text and the
+      acoustic information in the speech. Then, the two-stage stress prediction model progressively predicts the
+      coarse-grained stress and fine-grained stress from text, where the pre-trained language model is adopted to
+      extract contextualized word representation from the text. Experimental results objectively and subjectively show
+      that our proposed stress prediction model gets a higher F1 score and achieves more natural and expressive
+      synthetic speech. In the future, we will further improve the multi-stage stress prediction model to close the
+      performance gap between human speech and synthetic speech. </p>
+
+    <p style="color:green"> The End, Thank You!</p>
+
     <footer class="site-footer">
     </footer>
   </section>
