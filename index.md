@@ -23,7 +23,7 @@ information extraction, information representation, and their practical applicat
 - **[Oct. 2012 – Jan. 2016]** B.Eng. in Computer Science at [Southwest Minzu University(SMU)](https://english.swun.edu.cn/), overall grade: 3.66 (max. 4.0), “Top 5” of 154 students
 
 ## <span id='activity'>Employment and Activity</span>   
-- **[Jul. 2019 - Present]** [Mobvoi AI Lab](https://www.mobvoi.com/hk), Senior Speech Engineer. Research on text information extraction of text-to-speech on multi- and cross- lingual domain, including semantic NLP and emotional NLP.
+- **[Jul. 2019 - Present]** [Mobvoi AI Lab](https://www.mobvoi.com/hk), Senior Speech Engineer. Research on text information extraction of text-to-speech on multi- and cross- lingual domain, including semantic NLP, emotional NLP and generative NLP.
 - **[Aug. 2018 - Dec. 2018]** [TAL AI Lab](https://en.100tal.com/), Algorithm Research Intern. Research on deep knowledge tracing and graph representation learning.
 - **[Jun. 2018 - Aug. 2018]** [DeeCamp AI Lab](https://deecamp.com/#/home), Research Team Member. Research on ‘Movie Recommendation based on Knowledge Graph’. [github](https://github.com/XqFeng-Josie/Recommender-System-RS/tree/master/deecamp2018)
 - **[Jul. 2018 - Aug. 2018]** [TAL FutureCamp AI Lab](https://en.100tal.com), Research Team Member. Research on ‘Recommendation System for Movie’.
