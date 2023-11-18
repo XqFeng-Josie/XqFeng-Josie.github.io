@@ -32,7 +32,7 @@ information extraction, information representation, and their practical applicat
 
 ## <span id='news'>Research News</span>  
 
-- **[Oct. 2022]** Our paper about multi-granularity stress prediction of expressive TTS is reviewing to INTERSPEECH 2023.
+- **[Oct. 2022]** Our paper about multi-granularity stress prediction of expressive TTS has been accepted by APSIPA 2023.
 - **[Jul. 2022]** Our paper about prompt learning(rhythm) has been accepted by PRML 2022.
 - **[Jun. 2019]** Our paper about knowledge tracing has been accepted by AIED 2019.
 - **[Jun. 2019]** Our paper about image detection has been accepted by Journal of Physics 2019
@@ -47,15 +47,15 @@ information extraction, information representation, and their practical applicat
 <li>
 <div class="pub-row">
   <div class="col-sm-3 abbr" style="position: relative;padding-right: 15px;padding-left: 15px;">
-    <img src="/assets/img/INTERSPEECH2023.png" class="teaser img-fluid z-depth-1">
-            <abbr class="badge">INTERSPEECH</abbr>
+    <img src="/assets/img/APSIPA2023.png" class="teaser img-fluid z-depth-1">
+            <abbr class="badge">APSIPA</abbr>
   </div>
   <div id="peng2021copo" class="col-sm-9" style="position: relative;width: 100%;padding-right: 15px;padding-left: 20px;">
       <div class="title">Multi-granularity Semantic and Acoustic Stress Prediction for Expressive TTS <i><font color=green>reviewing</font></i></div>
       <div class="author">
         Wenjiang Chi, <strong><u>Xiaoqin Feng(*euqal contribution)</u></strong>,et al.
       </div>
-      <div class="periodical"><em>In proceedings of INTERSPEECH 2023, 5 pages</em>
+      <div class="periodical"><em>In proceedings of APSIPA 2023, 5 pages</em>
       </div>
     <div class="links">
       <a href="" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;"><font color=gray>PDF</font></a>
