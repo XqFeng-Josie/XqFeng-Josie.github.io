@@ -7,8 +7,8 @@ layout: homepage
 <p align="justify">
 Hello! My name is <font size=4px>Xiaoqin Feng</font>. I am currently a Tech Lead at <a href="https://openapi.mobvoi.com/">Mobvoi AI Lab</a>, specializing in AI product development, research, and interactive application design. My core responsibilities encompass the entire product lifecycle, including data construction, performance evaluation, algorithm optimization, and facilitating effective product communication to align cross-functional teams. Additionally, I play a crucial role in managing team members and coordinating resources. I am committed to developing products that are driven by user needs and data insights, making me a versatile contributor to AI projects.
 </p>
-
-**<font color=red>&#x1F4EC;I am applying for M.S. or MBA in computer science. </font>**Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf) and my [personal research statement](https://xqfeng-josie.github.io/resume/PS/xiaoqin-ps-general.pdf).
+Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf)
+<!-- **<font color=red>&#x1F4EC;I am applying for M.S. or MBA in computer science. </font>**Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf) and my [personal research statement](https://xqfeng-josie.github.io/resume/PS/xiaoqin-ps-general.pdf). -->
 
 <!-- ## <span id='interests'>Research Interests</span>   
 
