@@ -5,8 +5,7 @@ layout: homepage
 
 ## <span id='about'>About Me</span>
 <p align="justify">
-Hello! My name is <font size=4px>Xiaoqin Feng</font>. I am currently a Tech Lead at <a href="https://openapi.mobvoi.com/">Mobvoi AI Lab</a>, specializing in AI product development, research, and interactive application design. My core responsibilities encompass the entire product lifecycle, including data construction, performance evaluation, algorithm optimization, and facilitating effective product communication to align cross-functional teams. Additionally, I play a crucial role in managing team members and coordinating resources. I am committed to developing products that are driven by user needs and data insights, making me a versatile contributor to AI projects.
-</p>
+Hello! My name is <font size=4px>Xiaoqin Feng</font>. I am a Master’s student at the University of Southern California, majoring in Artificial Intelligence. My research focuses on applying AI to real-world scenarios, particularly aligning large agent systems with human goals through multimodal reasoning and adaptive dialogue strategies. I am committed to advancing the field of artificial intelligence through rigorous study and original research.</p>
 Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf)
 <!-- **<font color=red>&#x1F4EC;I am applying for M.S. or MBA in computer science. </font>**Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf) and my [personal research statement](https://xqfeng-josie.github.io/resume/PS/xiaoqin-ps-general.pdf). -->
 
@@ -21,20 +20,20 @@ information extraction, information representation, and their practical applicat
 -->
 
 ## <span id='education'>Education</span>   
-- **[Oct. 2016 – Jan. 2019]** M.Sc. in Software Engineer at [Beijing University of Technology(BJUT)](https://english.bjut.edu.cn/), overall grade: 86 (max. 100) between “Very Good” and “Good”
-- **[Oct. 2012 – Jan. 2016]** B.Eng. in Computer Science at [Southwest Minzu University(SMU)](https://english.swun.edu.cn/), overall grade: 3.66 (max. 4.0), “Top 5” of 154 students
+- **[Sep. 2025 –  May. 2027]** M.Sc. in Artificial Intelligence at [University of Southern California(USC)](https://english.bjut.edu.cn/)
+- **[Sep. 2016 –  May. 2019]** M.Sc. in Software Engineer at [Beijing University of Technology(BJUT)](https://english.bjut.edu.cn/), overall grade: 86 (max. 100) between “Very Good” and “Good”
+- **[Sep. 2012 – May. 2016]** B.Eng. in Computer Science at [Southwest Minzu University(SMU)](https://english.swun.edu.cn/), overall grade: 3.66 (max. 4.0), “Top 5” of 154 students
 
 ## <span id='activity'>Employment and Activity</span>   
-- **[May. 2023 - Present]** [Mobvoi AI Lab](https://openapi.mobvoi.com/), Tech Lead. Research on text information extraction of text-to-speech on multi- and cross- lingual domain, including semantic NLP, emotional NLP and generative NLP.
-- **[Jul. 2019 - May. 2023]** [Mobvoi AI Lab](https://openapi.mobvoi.com/), Senior Speech Engineer. Research on text information extraction of text-to-speech on multi- and cross- lingual domain, including semantic NLP, emotional NLP and generative NLP.
+- **[May. 2023 - Jul. 2025]** [Mobvoi AI Lab](https://openapi.mobvoi.com/), Tech Lead. Research on agent application, Audio LLM, prompt engineering, data pipeline construction, and model evaluation. (Data & Agent & Evaluation)
+- **[Jul. 2019 - May. 2023]** [Mobvoi AI Lab](https://openapi.mobvoi.com/), Senior Speech Engineer. Research on speech synthesis on multi- and cross- lingual domain, including semantic NLP, emotional NLP and generative NLP.
 - **[Aug. 2018 - Dec. 2018]** [TAL AI Lab](https://en.100tal.com/), Algorithm Research Intern. Research on deep knowledge tracing and graph representation learning.
 - **[Jun. 2018 - Aug. 2018]** [DeeCamp AI Lab](https://deecamp.com/#/home), Research Team Member. Research on ‘Movie Recommendation based on Knowledge Graph’. [github](https://github.com/XqFeng-Josie/Recommender-System-RS/tree/master/deecamp2018)
-- **[Jul. 2018 - Aug. 2018]** [TAL FutureCamp AI Lab](https://en.100tal.com), Research Team Member. Research on ‘Recommendation System for Movie’.
 - **[Sep. 2017 – Dec. 2017]** [Ali Tianchi Competition](https://tianchi.aliyun.com/competition/entrance/231620/information), Competitor. Topic was predicting user’s current store location based on user consumption data(one million+). Research on linear model, emsemble model, and big data mining.
 - waiting to be added .....
 
 ## <span id='news'>News</span>  
-
+- **[Oct. 2024]** Our paper about Audio LLM - SparkTTS is available on arXiv 2025.
 - **[Oct. 2023]** Our paper about information extraction and Multilingual has been accepted by APIN(Applied Intelligence) 2024.
 - **[Oct. 2022]** Our paper about multi-granularity stress prediction of expressive TTS has been accepted by APSIPA 2023.
 - **[Jul. 2022]** Our paper about prompt learning(rhythm) has been accepted by PRML 2022.
@@ -48,6 +47,31 @@ information extraction, information representation, and their practical applicat
 <div class="publications">
 <ol class="bibliography">
 
+
+
+
+<li>
+<div class="pub-row">
+  <div class="col-sm-3 abbr" style="position: relative;padding-right: 15px;padding-left: 15px;">
+    <img src="/assets/img/SparkTTS.jpg" class="teaser img-fluid z-depth-1">
+            <abbr class="badge">APIN</abbr>
+  </div>
+  <div id="peng2021copo" class="col-sm-9" style="position: relative;width: 100%;padding-right: 15px;padding-left: 20px;">
+      <div class="title"> <a href="https://arxiv.org/pdf/2503.01710"> Spark-TTS: An Efficient LLM-Based Text-to-Speech Model with
+Single-Stream Decoupled Speech Tokens </a></div>
+      <div class="author">
+        Xinsheng Wang, <strong><u>Xiaoqin Feng</u></strong>,et al.
+      </div>
+      <div class="periodical"><em>arXiv preprint 2025, 22 pages</em>
+      </div>
+    <div class="links">
+      <a href="https://arxiv.org/pdf/2503.01710" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;">PDF</a>
+      <!-- <a href="https://github.com/yaoyao-liu/meta-transfer-learning" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;">Code</a>
+      <a href="https://bibliography.yliu.de/TPAMI22.txt" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;">BibTex</a> -->
+    </div>
+  </div>
+</div>
+</li>
 
 
 <li>
