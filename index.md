@@ -54,7 +54,7 @@ information extraction, information representation, and their practical applicat
 <div class="pub-row">
   <div class="col-sm-3 abbr" style="position: relative;padding-right: 15px;padding-left: 15px;">
     <img src="/assets/img/SparkTTS.jpg" class="teaser img-fluid z-depth-1">
-            <abbr class="badge">APIN</abbr>
+            <abbr class="badge">SparkTTS</abbr>
   </div>
   <div id="peng2021copo" class="col-sm-9" style="position: relative;width: 100%;padding-right: 15px;padding-left: 20px;">
       <div class="title"> <a href="https://arxiv.org/pdf/2503.01710"> Spark-TTS: An Efficient LLM-Based Text-to-Speech Model with
