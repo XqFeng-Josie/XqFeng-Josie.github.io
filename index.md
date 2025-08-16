@@ -5,7 +5,8 @@ layout: homepage
 
 ## <span id='about'>About Me</span>
 <p align="justify">
-Hello! My name is <font size=4px>Xiaoqin Feng</font>. I am a Master’s student at the University of Southern California, majoring in Artificial Intelligence. My research focuses on applying AI to real-world scenarios, particularly aligning large agent systems with human goals through multimodal reasoning and adaptive dialogue strategies. I am committed to advancing the field of artificial intelligence through rigorous study and original research.</p>
+
+Hello! My name is <font size=4px>Xiaoqin Feng</font>. I am a Master's student in Artificial Intelligence at the University of Southern California. My research interests focus on applying AI to real-world scenarios, particularly in large language model (LLM) agents, robotics, speech processing, data engineering, and evaluation/application. I have gained hands-on industry experience in these areas and am committed to advancing the field of artificial intelligence through rigorous study and original research.</p>
 Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf)
 <!-- **<font color=red>&#x1F4EC;I am applying for M.S. or MBA in computer science. </font>**Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf) and my [personal research statement](https://xqfeng-josie.github.io/resume/PS/xiaoqin-ps-general.pdf). -->
 
@@ -25,7 +26,7 @@ information extraction, information representation, and their practical applicat
 - **[Sep. 2012 – May. 2016]** B.Eng. in Computer Science at [Southwest Minzu University(SMU)](https://english.swun.edu.cn/), overall grade: 3.66 (max. 4.0), “Top 5” of 154 students
 
 ## <span id='activity'>Employment and Activity</span>   
-- **[May. 2023 - Jul. 2025]** [Mobvoi AI Lab](https://openapi.mobvoi.com/), Tech Lead. Research on agent application, Audio LLM, prompt engineering, data pipeline construction, and model evaluation. (Data & Agent & Evaluation)
+- **[May. 2023 - Jul. 2025]** [Mobvoi AI Lab](https://openapi.mobvoi.com/), Tech Lead. Research on LLM agent, LLM application, Audio LLM, prompt engineering, data engineering and model evaluation. (Agent & Application & Data& Evaluation)
 - **[Jul. 2019 - May. 2023]** [Mobvoi AI Lab](https://openapi.mobvoi.com/), Senior Speech Engineer. Research on speech synthesis on multi- and cross- lingual domain, including semantic NLP, emotional NLP and generative NLP.
 - **[Aug. 2018 - Dec. 2018]** [TAL AI Lab](https://en.100tal.com/), Algorithm Research Intern. Research on deep knowledge tracing and graph representation learning.
 - **[Jun. 2018 - Aug. 2018]** [DeeCamp AI Lab](https://deecamp.com/#/home), Research Team Member. Research on ‘Movie Recommendation based on Knowledge Graph’. [github](https://github.com/XqFeng-Josie/Recommender-System-RS/tree/master/deecamp2018)
