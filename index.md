@@ -26,8 +26,9 @@ information extraction, information representation, and their practical applicat
 - **[Sep. 2012 – May. 2016]** B.Eng. in Computer Science at [Southwest Minzu University(SMU)](https://english.swun.edu.cn/), overall grade: 3.66 (max. 4.0), “Top 5” of 154 students
 
 ## <span id='activity'>Employment and Activity</span>   
-- **[May. 2023 - Jul. 2025]** [Mobvoi AI Lab](https://openapi.mobvoi.com/), Tech Lead. Research on LLM agent, LLM application, Audio LLM, prompt engineering, data engineering and model evaluation. (Agent & Application & Data& Evaluation)
-- **[Jul. 2019 - May. 2023]** [Mobvoi AI Lab](https://openapi.mobvoi.com/), Senior Speech Engineer. Research on speech synthesis on multi- and cross- lingual domain, including semantic NLP, emotional NLP and generative NLP.
+- **[Aug. 2025 - Present]** [Mobvoi AI Lab](https://www.mobvoi.com/us), Part-time Consultant. Support product decision-making by focusing on model optimization, multi-agent systems, and real-time information tracking.
+- **[May. 2023 - Jul. 2025]** [Mobvoi AI Lab](https://www.mobvoi.com/us), Tech Lead. Research on LLM agent, LLM application, Audio LLM, prompt engineering, data engineering and model evaluation. (Agent & Application & Data& Evaluation)
+- **[Jul. 2019 - May. 2023]** [Mobvoi AI Lab](https://www.mobvoi.com/us), Senior Speech Engineer. Research on speech synthesis on multi- and cross- lingual domain, including semantic NLP, emotional NLP and generative NLP.
 - **[Aug. 2018 - Dec. 2018]** [TAL AI Lab](https://en.100tal.com/), Algorithm Research Intern. Research on deep knowledge tracing and graph representation learning.
 - **[Jun. 2018 - Aug. 2018]** [DeeCamp AI Lab](https://deecamp.com/#/home), Research Team Member. Research on ‘Movie Recommendation based on Knowledge Graph’. [github](https://github.com/XqFeng-Josie/Recommender-System-RS/tree/master/deecamp2018)
 - **[Sep. 2017 – Dec. 2017]** [Ali Tianchi Competition](https://tianchi.aliyun.com/competition/entrance/231620/information), Competitor. Topic was predicting user’s current store location based on user consumption data(one million+). Research on linear model, emsemble model, and big data mining.
