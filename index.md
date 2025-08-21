@@ -7,7 +7,7 @@ layout: homepage
 <p align="justify">
 
 Hello! My name is <font size=4px>Xiaoqin Feng</font>. I am a Master's student in Artificial Intelligence at the University of Southern California. My research interests focus on applying AI to real-world scenarios, particularly in large language model (LLM) agents, robotics, speech processing, data engineering, and evaluation/application. I have gained hands-on industry experience in these areas and am committed to advancing the field of artificial intelligence through rigorous study and original research.</p>
-Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf)
+Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf), I am applying for PhD programs(2025/2026)—feel free to email me if you’re interested.
 <!-- **<font color=red>&#x1F4EC;I am applying for M.S. or MBA in computer science. </font>**Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf) and my [personal research statement](https://xqfeng-josie.github.io/resume/PS/xiaoqin-ps-general.pdf). -->
 
 <!-- ## <span id='interests'>Research Interests</span>   
@@ -21,7 +21,7 @@ information extraction, information representation, and their practical applicat
 -->
 
 ## <span id='education'>Education</span>   
-- **[Sep. 2025 –  May. 2027]** M.Sc. in Artificial Intelligence at [University of Southern California(USC)](https://english.bjut.edu.cn/)
+- **[Sep. 2025 –  Present]** M.Sc. in Artificial Intelligence at [University of Southern California(USC)](https://english.bjut.edu.cn/)
 - **[Sep. 2016 –  May. 2019]** M.Sc. in Software Engineer at [Beijing University of Technology(BJUT)](https://english.bjut.edu.cn/), overall grade: 86 (max. 100) between “Very Good” and “Good”
 - **[Sep. 2012 – May. 2016]** B.Eng. in Computer Science at [Southwest Minzu University(SMU)](https://english.swun.edu.cn/), overall grade: 3.66 (max. 4.0), “Top 5” of 154 students
 
