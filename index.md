@@ -5,8 +5,8 @@ layout: homepage
 
 ## <span id='about'>About Me</span>
 <p align="justify">
-
-Hello! My name is <font size=4px>Xiaoqin Feng</font>. I am a Master's student in Artificial Intelligence at the University of Southern California. My research interests focus on applying AI to real-world scenarios, particularly in large language model (LLM) agents, robotics, speech processing, data engineering, and evaluation/application. I have gained hands-on industry experience in these areas and am committed to advancing the field of artificial intelligence through rigorous study and original research.</p>
+Hello! My name is <font size=4px>Xiaoqin Feng</font>. 
+I am a Master’s student at the University of Southern California (USC) with research interests in Generative AI, LLM-powered agents, Human-AI Collaboration, and AI for Science. My work emphasizes agents, speech, data, evaluation, and real-world applications. I bring hands-on industry experience in these areas and am dedicated to advancing artificial intelligence through rigorous research and practical innovation.</p>
 Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf), I am applying for PhD programs(2025/2026)—feel free to email me if you’re interested.
 <!-- **<font color=red>&#x1F4EC;I am applying for M.S. or MBA in computer science. </font>**Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf) and my [personal research statement](https://xqfeng-josie.github.io/resume/PS/xiaoqin-ps-general.pdf). -->
 
