@@ -7,7 +7,7 @@ layout: homepage
 <p align="justify">
 Hello! My name is <font size=4px>Xiaoqin Feng</font>. 
 I am a Master’s student at the University of Southern California (USC) with research interests in Generative AI, LLM-powered agents, Human-AI Collaboration, and AI for Science. My work emphasizes agents, speech, data, evaluation, and real-world applications. I bring hands-on industry experience in these areas and am dedicated to advancing artificial intelligence through rigorous research and practical innovation.</p>
-Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf), I am applying for PhD programs(2025/2026)—feel free to email me if you’re interested.
+Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf), I am applying for PhD programs(2026/2027)—feel free to email me if you’re interested.
 <!-- **<font color=red>&#x1F4EC;I am applying for M.S. or MBA in computer science. </font>**Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf) and my [personal research statement](https://xqfeng-josie.github.io/resume/PS/xiaoqin-ps-general.pdf). -->
 
 <!-- ## <span id='interests'>Research Interests</span>   
@@ -21,9 +21,9 @@ information extraction, information representation, and their practical applicat
 -->
 
 ## <span id='education'>Education</span>   
-- **[Sep. 2025 –  Present]** M.Sc. in Artificial Intelligence at [University of Southern California(USC)](https://english.bjut.edu.cn/)
-- **[Sep. 2016 –  May. 2019]** M.Sc. in Software Engineer at [Beijing University of Technology(BJUT)](https://english.bjut.edu.cn/), overall grade: 86 (max. 100) between “Very Good” and “Good”
-- **[Sep. 2012 – May. 2016]** B.Eng. in Computer Science at [Southwest Minzu University(SMU)](https://english.swun.edu.cn/), overall grade: 3.66 (max. 4.0), “Top 5” of 154 students
+- **[Sep. 2025 –  Present]** M.S in Artificial Intelligence at [University of Southern California(USC)](https://english.bjut.edu.cn/)
+- **[Sep. 2016 –  May. 2019]** M.S  in Software Engineer at [Beijing University of Technology(BJUT)](https://english.bjut.edu.cn/), overall grade: 86 (max. 100) between “Very Good” and “Good”
+- **[Sep. 2012 – May. 2016]** B.S. in Computer Science at [Southwest Minzu University(SMU)](https://english.swun.edu.cn/), overall grade: 3.66 (max. 4.0), “Top 5” of 154 students
 
 ## <span id='activity'>Employment and Activity</span>   
 - **[Aug. 2025 - Present]** [Mobvoi AI Lab](https://www.mobvoi.com/us), Part-time Consultant. Support product decision-making by focusing on model optimization, multi-agent systems, and real-time information tracking.
@@ -182,7 +182,7 @@ Single-Stream Decoupled Speech Tokens </a></div>
   <div id="peng2021copo" class="col-sm-9" style="position: relative;width: 100%;padding-right: 15px;padding-left: 20px;">
       <div class="title"><a href="https://iopscience.iop.org/article/10.1088/1742-6596/1237/2/022045/pdf">Population statistics algorithm based on MobileNet</a></div>
       <div class="author"><strong><u>Xiaoqin Feng</u></strong>, Rong Xie, Junyang Sheng, Shuo Zhang</div>
-      <div class="periodical"><em>Journal of Physics: Conference Series. ICSP 2019, 6 pages</em>
+      <div class="periodical"><em>Journal of Physics: Conference Series. JPCS 2019, 6 pages</em>
       </div>
     <div class="links">
       <a href="https://iopscience.iop.org/article/10.1088/1742-6596/1237/2/022045/pdf" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;">PDF</a>
