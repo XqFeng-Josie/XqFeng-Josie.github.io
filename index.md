@@ -1,14 +1,27 @@
 ---
 layout: homepage
 ---
-&#x2665; [Education](#education)  &nbsp;｜ [News](#news)  &nbsp;｜ [Publicaitons](#publications) &nbsp;｜ [Teaching](#teaching) &nbsp;｜ [Life Cakes](#life)
+&#x2665; [Education](#education)  &nbsp;｜ [News](#news)  &nbsp;｜ [Products](#aiviz) &nbsp;｜ [Publicaitons](#publications) &nbsp;｜ [Teaching](#teaching) &nbsp;｜ [Life Cakes](#life)
 
 ## <span id='about'>About Me</span>
 <p align="justify">
 Hello! My name is <font size=4px>Xiaoqin Feng</font>. 
 I am a Master’s student at the University of Southern California (USC) with research interests in Generative AI, LLM-powered agents, Human-AI Collaboration, and AI for Science. My work emphasizes agents, speech, data, evaluation, and real-world applications. I bring hands-on industry experience in these areas and am dedicated to advancing artificial intelligence through rigorous research and practical innovation.</p>
-Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf), I am applying for PhD programs(2026/2027)—feel free to email me if you’re interested.
+<p style="border-left:4px solid #e67e22; background:#fff8f1; padding:10px 12px; border-radius:8px; margin:10px 0 18px;">
+Here is my <a href="https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf" style="color:#c0392b; font-weight:600;">CV</a>, I am applying for <strong style="color:#c0392b;">PhD program (2026/2027)</strong>—feel free to email me if you’re interested.
+</p>
 <!-- **<font color=red>&#x1F4EC;I am applying for M.S. or MBA in computer science. </font>**Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf) and my [personal research statement](https://xqfeng-josie.github.io/resume/PS/xiaoqin-ps-general.pdf). -->
+
+<div id="aiviz" style="border:2px solid #e67e22; background:#fff8f1; border-radius:12px; padding:18px 20px 16px; margin:16px 0 28px; box-shadow:0 10px 24px rgba(0,0,0,0.06);">
+<h2 style="margin-top:4px; margin-bottom:14px; color:#c0392b;">AI Products</h2>
+<p align="justify" style="margin-bottom:12px;">
+I am building a next-generation AI audio visualization experience that blends speech intelligence with interactive visuals. You can try the latest demo and share feedback to shape where it goes next.
+</p>
+<ul style="margin:0 0 4px 18px;">
+  <li>Live demo: <a href="https://qinzhi-a56d5.web.app/" style="color:#c0392b; font-weight:600;">qinzhi-a56d5.web.app</a></li>
+  <li>Looking for collaborators, beta users, or partners—please reach out if this resonates with you.</li>
+</ul>
+</div>
 
 <!-- ## <span id='interests'>Research Interests</span>   
 
@@ -35,6 +48,7 @@ information extraction, information representation, and their practical applicat
 - waiting to be added .....
 
 ## <span id='news'>News</span>  
+- **[Dec. 2025]** Launched an interactive AI audio visualization web—try it here: [qinzhi-a56d5.web.app](https://qinzhi-a56d5.web.app/).
 - **[Oct. 2024]** Our paper about Audio LLM - SparkTTS is available on arXiv 2025.
 - **[Oct. 2023]** Our paper about information extraction and Multilingual has been accepted by APIN(Applied Intelligence) 2024.
 - **[Oct. 2022]** Our paper about multi-granularity stress prediction of expressive TTS has been accepted by APSIPA 2023.
