@@ -8,7 +8,7 @@ layout: homepage
 Hello! My name is <font size=4px>Xiaoqin Feng</font>. 
 I am a Master’s student at the University of Southern California (USC) with research interests in Generative AI, LLM-powered agents, Human-AI Collaboration, and AI for Science. My work emphasizes agents, speech, data, evaluation, and real-world applications. I bring hands-on industry experience in these areas and am dedicated to advancing artificial intelligence through rigorous research and practical innovation.</p>
 <p style="border-left:4px solid #e67e22; background:#fff8f1; padding:10px 12px; border-radius:8px; margin:10px 0 18px;">
-Here is my <a href="https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf" style="color:#c0392b; font-weight:600;">CV</a>, I am applying for <strong style="color:#c0392b;">PhD program (2026/2027)</strong>—feel free to email me if you’re interested.
+Here is my <a href="https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf" style="color:#c0392b; font-weight:600;">CV</a>. I am actively seeking <strong style="color:#c0392b;">PhD programs starting in 2027</strong> and <strong style="color:#c0392b;">2026 Summer Internships</strong> (SDE/ML/AI Engineering, etc.)—feel free to email me if you're interested.
 </p>
 <!-- **<font color=red>&#x1F4EC;I am applying for M.S. or MBA in computer science. </font>**Here is my [CV](https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf) and my [personal research statement](https://xqfeng-josie.github.io/resume/PS/xiaoqin-ps-general.pdf). -->
 
