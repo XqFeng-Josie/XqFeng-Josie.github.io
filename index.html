@@ -30,6 +30,9 @@
 </head>
 
 <body>
+  <!-- Logo 背景装饰层 -->
+  <div class="bg-logo-container" id="bgLogoContainer"></div>
+
   <div class="wrapper">
 
     <!-- ===== Sidebar ===== -->
@@ -63,6 +66,23 @@
         <a href="https://www.linkedin.com/in/xiaoqin-feng-84a824228/" title="LinkedIn">
           <i class="fab fa-linkedin" style="font-size:1.5rem"></i>
         </a>
+        <a href="https://x.com/xiaoqinfengx" title="Twitter/X">
+          <i class="fab fa-twitter" style="font-size:1.5rem"></i>
+        </a>
+      </div>
+
+      <!-- Stats Badges -->
+      <div class="stats-badges">
+        <a href="https://github.com/XqFeng-Josie" target="_blank" class="stat-badge github-badge">
+          <img src="https://img.shields.io/github/stars/XqFeng-Josie?style=social&label=GitHub%20Stars" alt="GitHub Stars" style="vertical-align: middle;">
+        </a>
+      </div>
+
+      <!-- Contact Button -->
+      <div class="contact-button-wrapper">
+        <a href="mailto:xiaoqinf@usc.edu" class="contact-button">
+          <i class="fas fa-envelope"></i> Contact Me
+        </a>
       </div>
     </aside>
 
@@ -83,7 +103,9 @@
         <h2>About Me</h2>
         <p style="text-align:justify;">
           Hello! My name is <span style="font-size:larger;">Xiaoqin Feng</span>.
-          I am a Master's student at the University of Southern California (USC) with research interests in Generative AI, LLM-powered agents, Human-AI Collaboration, and AI for Science. My work emphasizes agents, speech, data, evaluation, and real-world applications. I bring hands-on industry experience in these areas and am dedicated to advancing artificial intelligence through rigorous research and practical innovation.
+          
+
+          I am a Master's student at the University of Southern California (USC) with research interests in Applied AI, LLM-powered agents, and Human-AI Collaboration. My work emphasizes agents, Speech/NLP, data, evaluation, and real-world production. I bring hands-on industry experience in these areas and am dedicated to advancing artificial intelligence through rigorous research and practical innovation.
         </p>
         <div class="callout">
           Here is my <a href="https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf">CV</a>.
@@ -95,15 +117,16 @@
 
       <!-- AI Products -->
       <section id="products">
-        <div class="product-box">
-          <h2>AI Products</h2>
-          <p style="text-align:justify;">
-            I am building a next-generation AI audio visualization experience that blends speech intelligence with interactive visuals. You can try the latest demo and share feedback to shape where it goes next.
+        <div class="product-box-compact">
+          <h2>
+            <span class="title-primary">AI Product: </span>
+            <span class="title-gradient">Audio Story Visualizer</span>
+            <span class="indie-badge">👨‍💻 Indie Dev</span>
+          </h2>
+          <p>
+            Building a next-gen AI audio visualization tool — transform music, podcasts, and audiobooks into videos.
+            <a href="https://qinzhi.org/" target="_blank" class="product-link">Try demo ▶</a>
           </p>
-          <ul>
-            <li>Live demo: <a href="https://qinzhi.org/">qinzhi.org</a></li>
-            <li>Looking for collaborators, beta users, or partners—please reach out if this resonates with you.</li>
-          </ul>
         </div>
       </section>
 
@@ -111,7 +134,7 @@
       <section id="education">
         <h2>Education</h2>
         <ul>
-          <li><strong>[Sep. 2025 – Present]</strong> M.S in Artificial Intelligence at <a href="https://english.bjut.edu.cn/">University of Southern California (USC)</a></li>
+          <li><strong>[Sep. 2025 – Present]</strong> M.S in Artificial Intelligence at <a href="https://www.usc.edu/">University of Southern California (USC)</a></li>
           <li><strong>[Sep. 2016 – May. 2019]</strong> M.S in Software Engineer at <a href="https://english.bjut.edu.cn/">Beijing University of Technology (BJUT)</a>, overall grade: 86 (max. 100) between "Very Good" and "Good"</li>
           <li><strong>[Sep. 2012 – May. 2016]</strong> B.S. in Computer Science at <a href="https://english.swun.edu.cn/">Southwest Minzu University (SMU)</a>, overall grade: 3.66 (max. 4.0), "Top 5" of 154 students</li>
         </ul>
@@ -323,6 +346,85 @@
 
     </main>
   </div>
+
+  <script>
+    // 侧边栏平滑自动滚动功能
+    document.addEventListener('DOMContentLoaded', function() {
+      const sidebar = document.querySelector('.sidebar');
+      let scrollInterval;
+      
+      sidebar.addEventListener('mousemove', function(e) {
+        const rect = this.getBoundingClientRect();
+        const mouseY = e.clientY - rect.top;
+        const sidebarHeight = rect.height;
+        const threshold = 60;
+        
+        clearInterval(scrollInterval);
+        
+        if (mouseY < threshold) {
+          const speed = Math.max(1, (threshold - mouseY) / 10);
+          scrollInterval = setInterval(() => {
+            sidebar.scrollTop -= speed;
+          }, 16);
+        } else if (mouseY > sidebarHeight - threshold) {
+          const speed = Math.max(1, (mouseY - (sidebarHeight - threshold)) / 10);
+          scrollInterval = setInterval(() => {
+            sidebar.scrollTop += speed;
+          }, 16);
+        }
+      });
+      
+      sidebar.addEventListener('mouseleave', function() {
+        clearInterval(scrollInterval);
+      });
+
+      // 生成随机分布的 Logo 背景（防重叠）
+      const container = document.getElementById('bgLogoContainer');
+      const logoCount = 7;
+      const logoPath = './assets/img/logo_color_1.svg';
+      const positions = [];
+      
+      function isOverlapping(newPos, existingPositions) {
+        for (let pos of existingPositions) {
+          const distance = Math.sqrt(
+            Math.pow(newPos.left - pos.left, 2) + 
+            Math.pow(newPos.top - pos.top, 2)
+          );
+          if (distance < 20) return true;
+        }
+        return false;
+      }
+      
+      for (let i = 0; i < logoCount; i++) {
+        const logo = document.createElement('img');
+        logo.src = logoPath;
+        logo.className = 'bg-logo';
+        
+        // 随机大小：100px - 250px
+        const size = Math.floor(Math.random() * 150) + 100;
+        logo.style.width = size + 'px';
+        logo.style.height = size + 'px';
+        
+        // 随机位置（防重叠）
+        let top, left, attempts = 0;
+        do {
+          top = Math.random() * 85;
+          left = Math.random() * 85;
+          attempts++;
+        } while (isOverlapping({top, left}, positions) && attempts < 50);
+        
+        positions.push({top, left});
+        logo.style.top = top + '%';
+        logo.style.left = left + '%';
+        
+        // 随机旋转角度
+        const rotation = Math.floor(Math.random() * 360);
+        logo.style.transform = `rotate(${rotation}deg)`;
+        
+        container.appendChild(logo);
+      }
+    });
+  </script>
 </body>
 
 </html>
