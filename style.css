@@ -364,6 +364,11 @@ nav {
 
 .callout a { color: var(--accent); font-weight: 600; }
 
+/* ===== Experience ===== */
+.experience-list li {
+  margin-bottom: 0.65rem;
+}
+
 /* ===== AI Product Box (Compact) ===== */
 .product-box-compact {
   background: linear-gradient(135deg, rgba(107, 113, 153, 0.05) 0%, rgba(196, 165, 123, 0.05) 100%);
