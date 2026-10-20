@@ -2,391 +2,410 @@
 <html lang="en">
 
 <head>
-  <title>Xiaoqin Feng's Homepage</title>
+  <title>Xiaoqin Feng · Applied AI Engineer</title>
 
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Xiaoqin Feng is an Applied AI engineer and USC master's student working on LLM agents, speech and NLP, multimodal data, evaluation, and production AI systems.">
   <meta name="keywords" content="xiaoqin feng, feng xiaoqin, applied ai, llm agents, speech, nlp, usc, machine learning">
+  <meta name="theme-color" content="#0e1d36">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Xiaoqin Feng's Homepage">
+  <meta property="og:title" content="Xiaoqin Feng · Applied AI Engineer">
   <meta property="og:site_name" content="Xiaoqin Feng's Homepage">
   <meta property="og:description" content="Applied AI engineer and USC master's student working on LLM agents, speech and NLP, multimodal data, evaluation, and production AI systems.">
   <meta property="og:locale" content="en_US">
-  <meta property="og:image" content="./assets/img/person.jpg">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Xiaoqin Feng's Homepage">
+  <meta property="og:image" content="https://xqfeng-josie.github.io/assets/img/hero/jellyfish.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Xiaoqin Feng · Applied AI Engineer">
   <meta name="twitter:description" content="Applied AI engineer and USC master's student working on LLM agents, speech and NLP, multimodal data, evaluation, and production AI systems.">
-  <meta name="twitter:image" content="./assets/img/person.jpg">
+  <meta name="twitter:image" content="https://xqfeng-josie.github.io/assets/img/hero/jellyfish.jpg">
 
-  <link rel="icon" media="(prefers-color-scheme:dark)" href="./assets/img/xq.png" type="image/png" />
-  <link rel="icon" media="(prefers-color-scheme:light)" href="./assets/img/xq.png" type="image/png" />
+  <link rel="icon" href="./assets/img/xq.png" type="image/png" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css"
     integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
     integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
 
+  <link rel="preload" as="image" href="./assets/img/hero/jellyfish.jpg">
   <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-  <!-- Logo 背景装饰层 -->
-  <div class="bg-logo-container" id="bgLogoContainer"></div>
+  <a class="skip-link" href="#about">Skip to content</a>
 
-  <div class="wrapper">
+  <!-- ===== Top navigation ===== -->
+  <header class="site-nav" id="siteNav">
+    <a class="wordmark" href="#top">Xiaoqin Feng</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+    <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#product">Product</a>
+      <a href="#experience">Experience</a>
+      <a href="#publications">Publications</a>
+      <a href="./resume/xiaoqin_cv.pdf" class="nav-cv">CV</a>
+    </nav>
+  </header>
 
-    <!-- ===== Sidebar ===== -->
-    <aside class="sidebar">
-      <img class="avatar" src="./assets/img/person.jpg" alt="Xiaoqin Feng" />
+  <!-- ===== Hero slideshow ===== -->
+  <section class="hero" id="top" aria-roledescription="carousel" aria-label="Research themes">
+    <figure class="slide slide--right is-active" data-tone="amber" aria-roledescription="slide" aria-label="1 of 3">
+      <img src="./assets/img/hero/jellyfish.jpg" alt="Silhouette of Xiaoqin in front of a tank of glowing jellyfish" style="object-position: 35% 50%;">
+      <figcaption class="slide-text">
+        <span class="slide-label">01 / Listening</span>
+        <h1>Building AI that<br><em>listens and speaks.</em></h1>
+        <p>Real-time audio agents, expressive TTS, and speech LLMs.</p>
+      </figcaption>
+    </figure>
+    <figure class="slide" data-tone="sunset" aria-roledescription="slide" aria-label="2 of 3" aria-hidden="true">
+      <img data-src="./assets/img/hero/sunset.jpg" alt="Sunset over a lake, with boat lifts silhouetted against the water" style="object-position: 62% 60%;">
+      <figcaption class="slide-text">
+        <span class="slide-label">02 / Agency</span>
+        <h2>Agents that plan,<br><em>act, and recover.</em></h2>
+        <p>Multimodal LLM agents, from autonomous research to real-world production.</p>
+      </figcaption>
+    </figure>
+    <figure class="slide" data-tone="lake" aria-roledescription="slide" aria-label="3 of 3" aria-hidden="true">
+      <img data-src="./assets/img/hero/falls.jpg" alt="Many streams of a waterfall pouring into a turquoise pool" style="object-position: 45% 55%;">
+      <figcaption class="slide-text">
+        <span class="slide-label">03 / Career</span>
+        <h2>Be patient.<br><em>Keep flowing.</em></h2>
+        <p>Six years building production AI at Mobvoi, now back in research at USC and interning at Wyze Labs.</p>
+      </figcaption>
+    </figure>
 
-      <h1>Xiaoqin Feng</h1>
-
-      <span class="position">M.S. Student at USC<br>AI Engineer Intern at Wyze</span>
-
-      <email>xiaoqinf@usc.edu</email>
-
-      <span class="motto">Be patient</span>
-
-      <div class="visitor-counter">
-        <a href="https://xqfeng-josie.github.io/" target="_blank">thank you for visit :
-          <img src="https://hitwebcounter.com/counter/counter.php?page=8065954&style=0007&nbdigits=5&type=page&initCount=0"
-            title="Free Counter" alt="web counter" border="0" /></a>
+    <div class="hero-controls">
+      <div class="dots" role="group" aria-label="Choose slide">
+        <button class="dot is-active" aria-label="Slide 1: Listening" aria-current="true">01</button>
+        <button class="dot" aria-label="Slide 2: Agency">02</button>
+        <button class="dot" aria-label="Slide 3: Career">03</button>
       </div>
+      <button class="pause" id="pauseBtn" aria-pressed="false">Pause</button>
+    </div>
+  </section>
 
-      <div class="social-icons">
-        <a href="https://scholar.google.com/citations?user=-rW26N0AAAAJ" title="Google Scholar">
-          <i class="ai ai-google-scholar" style="font-size:1.5rem"></i>
-        </a>
-        <a href="https://xqfeng-josie.github.io/resume/xiaoqin_cv.pdf" title="CV">
-          <i class="ai ai-cv" style="font-size:1.35em;"></i>
-        </a>
-        <a href="https://github.com/XqFeng-Josie" title="GitHub">
-          <i class="fab fa-github" style="font-size:1.5rem"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/xiaoqin-feng-84a824228/" title="LinkedIn">
-          <i class="fab fa-linkedin" style="font-size:1.5rem"></i>
-        </a>
-        <a href="https://x.com/xiaoqinfengx" title="Twitter/X">
-          <i class="fab fa-twitter" style="font-size:1.5rem"></i>
-        </a>
-      </div>
+  <main>
 
-      <!-- Stats Badges -->
-      <div class="stats-badges">
-        <a href="https://github.com/XqFeng-Josie" target="_blank" class="stat-badge github-badge">
-          <img src="https://img.shields.io/github/stars/XqFeng-Josie?style=social&label=GitHub%20Stars" alt="GitHub Stars" style="vertical-align: middle;">
-        </a>
-      </div>
-
-      <!-- Contact Button -->
-      <div class="contact-button-wrapper">
-        <a href="mailto:xiaoqinf@usc.edu" class="contact-button">
-          <i class="fas fa-envelope"></i> Contact Me
-        </a>
-      </div>
-    </aside>
-
-    <!-- ===== Main Content ===== -->
-    <main>
-
-      <nav class="top-nav" aria-label="Primary navigation">
-        <a href="#about" class="nav-current">About</a>
-        <a href="#education">Education</a>
-        <a href="#experience">Experience</a>
-        <a href="https://qinzhi.org/" target="_blank" rel="noopener noreferrer" class="nav-product">Product</a>
-        <a href="#publications">Publications</a>
-      </nav>
-
-      <!-- About Me -->
-      <section id="about">
-        <h2>About Me</h2>
-        <p style="text-align:justify;">
-          Hello! My name is <span style="font-size:larger;">Xiaoqin Feng</span>. I am an M.S. student in Artificial Intelligence at the University of Southern California (USC), graduating in May 2027, and an AI Engineer Intern at Wyze. I build applied AI systems spanning real-time conversational audio agents, LLM-based agentic systems, generative speech, large-scale data pipelines, model evaluation, and reliable backend services. Previously, I was a Research Assistant at USC and spent six years at Mobvoi, most recently as a Tech Lead. My interests center on LLM agents, speech and NLP, multimodal learning, and human&ndash;AI collaboration.
-        </p>
-        <div class="callout">
-          View my latest <a href="./resume/xiaoqin_cv.pdf">CV</a>. I am exploring
-          <strong style="color:var(--accent);">PhD opportunities</strong> and
-          <strong style="color:var(--accent);">full-time ML/AI engineering roles beginning in 2027</strong>.
-          Please feel free to <a href="mailto:xiaoqinf@usc.edu">get in touch</a>.
-        </div>
-      </section>
-
-      <!-- AI Products -->
-      <section id="products">
-        <div class="product-box-compact">
-          <h2>
-            <span class="title-primary">AI Product: </span>
-            <span class="title-gradient">Audio Story Visualizer</span>
-            <span class="indie-badge">👨‍💻 Indie Dev</span>
-          </h2>
+    <!-- ===== About ===== -->
+    <section class="intro" id="about">
+      <div class="container intro-grid">
+        <img class="avatar" src="./assets/img/avatar.jpg" alt="Portrait of Xiaoqin Feng" width="600" height="900">
+        <div class="intro-body">
+          <h2 class="intro-lede">About me</h2>
           <p>
-            Building an AI-powered audio visualization and dubbing platform that turns music, podcasts, and audiobooks into editable videos with high-fidelity speech processing.
-            <a href="https://qinzhi.org/" target="_blank" rel="noopener noreferrer" class="product-link">Try demo ▶</a>
+            I am an M.S. student in Artificial Intelligence at the University of Southern California, graduating in May 2027. Before USC, I spent six years at Mobvoi, growing from speech algorithm engineer to tech lead. I shipped multilingual speech and NLP models to tens of millions of users, led speech-LLM services and LLM agent frameworks, and built the data and evaluation pipelines behind them.
           </p>
+          <p>
+            At USC, I research computer-use and research agents: how they plan, where they break, and how to make them recover. I&rsquo;m broadly interested in LLM agents, speech and NLP, multimodal learning, and human&ndash;AI collaboration.
+          </p>
+          <p>
+            Now, as an AI Engineer Intern at <a href="https://www.wyze.com/">Wyze</a>, I build AI that listens, speaks, and acts, running in real time on home cameras.
+          </p>
+          <p class="seeking">
+            I&rsquo;m looking for <strong>PhD positions</strong> and <strong>full-time ML/AI engineering roles starting in 2027</strong>.
+            Read my <a href="./resume/xiaoqin_cv.pdf">CV</a> or <a href="mailto:xiaoqinf@usc.edu">email me</a>.
+          </p>
+          <div class="intro-links">
+            <a class="btn-solid" href="mailto:xiaoqinf@usc.edu"><i class="fas fa-envelope" aria-hidden="true"></i> xiaoqinf@usc.edu</a>
+            <a class="icon-link" href="https://scholar.google.com/citations?user=-rW26N0AAAAJ" title="Google Scholar" aria-label="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+            <a class="icon-link" href="https://github.com/XqFeng-Josie" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a class="icon-link" href="https://www.linkedin.com/in/xiaoqin-feng-84a824228/" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a class="icon-link" href="https://x.com/xiaoqinfengx" title="X (Twitter)" aria-label="X (Twitter)"><i class="fab fa-twitter"></i></a>
+          </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Education -->
-      <section id="education">
-        <h2>Education</h2>
-        <ul>
-          <li><strong>[Sep. 2025 &ndash; May 2027 (expected)]</strong> M.S. in Artificial Intelligence at <a href="https://www.usc.edu/">University of Southern California (USC)</a></li>
-          <li><strong>[Sep. 2016 &ndash; May 2019]</strong> M.S. in Software Engineering at <a href="https://english.bjut.edu.cn/">Beijing University of Technology (BJUT)</a></li>
-          <li><strong>[Sep. 2012 &ndash; Jul. 2016]</strong> B.E. in Computer Science at <a href="https://english.swun.edu.cn/">Southwest Minzu University (SMU)</a>; ranked Top 5 among 154 students</li>
-        </ul>
-      </section>
-
-      <!-- Employment and Activity -->
-      <section id="experience">
-        <h2>Professional Experience</h2>
-        <ul class="experience-list">
-          <li><strong>[Jul. 2026 &ndash; Present]</strong> <strong>AI Engineer Intern</strong>, <a href="https://www.wyze.com/">Wyze</a>. Developing and integrating core components for real-time conversational audio agents on edge devices, including model integration, automated testing, language identification, and speech-to-intent optimization.</li>
-          <li><strong>[Oct. 2025 &ndash; May 2026]</strong> <strong>Research Assistant</strong>, <a href="https://www.usc.edu/">University of Southern California</a>. Researched computer-use and research agents, with a focus on tool-use planning, execution robustness, and failure modes.</li>
-          <li><strong>[Aug. 2025 &ndash; Mar. 2026]</strong> <strong>Part-time Intern</strong>, <a href="https://www.mobvoi.com/us">Mobvoi</a>. Optimized production speech models and LLM-based multi-agent workflows, and supported data pipelines and system integration.</li>
-          <li><strong>[May 2023 &ndash; Jul. 2025]</strong> <strong>Tech Lead</strong>, <a href="https://www.mobvoi.com/us">Mobvoi</a>. Led production LLM agent frameworks, speech-LLM models and services, multimodal data engineering, and model evaluation systems; mentored junior engineers and interns.</li>
-          <li><strong>[Jul. 2019 &ndash; May 2023]</strong> <strong>Speech Algorithm Engineer</strong>, <a href="https://www.mobvoi.com/us">Mobvoi</a>. Built multilingual speech and NLP models, scalable backend services, and standardized data pipelines for production systems serving tens of millions of users.</li>
-          <li><strong>[Aug. 2018 &ndash; Dec. 2018]</strong> <strong>Research Intern</strong>, <a href="https://en.100tal.com/">TAL Education Group</a>. Developed graph-enhanced deep knowledge tracing models and co-authored work published at AIED 2019.</li>
-        </ul>
-      </section>
-
-      <!-- Publications -->
-      <section id="publications">
-        <h2 class="section-header">Publications <span class="bracket">[</span><a href="https://scholar.google.com/citations?user=-rW26N0AAAAJ" target="_blank">Google Scholar</a><span class="bracket">]</span></h2>
-
-        <div class="publications">
-          <ol class="bibliography">
-
-            <!-- SparkTTS -->
-            <li>
-              <div class="pub-row">
-                <div class="col-sm-3 abbr">
-                  <img src="./assets/img/SparkTTS.jpg" class="teaser" alt="SparkTTS">
-                  <abbr class="badge">SparkTTS</abbr>
-                </div>
-                <div class="col-sm-9">
-                  <div class="title"><a href="https://arxiv.org/pdf/2503.01710">Spark-TTS: An Efficient LLM-Based Text-to-Speech Model with Single-Stream Decoupled Speech Tokens</a></div>
-                  <div class="author">Xinsheng Wang, <strong><u>Xiaoqin Feng</u></strong>, et al.</div>
-                  <div class="periodical"><em>arXiv preprint 2025, 22 pages</em></div>
-                  <div class="links">
-                    <a href="https://arxiv.org/pdf/2503.01710" class="btn" role="button" target="_blank">PDF</a>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <!-- APIN 2024 -->
-            <li>
-              <div class="pub-row">
-                <div class="col-sm-3 abbr">
-                  <img src="./assets/img/APIN_2024.jpg" class="teaser" alt="APIN 2024">
-                  <abbr class="badge">APIN</abbr>
-                </div>
-                <div class="col-sm-9">
-                  <div class="title"><a href="https://arxiv.org/pdf/2404.17122v1">2M-NER: Contrastive Learning for Multilingual and Multimodal NER with Language and Modality Fusion</a></div>
-                  <div class="author">Dongsheng Wang, <strong><u>Xiaoqin Feng</u></strong>, et al.</div>
-                  <div class="periodical"><em>Applied Intelligence, 2024, 20 pages</em></div>
-                  <div class="links">
-                    <a href="https://arxiv.org/pdf/2404.17122v1" class="btn" role="button" target="_blank">PDF</a>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <!-- APSIPA 2023 -->
-            <li>
-              <div class="pub-row">
-                <div class="col-sm-3 abbr">
-                  <img src="./assets/img/APSIPA2023.png" class="teaser" alt="APSIPA 2023">
-                  <abbr class="badge">APSIPA</abbr>
-                </div>
-                <div class="col-sm-9">
-                  <div class="title"><a href="https://xqfeng-josie.github.io/resume/publications/APSIPA2023.pdf">Multi-granularity Semantic and Acoustic Stress Prediction for Expressive TTS</a></div>
-                  <div class="author">Wenjiang Chi, <strong><u>Xiaoqin Feng(*equal contribution)</u></strong>, et al.</div>
-                  <div class="periodical"><em>APSIPA ASC, 2023, 5 pages</em></div>
-                  <div class="links">
-                    <a href="https://xqfeng-josie.github.io/resume/publications/APSIPA2023.pdf" class="btn" role="button" target="_blank">PDF</a>
-                    <a href="https://xqfeng-josie.github.io/stress/" class="btn" role="button" target="_blank">Demo</a>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <!-- PRML 2022 -->
-            <li>
-              <div class="pub-row">
-                <div class="col-sm-3 abbr">
-                  <img src="./assets/img/prompt2022.png" class="teaser" alt="PRML 2022">
-                  <abbr class="badge">PRML</abbr>
-                </div>
-                <div class="col-sm-9">
-                  <div class="title"><a href="https://xqfeng-josie.github.io/resume/publications/PRML2022.pdf">Prosody Prediction with Discriminative Representation Method</a></div>
-                  <div class="author">Jipeng Zhang, Hankiz Yilahun, <strong><u>Xiaoqin Feng</u></strong>, Yunlin Chen, Xipeng Yang, Askar Hamdulla</div>
-                  <div class="periodical"><em>PRML, 2022, 5 pages</em></div>
-                  <div class="links">
-                    <a href="https://xqfeng-josie.github.io/resume/publications/PRML2022.pdf" class="btn" role="button" target="_blank">PDF</a>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <!-- AIED 2019 -->
-            <li>
-              <div class="pub-row">
-                <div class="col-sm-3 abbr">
-                  <img src="./assets/img/knowledge2019.png" class="teaser" alt="AIED 2019">
-                  <abbr class="badge">AIED</abbr>
-                </div>
-                <div class="col-sm-9">
-                  <div class="title"><a href="https://arxiv.org/pdf/1909.00372.pdf">Deep knowledge tracing with side information</a></div>
-                  <div class="author">Zhiwei Wang, <strong><u>Xiaoqin Feng</u></strong>, Jiliang Tang, Gale Yan Huang, Zitao Liu</div>
-                  <div class="periodical"><em>In proceedings of AIED 2019, Springer, Cham, 5 pages</em></div>
-                  <div class="links">
-                    <a href="https://arxiv.org/pdf/1909.00372.pdf" class="btn" role="button" target="_blank">PDF</a>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <!-- Journal of Physics 2019 -->
-            <li>
-              <div class="pub-row">
-                <div class="col-sm-3 abbr">
-                  <img src="./assets/img/mobilenet2018.png" class="teaser" alt="Journal of Physics 2019">
-                  <abbr class="badge">Journal of Physics</abbr>
-                </div>
-                <div class="col-sm-9">
-                  <div class="title"><a href="https://iopscience.iop.org/article/10.1088/1742-6596/1237/2/022045/pdf">Population statistics algorithm based on MobileNet</a></div>
-                  <div class="author"><strong><u>Xiaoqin Feng</u></strong>, Rong Xie, Junyang Sheng, Shuo Zhang</div>
-                  <div class="periodical"><em>Journal of Physics: Conference Series. JPCS 2019, 6 pages</em></div>
-                  <div class="links">
-                    <a href="https://iopscience.iop.org/article/10.1088/1742-6596/1237/2/022045/pdf" class="btn" role="button" target="_blank">PDF</a>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <!-- CCIOT 2018 -->
-            <li>
-              <div class="pub-row">
-                <div class="col-sm-3 abbr">
-                  <img src="./assets/img/imagedetect2018.png" class="teaser" alt="CCIOT 2018">
-                  <abbr class="badge">CCIOT</abbr>
-                </div>
-                <div class="col-sm-9">
-                  <div class="title"><a href="https://xqfeng-josie.github.io/resume/publications/CCIOT2018.pdf">A method of quick edge detection based on Zynq</a></div>
-                  <div class="author">Rong Xie, <strong><u>Xiaoqin Feng</u></strong></div>
-                  <div class="periodical"><em>In proceedings of CCIOT 2018, 5 pages.</em></div>
-                  <div class="links">
-                    <a href="https://xqfeng-josie.github.io/resume/publications/CCIOT2018.pdf" class="btn" role="button" target="_blank">PDF</a>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <!-- CCIS 2018 -->
-            <li>
-              <div class="pub-row">
-                <div class="col-sm-3 abbr">
-                  <img src="./assets/img/ccis2018.png" class="teaser" alt="CCIS 2018">
-                  <abbr class="badge">CCIS</abbr>
-                </div>
-                <div class="col-sm-9">
-                  <div class="title"><a href="https://xqfeng-josie.github.io/resume/publications/CCIS2018.pdf">Research on the Internet of Things Platform for Smart and Environmental Protection</a></div>
-                  <div class="author">Junyang Sheng, <strong><u>Xiaoqin Feng</u></strong></div>
-                  <div class="periodical"><em>In proceedings of CCIS 2018, 5 pages</em></div>
-                  <div class="links">
-                    <a href="https://xqfeng-josie.github.io/resume/publications/CCIS2018.pdf" class="btn" role="button" target="_blank">PDF</a>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-          </ol>
+    <!-- ===== Research directions ===== -->
+    <section class="section" id="research">
+      <div class="container">
+        <h2 class="section-title">What I work on</h2>
+        <div class="directions">
+          <article class="direction">
+            <h3>Speech &amp; LLM algorithms</h3>
+            <p>LLM supervised fine-tuning (SFT), LLM-based speech generation, prosody and stress modeling for expressive TTS, NLP for the TTS front end, and on-device spoken language identification.</p>
+          </article>
+          <article class="direction">
+            <h3>Multimodal agents</h3>
+            <p>Agentic systems for research and production: how they plan, where execution breaks, and how they recover safely.</p>
+          </article>
+          <article class="direction">
+            <h3>Data &amp; evaluation</h3>
+            <p>Multimodal data pipelines and evaluation systems that tell you whether a model is actually ready to ship.</p>
+          </article>
         </div>
-      </section>
+      </div>
+    </section>
 
-    </main>
-  </div>
+    <!-- ===== Product ===== -->
+    <section class="product" id="product">
+      <div class="container product-grid">
+        <div>
+          <p class="product-kicker">Side project, built solo</p>
+          <h2 class="product-title">Audio Story Visualizer</h2>
+        </div>
+        <div>
+          <p>An AI-powered audio visualization and dubbing platform that turns music, podcasts, and audiobooks into editable videos with high-fidelity speech processing.</p>
+          <a class="text-link" href="https://qinzhi.org/" target="_blank" rel="noopener noreferrer">Try the demo at qinzhi.org <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="container">
+        <a class="product-shot" href="https://qinzhi.org/" target="_blank" rel="noopener noreferrer" aria-label="Open Audio Story Visualizer at qinzhi.org">
+          <img src="./assets/img/product/qinzhi.jpg" alt="Audio Story Visualizer landing page: the words &ldquo;Sound, seen.&rdquo; beside a flowing waveform" width="1800" height="774" loading="lazy">
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== Experience ===== -->
+    <section class="section" id="experience">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <ol class="timeline">
+          <li>
+            <span class="when">Jul 2026 &ndash; now</span>
+            <div><h3>AI Engineer Intern, <a href="https://www.wyze.com/">Wyze</a></h3>
+              <p>Developing and integrating core components for real-time conversational audio agents on edge devices, including model integration, automated testing, language identification, and speech-to-intent optimization.</p></div>
+          </li>
+          <li>
+            <span class="when">Oct 2025 &ndash; May 2026</span>
+            <div><h3>Research Assistant, <a href="https://www.usc.edu/">University of Southern California</a></h3>
+              <p>Researched computer-use and research agents, with a focus on tool-use planning, execution robustness, and failure modes.</p></div>
+          </li>
+          <li>
+            <span class="when">Aug 2025 &ndash; Mar 2026</span>
+            <div><h3>Part-time Intern, <a href="https://www.mobvoi.com/us">Mobvoi</a></h3>
+              <p>Optimized production speech models and LLM-based multi-agent workflows, and supported data pipelines and system integration.</p></div>
+          </li>
+          <li>
+            <span class="when">May 2023 &ndash; Jul 2025</span>
+            <div><h3>Tech Lead, <a href="https://www.mobvoi.com/us">Mobvoi</a></h3>
+              <p>Led production LLM agent frameworks, speech-LLM models and services, multimodal data engineering, and model evaluation systems; mentored junior engineers and interns.</p></div>
+          </li>
+          <li>
+            <span class="when">Jul 2019 &ndash; May 2023</span>
+            <div><h3>Speech Algorithm Engineer, <a href="https://www.mobvoi.com/us">Mobvoi</a></h3>
+              <p>Built multilingual speech and NLP models, scalable backend services, and standardized data pipelines for production systems serving tens of millions of users.</p></div>
+          </li>
+          <li>
+            <span class="when">Aug 2018 &ndash; Dec 2018</span>
+            <div><h3>Research Intern, <a href="https://en.100tal.com/">TAL Education Group</a></h3>
+              <p>Developed graph-enhanced deep knowledge tracing models and co-authored work published at AIED 2019.</p></div>
+          </li>
+        </ol>
+
+        <h2 class="section-title section-title--sub" id="education">Education</h2>
+        <ol class="timeline timeline--compact">
+          <li>
+            <span class="when">2025 &ndash; 2027</span>
+            <div><h3>M.S. in Artificial Intelligence, <a href="https://www.usc.edu/">University of Southern California</a></h3>
+              <p>Expected May 2027.</p></div>
+          </li>
+          <li>
+            <span class="when">2016 &ndash; 2019</span>
+            <div><h3>M.S. in Software Engineering, <a href="https://english.bjut.edu.cn/">Beijing University of Technology</a></h3></div>
+          </li>
+          <li>
+            <span class="when">2012 &ndash; 2016</span>
+            <div><h3>B.E. in Computer Science, <a href="https://english.swun.edu.cn/">Southwest Minzu University</a></h3>
+              <p>Ranked top 5 of 154 students.</p></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== Publications ===== -->
+    <section class="section section--alt" id="publications">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Publications</h2>
+          <a class="text-link" href="https://scholar.google.com/citations?user=-rW26N0AAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar <span aria-hidden="true">↗</span></a>
+        </div>
+
+        <ol class="pubs">
+          <li class="pub">
+            <div class="pub-thumb pub-thumb--logo">
+              <img src="./assets/img/pubs/spark-tts.jpg" alt="" loading="lazy">
+              <span class="badge">arXiv 2025</span>
+            </div>
+            <div>
+              <h3><a href="https://arxiv.org/pdf/2503.01710">Spark-TTS: An Efficient LLM-Based Text-to-Speech Model with Single-Stream Decoupled Speech Tokens</a></h3>
+              <p class="authors">Xinsheng Wang, <b>Xiaoqin Feng</b>, et al.</p>
+              <p class="pub-links"><a href="https://arxiv.org/pdf/2503.01710" target="_blank">PDF</a></p>
+            </div>
+          </li>
+          <li class="pub">
+            <div class="pub-thumb">
+              <img src="./assets/img/pubs/apin2024.jpg" alt="" loading="lazy">
+              <span class="badge">Applied Intelligence 2024</span>
+            </div>
+            <div>
+              <h3><a href="https://arxiv.org/pdf/2404.17122v1">2M-NER: Contrastive Learning for Multilingual and Multimodal NER with Language and Modality Fusion</a></h3>
+              <p class="authors">Dongsheng Wang, <b>Xiaoqin Feng</b>, et al.</p>
+              <p class="pub-links"><a href="https://arxiv.org/pdf/2404.17122v1" target="_blank">PDF</a></p>
+            </div>
+          </li>
+          <li class="pub">
+            <div class="pub-thumb">
+              <img src="./assets/img/pubs/apsipa2023.jpg" alt="" loading="lazy">
+              <span class="badge">APSIPA ASC 2023</span>
+            </div>
+            <div>
+              <h3><a href="./resume/publications/APSIPA2023.pdf">Multi-granularity Semantic and Acoustic Stress Prediction for Expressive TTS</a></h3>
+              <p class="authors">Wenjiang Chi, <b>Xiaoqin Feng</b> (equal contribution), et al.</p>
+              <p class="pub-links"><a href="./resume/publications/APSIPA2023.pdf" target="_blank">PDF</a><a href="./stress/" target="_blank">Audio demo</a></p>
+            </div>
+          </li>
+          <li class="pub">
+            <div class="pub-thumb">
+              <img src="./assets/img/pubs/prml2022.jpg" alt="" loading="lazy">
+              <span class="badge">PRML 2022</span>
+            </div>
+            <div>
+              <h3><a href="./resume/publications/PRML2022.pdf">Prosody Prediction with Discriminative Representation Method</a></h3>
+              <p class="authors">Jipeng Zhang, Hankiz Yilahun, <b>Xiaoqin Feng</b>, Yunlin Chen, Xipeng Yang, Askar Hamdulla</p>
+              <p class="pub-links"><a href="./resume/publications/PRML2022.pdf" target="_blank">PDF</a></p>
+            </div>
+          </li>
+          <li class="pub">
+            <div class="pub-thumb">
+              <img src="./assets/img/pubs/aied2019.jpg" alt="" loading="lazy">
+              <span class="badge">AIED 2019</span>
+            </div>
+            <div>
+              <h3><a href="https://arxiv.org/pdf/1909.00372.pdf">Deep knowledge tracing with side information</a></h3>
+              <p class="authors">Zhiwei Wang, <b>Xiaoqin Feng</b>, Jiliang Tang, Gale Yan Huang, Zitao Liu</p>
+              <p class="pub-links"><a href="https://arxiv.org/pdf/1909.00372.pdf" target="_blank">PDF</a></p>
+            </div>
+          </li>
+          <li class="pub">
+            <div class="pub-thumb">
+              <img src="./assets/img/pubs/jpcs2019.jpg" alt="" loading="lazy">
+              <span class="badge">JPCS 2019</span>
+            </div>
+            <div>
+              <h3><a href="https://iopscience.iop.org/article/10.1088/1742-6596/1237/2/022045/pdf">Population statistics algorithm based on MobileNet</a></h3>
+              <p class="authors"><b>Xiaoqin Feng</b>, Rong Xie, Junyang Sheng, Shuo Zhang</p>
+              <p class="pub-links"><a href="https://iopscience.iop.org/article/10.1088/1742-6596/1237/2/022045/pdf" target="_blank">PDF</a></p>
+            </div>
+          </li>
+          <li class="pub">
+            <div class="pub-thumb">
+              <img src="./assets/img/pubs/cciot2018.jpg" alt="" loading="lazy">
+              <span class="badge">CCIOT 2018</span>
+            </div>
+            <div>
+              <h3><a href="./resume/publications/CCIOT2018.pdf">A method of quick edge detection based on Zynq</a></h3>
+              <p class="authors">Rong Xie, <b>Xiaoqin Feng</b></p>
+              <p class="pub-links"><a href="./resume/publications/CCIOT2018.pdf" target="_blank">PDF</a></p>
+            </div>
+          </li>
+          <li class="pub">
+            <div class="pub-thumb">
+              <img src="./assets/img/pubs/ccis2018.jpg" alt="" loading="lazy">
+              <span class="badge">CCIS 2018</span>
+            </div>
+            <div>
+              <h3><a href="./resume/publications/CCIS2018.pdf">Research on the Internet of Things Platform for Smart and Environmental Protection</a></h3>
+              <p class="authors">Junyang Sheng, <b>Xiaoqin Feng</b></p>
+              <p class="pub-links"><a href="./resume/publications/CCIS2018.pdf" target="_blank">PDF</a></p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-text">
+        <p class="motto"><em>Be patient.</em></p>
+        <p class="footer-note">Thanks for stopping by. The best way to reach me is <a href="mailto:xiaoqinf@usc.edu">xiaoqinf@usc.edu</a>.</p>
+        <p class="footer-links">
+          <a href="./resume/xiaoqin_cv.pdf">CV</a>
+          <a href="https://scholar.google.com/citations?user=-rW26N0AAAAJ">Scholar</a>
+          <a href="https://github.com/XqFeng-Josie">GitHub</a>
+          <a href="https://www.linkedin.com/in/xiaoqin-feng-84a824228/">LinkedIn</a>
+          <a href="https://x.com/xiaoqinfengx">X</a>
+        </p>
+        <p class="copyright">&copy; 2026 Xiaoqin Feng</p>
+      </div>
+      <img class="footer-photo" src="./assets/img/photos/redwoods.jpg" alt="Xiaoqin standing beneath towering redwoods" loading="lazy">
+    </div>
+  </footer>
 
   <script>
-    // 侧边栏平滑自动滚动功能
-    document.addEventListener('DOMContentLoaded', function() {
-      const sidebar = document.querySelector('.sidebar');
-      let scrollInterval;
-      
-      sidebar.addEventListener('mousemove', function(e) {
-        const rect = this.getBoundingClientRect();
-        const mouseY = e.clientY - rect.top;
-        const sidebarHeight = rect.height;
-        const threshold = 60;
-        
-        clearInterval(scrollInterval);
-        
-        if (mouseY < threshold) {
-          const speed = Math.max(1, (threshold - mouseY) / 10);
-          scrollInterval = setInterval(() => {
-            sidebar.scrollTop -= speed;
-          }, 16);
-        } else if (mouseY > sidebarHeight - threshold) {
-          const speed = Math.max(1, (mouseY - (sidebarHeight - threshold)) / 10);
-          scrollInterval = setInterval(() => {
-            sidebar.scrollTop += speed;
-          }, 16);
-        }
-      });
-      
-      sidebar.addEventListener('mouseleave', function() {
-        clearInterval(scrollInterval);
-      });
+    (function () {
+      // Hero slideshow
+      var slides = document.querySelectorAll('.slide');
+      var dots = document.querySelectorAll('.dot');
+      var pauseBtn = document.getElementById('pauseBtn');
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var current = 0, timer = null, paused = reduceMotion;
 
-      // 生成随机分布的 Logo 背景（防重叠）
-      const container = document.getElementById('bgLogoContainer');
-      const logoCount = 7;
-      const logoPath = './assets/img/logo_color_1.svg';
-      const positions = [];
-      
-      function isOverlapping(newPos, existingPositions) {
-        for (let pos of existingPositions) {
-          const distance = Math.sqrt(
-            Math.pow(newPos.left - pos.left, 2) + 
-            Math.pow(newPos.top - pos.top, 2)
-          );
-          if (distance < 20) return true;
-        }
-        return false;
+      // Slides 2 and 3 load after the page so the first photo arrives first
+      function loadSlide(slide) {
+        var img = slide.querySelector('img[data-src]');
+        if (img) { img.src = img.dataset.src; img.removeAttribute('data-src'); }
       }
-      
-      for (let i = 0; i < logoCount; i++) {
-        const logo = document.createElement('img');
-        logo.src = logoPath;
-        logo.className = 'bg-logo';
-        
-        // 随机大小：100px - 250px
-        const size = Math.floor(Math.random() * 150) + 100;
-        logo.style.width = size + 'px';
-        logo.style.height = size + 'px';
-        
-        // 随机位置（防重叠）
-        let top, left, attempts = 0;
-        do {
-          top = Math.random() * 85;
-          left = Math.random() * 85;
-          attempts++;
-        } while (isOverlapping({top, left}, positions) && attempts < 50);
-        
-        positions.push({top, left});
-        logo.style.top = top + '%';
-        logo.style.left = left + '%';
-        
-        // 随机旋转角度
-        const rotation = Math.floor(Math.random() * 360);
-        logo.style.transform = `rotate(${rotation}deg)`;
-        
-        container.appendChild(logo);
+      if (document.readyState === 'complete') slides.forEach(loadSlide);
+      else window.addEventListener('load', function () { slides.forEach(loadSlide); });
+
+      function show(i) {
+        loadSlide(slides[(i + slides.length) % slides.length]);
+        slides[current].classList.remove('is-active');
+        slides[current].setAttribute('aria-hidden', 'true');
+        dots[current].classList.remove('is-active');
+        dots[current].removeAttribute('aria-current');
+        current = (i + slides.length) % slides.length;
+        slides[current].classList.add('is-active');
+        slides[current].removeAttribute('aria-hidden');
+        dots[current].classList.add('is-active');
+        dots[current].setAttribute('aria-current', 'true');
       }
-    });
+      function start() { stop(); if (!paused) timer = setInterval(function () { show(current + 1); }, 7000); }
+      function stop() { clearInterval(timer); }
+      function syncPause() {
+        pauseBtn.textContent = paused ? 'Play' : 'Pause';
+        pauseBtn.setAttribute('aria-pressed', String(paused));
+      }
+
+      dots.forEach(function (dot, i) {
+        dot.addEventListener('click', function () { show(i); start(); });
+      });
+      pauseBtn.addEventListener('click', function () { paused = !paused; syncPause(); start(); });
+      document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
+      syncPause();
+      start();
+
+      // Nav turns solid once the hero scrolls away
+      var nav = document.getElementById('siteNav');
+      new IntersectionObserver(function (entries) {
+        nav.classList.toggle('is-solid', !entries[0].isIntersecting);
+      }, { rootMargin: '-72px 0px 0px 0px' }).observe(document.querySelector('.hero'));
+
+      // Mobile menu
+      var toggle = document.getElementById('navToggle');
+      toggle.addEventListener('click', function () {
+        var open = nav.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      });
+      document.querySelectorAll('#navLinks a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          nav.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
   </script>
 </body>
 
