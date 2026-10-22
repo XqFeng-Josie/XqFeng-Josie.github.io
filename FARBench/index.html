@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FARBench: How Far Are LLM Agents from Autonomous Research?</title>
+<link rel="canonical" href="https://xqfeng-josie.github.io/FARBench/">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="stylesheet" href="assets/case-replays.css?v=controls-6">
+<script src="assets/case-replays.js?v=cifar-5"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.3/dist/cdn.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github.min.css">
@@ -216,11 +220,36 @@ body {
 .overview-hero {
   text-align: center;
   padding: 60px 24px 48px;
-  background: linear-gradient(180deg, var(--bg-base) 0%, var(--bg-surface) 100%);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 3% 12%, rgba(193, 147, 71, 0.16), transparent 52%),
+    radial-gradient(ellipse at 97% 18%, rgba(165, 153, 102, 0.13), transparent 48%),
+    radial-gradient(ellipse at 50% 30%, rgba(255, 250, 232, 0.56), transparent 65%),
+    linear-gradient(180deg, var(--bg-base) 0%, var(--bg-surface) 100%);
   border-bottom: 1px solid var(--border-dim);
 }
 
+/* Static paper grain stays at the edges and fades before the next section. */
+.overview-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: url('assets/paper-grain.svg') repeat;
+  opacity: 0.14;
+  mix-blend-mode: multiply;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 25%, transparent 12%, #000 85%), linear-gradient(#000 55%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: radial-gradient(ellipse at 50% 25%, transparent 12%, #000 85%), linear-gradient(#000 55%, transparent 100%);
+  mask-composite: intersect;
+}
+
 .overview-hero-inner {
+  position: relative;
+  z-index: 1;
   max-width: 940px;
   margin: 0 auto;
 }
@@ -1559,8 +1588,8 @@ body {
 @media (min-width: 1180px) {
   .overview-content-shell {
     display: grid;
-    grid-template-columns: 206px minmax(0, 1fr);
-    gap: 30px;
+    grid-template-columns: 180px minmax(0, 1fr);
+    gap: 24px;
     width: min(100%, 1420px);
     margin: 0 auto;
     padding: 0 24px;
@@ -1592,6 +1621,13 @@ body {
     padding: 8px 9px;
   }
 }
+
+/* Abstract uses the same reading column as the research sections. */
+.ov-abstract-copy { color: var(--text-secondary); font-size: 15px; line-height: 1.9; text-align: justify; text-align-last: left; hyphens: auto; overflow-wrap: break-word; }
+.ov-abstract-copy p + p { margin-top: 16px; }
+.ov-abstract-copy strong { color: var(--text-primary); font-weight: 500; }
+#ov-abstract .ov-section-head { margin-bottom: 20px; }
+@media (max-width: 768px) { .ov-abstract-copy { font-size: 14px; line-height: 1.8; } }
 
 /* generic overview section */
 .ov-section { max-width: 1140px; margin: 0 auto; padding: 56px 28px 8px; scroll-margin-top: 70px; }
@@ -4700,6 +4736,57 @@ a.btn { text-decoration: none; }
   .bench-pie-wrap { min-height: 296px; }
 }
 </style>
+<!-- Author information and homepage layout, using the original palette and fonts. -->
+<style id="overview-publication-style">
+.overview-project-logo { display: inline-block; width: 56px; height: 56px; object-fit: contain; vertical-align: middle; margin-right: 8px; }
+.header-logo-icon { object-fit: contain; }
+.overview-authors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 22px;
+  list-style: none;
+  margin: 0 0 18px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+.overview-authors sup { color: var(--accent); font-size: 11px; margin-left: 3px; }
+.overview-affiliations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 20px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.overview-affiliations sup { color: var(--accent); margin-right: 4px; }
+.overview-equal { margin: 10px 0 28px; color: var(--text-dim); font-size: 12px; }
+@media (min-width: 1180px) {
+  /* Slimmer side rails keep the wider reading column centered. */
+  .overview-view .overview-content-shell {
+    grid-template-columns: 180px minmax(0, 1fr) 180px;
+  }
+  .overview-view .ov-nav { padding-left: 10px; padding-right: 10px; border: 0; border-right: 1px solid var(--border-dim); border-radius: 0; margin-top: 72px; box-shadow: none; }
+}
+@media (max-width: 768px) {
+  .overview-authors { font-size: 16px; column-gap: 16px; }
+  .overview-affiliations { flex-direction: column; gap: 4px; font-size: 12px; }
+}
+/* The paper figure scales as a whole; open the image to inspect fine details. */
+.protocol-figure { margin: 0; }
+.protocol-figure a { display: block; }
+.protocol-figure img { display: block; width: 100%; height: auto; }
+#ov-protocol .overview-teaser { container-type: inline-size; }
+@container (max-width: 720px) {
+  .agent-demo-layout { grid-template-columns: minmax(0, 1fr); }
+  .agent-demo-timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@container (max-width: 580px) {
+  .agent-demo-timeline, .agent-demo-footer { grid-template-columns: minmax(0, 1fr); }
+}
+</style>
 <script>
 window.FARBENCH_STATIC_DASHBOARD = true;
 </script>
@@ -4711,14 +4798,7 @@ window.FARBENCH_STATIC_DASHBOARD = true;
   <!-- ═══ Header ═══ -->
   <header class="header">
     <div class="header-logo" @click="navigate('#/')">
-      <svg class="header-logo-icon" viewBox="0 0 24 24" aria-hidden="true" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="7.5" r="3.25"></circle>
-        <path d="M6.5 20v-1.2c0-2.9 2.6-5.3 5.5-5.3s5.5 2.4 5.5 5.3V20"></path>
-        <path d="M4 11.5h1.8"></path>
-        <path d="M18.2 11.5H20"></path>
-        <path d="M7.4 3.7 6.1 2.4"></path>
-        <path d="M16.6 3.7 17.9 2.4"></path>
-      </svg>
+      <img class="header-logo-icon" src="logo.png" width="22" height="22" alt="" />
       <span class="header-logo-name">FARBench</span>
     </div>
     <nav class="header-nav">
@@ -4746,13 +4826,25 @@ window.FARBENCH_STATIC_DASHBOARD = true;
     <div x-show="view === 'overview'" class="view overview-view">
       <div class="overview-hero">
         <div class="overview-hero-inner">
-          <h1 class="overview-title ov-fade" style="animation-delay:.06s"><strong>FARBench</strong>: How Far Are LLM Agents from Autonomous Research?</h1>
-          <p class="overview-desc ov-fade" style="animation-delay:.12s">
-            FARBench tests whether LLM agents can move beyond assistance and make autonomous progress,
-            running the full research loop from an empty workspace across <strong>29 ML tasks</strong> in
-            <strong>5 domains</strong>.
-          </p>
+          <h1 class="overview-title ov-fade" style="animation-delay:.06s"><img class="overview-project-logo" src="logo.png" width="56" height="56" alt="" /><strong>FARBench</strong>: How Far Are LLM Agents from Autonomous Research?</h1>
+          <ul class="overview-authors" aria-label="Authors">
+            <li>Jiajun Xu<sup>1,*</sup></li>
+            <li>Xiaoqin Feng<sup>2,*</sup></li>
+            <li>Yanru Wu<sup>3</sup></li>
+            <li>Jiageng Mao<sup>2</sup></li>
+            <li>Yue Wang<sup>2</sup></li>
+          </ul>
+          <div class="overview-affiliations" aria-label="Affiliations">
+            <span><sup>1</sup>Tsinghua University</span>
+            <span><sup>2</sup>University of Southern California</span>
+            <span><sup>3</sup>Huazhong University of Science and Technology</span>
+          </div>
+          <p class="overview-equal">* Equal contribution</p>
           <div class="overview-actions ov-fade" style="animation-delay:.18s">
+            <button type="button" class="btn btn-outline btn-soon" disabled aria-label="Paper — coming soon" title="Paper link coming soon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></svg>
+              Paper <span class="btn-soon-tag">Coming soon</span>
+            </button>
             <button class="btn btn-primary" @click="navigate('#/visualizer')">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 5v14l11-7z"/></svg>
               Explore Results
@@ -4761,9 +4853,13 @@ window.FARBENCH_STATIC_DASHBOARD = true;
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 19V9M12 19V5M19 19v-7"/></svg>
               Leaderboard
             </button>
-            <a class="btn btn-outline" href="https://anonymous.4open.science/r/FARBench/README.md" target="_blank" rel="noopener">
+            <a class="btn btn-outline" href="https://github.com/physical-superintelligence-lab/FARBench" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 9 7 12l3 3M14 9l3 3-3 3M13 5l-2 14"/></svg>
-              GitHub
+              Code
+            </a>
+            <a class="btn btn-outline" href="https://huggingface.co/datasets/USC-PSI-Lab/FARBench" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
+              Dataset
             </a>
           </div>
         </div>
@@ -4773,173 +4869,55 @@ window.FARBENCH_STATIC_DASHBOARD = true;
         <nav class="ov-nav" aria-label="Overview contents">
           <div class="ov-nav-label">Contents</div>
           <div class="ov-nav-items">
+            <button type="button" class="ov-nav-item" @click="scrollToOverview('ov-abstract')">
+              <span class="ov-nav-idx">01</span><span>Abstract</span>
+            </button>
             <button type="button" class="ov-nav-item" @click="scrollToOverview('ov-protocol')">
-              <span class="ov-nav-idx">01</span><span>How it works</span>
+              <span class="ov-nav-idx">02</span><span>How it works</span>
             </button>
             <button type="button" class="ov-nav-item" @click="scrollToOverview('ov-domains')">
-              <span class="ov-nav-idx">02</span><span>Coverage</span>
+              <span class="ov-nav-idx">03</span><span>Coverage</span>
             </button>
             <button type="button" class="ov-nav-item" @click="scrollToOverview('ov-findings')">
-              <span class="ov-nav-idx">03</span><span>What we learned</span>
+              <span class="ov-nav-idx">04</span><span>What we learned</span>
             </button>
             <button type="button" class="ov-nav-item" x-show="isStatic" @click="scrollToOverview('ov-case-studies')">
-              <span class="ov-nav-idx">04</span><span>Case Study</span>
+              <span class="ov-nav-idx">05</span><span>Case Study</span>
             </button>
             <button type="button" class="ov-nav-item" @click="scrollToOverview('ov-cite')">
-              <span class="ov-nav-idx" x-text="isStatic ? '05' : '04'"></span><span>Citation</span>
+              <span class="ov-nav-idx" x-text="isStatic ? '06' : '05'"></span><span>Citation</span>
             </button>
           </div>
         </nav>
         <div class="overview-content-main">
 
+      <!-- § Abstract -->
+      <section id="ov-abstract" class="ov-section" aria-labelledby="ov-abstract-title">
+        <div class="ov-section-head">
+          <h2 id="ov-abstract-title" class="ov-eyebrow">01 · Abstract</h2>
+        </div>
+        <div class="ov-abstract-copy">
+          <p>Can AI agents move beyond research assistance to make autonomous progress? We introduce FARBench, a benchmark of 29 frontier research tasks across five domains. Agents start from an empty workspace and complete an end-to-end research loop: designing experiments, executing code, interpreting feedback, and refining solutions under controlled compute and time budgets. Across 11 frontier LLMs, GPT-5.5 achieves the highest score of 56.05 across all 29 tasks. A human reference assembled from published task-specific methods scores 69.03 on tasks with available published values. While current agents are proficient at initial code generation, they struggle to turn experimental feedback into sustained gains, highlighting long-horizon iteration as a central challenge for autonomous research.</p>
+        </div>
+      </section>
+
       <!-- § Architecture (framework diagram + live replay) -->
       <section id="ov-protocol" class="ov-section">
         <div class="ov-section-head">
-          <div class="ov-eyebrow">01 · How it works</div>
+          <div class="ov-eyebrow">02 · How it works</div>
           <p>At each step the agent reads an observation (task spec, files, code, command output, metrics),
              writes an action (edit files, run a command, submit for evaluation), and the sandbox returns
              results that feed the next step — a closed empirical loop under a fixed budget.</p>
         </div>
 
       <div class="overview-teaser" aria-label="FARBench evaluation protocol">
-        <div class="framework-panel">
-          <div class="framework-graph" aria-label="FARBench project framework">
-            <svg class="framework-links" viewBox="0 0 1000 270" preserveAspectRatio="none" aria-hidden="true">
-              <path class="framework-link framework-link-flow" d="M150 132 C210 124 255 124 305 132"></path>
-              <path class="framework-link framework-link-flow" d="M560 130 C615 105 650 105 700 126"></path>
-              <path class="framework-link framework-link-flow" d="M760 118 C812 78 852 70 910 74"></path>
-              <path class="framework-link framework-link-flow" d="M760 151 C812 182 850 190 910 190"></path>
-              <path class="framework-link framework-link-flow" d="M910 222 C730 258 500 250 342 214"></path>
-            </svg>
-
-            <section class="flow-stage tasks-stage">
-              <div class="stage-title">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="4" y="4" width="6" height="6" rx="1.5"></rect><rect x="14" y="4" width="6" height="6" rx="1.5"></rect><rect x="4" y="14" width="6" height="6" rx="1.5"></rect><rect x="14" y="14" width="6" height="6" rx="1.5"></rect></svg>
-                Tasks
-              </div>
-              <div class="task-stack">
-                <div class="task-mini">
-                  <div class="task-mini-name">task.yaml</div>
-                  <div class="task-mini-meta">description, metric, budget</div>
-                </div>
-                <div class="task-type-grid" aria-label="Task types">
-                  <div class="task-type-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="4" y="5" width="16" height="14" rx="2"></rect><path d="M7 16l4-4 3 3 2-2 3 3"></path><circle cx="9" cy="9" r="1.2"></circle></svg>
-                    Vision
-                  </div>
-                  <div class="task-type-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M4 12h2l2-5 3 10 3-14 3 9h3"></path></svg>
-                    Speech
-                  </div>
-                  <div class="task-type-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M5 7h14"></path><path d="M5 12h10"></path><path d="M5 17h13"></path></svg>
-                    NLP
-                  </div>
-                  <div class="task-type-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M8 17l4-4 4 4"></path><path d="M12 13V5"></path><path d="M7 19h10"></path><path d="M5 9h14"></path></svg>
-                    Robotics
-                  </div>
-                  <div class="task-type-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M5 17l4-8 4 6 4-10 2 12"></path><path d="M4 20h16"></path></svg>
-                    Science
-                  </div>
-                  <div class="task-type-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="8"></circle><path d="M12 8v4l3 2"></path></svg>
-                    Forecast
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <div class="flow-rail" aria-hidden="true">
-              <span class="flow-rail-label">task context</span>
-            </div>
-
-            <section class="flow-stage observation-stage">
-              <div class="stage-title">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M5 4h14v16H5z"></path><path d="M8 8h8"></path><path d="M8 12h8"></path><path d="M8 16h5"></path></svg>
-                Observation
-              </div>
-              <div class="observation-grid">
-                <div class="observation-card">
-                  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M6 3.5h8l4 4V20a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 5 20V5A1.5 1.5 0 0 1 6.5 3.5"></path><path d="M14 3.5V8h4"></path></svg>
-                  <div class="observation-card-title">Task spec</div>
-                  <div class="observation-card-copy">description + hints</div>
-                </div>
-                <div class="observation-card">
-                  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M4 7.5h6l2 2h8v8.5A1.5 1.5 0 0 1 18.5 19h-13A1.5 1.5 0 0 1 4 17.5z"></path></svg>
-                  <div class="observation-card-title">Files</div>
-                  <div class="observation-card-copy">workspace listing</div>
-                </div>
-                <div class="observation-card">
-                  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M10 9l-3 3 3 3"></path><path d="M14 9l3 3-3 3"></path><path d="M13 5l-2 14"></path></svg>
-                  <div class="observation-card-title">Code</div>
-                  <div class="observation-card-copy">file contents</div>
-                </div>
-                <div class="observation-card">
-                  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="4" y="5" width="16" height="14" rx="2"></rect><path d="M4 9h16"></path><path d="M8 13l2 2-2 2"></path><path d="M13 17h3"></path></svg>
-                  <div class="observation-card-title">Command</div>
-                  <div class="observation-card-copy">stdout / stderr</div>
-                </div>
-                <div class="observation-card">
-                  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 4l9 16H3z"></path><path d="M12 9v5"></path><path d="M12 17h.01"></path></svg>
-                  <div class="observation-card-title">Error</div>
-                  <div class="observation-card-copy">failure signal</div>
-                </div>
-                <div class="observation-card">
-                  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M5 19V5"></path><path d="M5 19h14"></path><path d="M8 15l3-3 3 2 4-6"></path></svg>
-                  <div class="observation-card-title">Metrics</div>
-                  <div class="observation-card-copy">eval + budget</div>
-                </div>
-              </div>
-            </section>
-
-            <div class="flow-rail" aria-hidden="true">
-              <span class="flow-rail-label">observation</span>
-            </div>
-
-            <section class="flow-stage agent-stage">
-              <div class="framework-agent-ring"></div>
-              <div class="framework-agent-title">Agent</div>
-              <div class="framework-agent-sub">reads observation, writes Action</div>
-              <div class="agent-action-list">
-                <span>files_to_write</span>
-                <span>command</span>
-                <span>submit_eval</span>
-                <span>done</span>
-              </div>
-            </section>
-
-            <div class="flow-rail" aria-hidden="true">
-              <span class="flow-rail-label">action</span>
-            </div>
-
-            <section class="flow-stage environment-stage">
-              <div class="stage-title">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 3l7 3v5c0 4.5-2.8 7.9-7 10-4.2-2.1-7-5.5-7-10V6z"></path><path d="M9 12l2 2 4-5"></path></svg>
-                Environment
-              </div>
-              <div class="sandbox-card">
-                <div class="sandbox-card-title">
-                  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="4" y="5" width="16" height="14" rx="2"></rect><path d="M4 9h16"></path><path d="M8 13l2 2-2 2"></path><path d="M13 17h3"></path></svg>
-                  Agent Sandbox
-                </div>
-                <div class="sandbox-card-copy">writes workspace, runs training commands, returns logs</div>
-              </div>
-              <div class="sandbox-boundary">isolated evaluation</div>
-              <div class="sandbox-card">
-                <div class="sandbox-card-title">
-                  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M5 19V5"></path><path d="M5 19h15"></path><path d="M8 16l3-4 3 2 4-7"></path></svg>
-                  Eval Sandbox
-                </div>
-                <div class="sandbox-card-copy">runs predict.py on test inputs, evaluator scores predictions</div>
-              </div>
-            </section>
-          </div>
-
-          <div class="flow-return" aria-hidden="true">
-            <span class="flow-return-label"><span class="flow-return-dot"></span>command output / eval result -> next observation</span>
-          </div>
+        <div class="protocol-media">
+          <figure class="protocol-figure">
+            <a href="overview.png" target="_blank" rel="noopener" aria-label="Open FARBench framework figure at full resolution">
+              <img src="overview.png" width="1800" height="737" loading="lazy"
+                   alt="FARBench overview: tasks across five research domains provide specifications and evaluation scripts; an AI research agent iterates on code using observations and evaluation feedback, with training curves, achievement, time, and iteration budgets tracked." />
+            </a>
+          </figure>
 
           <section class="agent-demo-panel" x-show="agentDemo" aria-label="Agent workflow replay">
             <h2 class="agent-demo-title">Agent Workflow Replay</h2>
@@ -5194,7 +5172,7 @@ window.FARBENCH_STATIC_DASHBOARD = true;
       <!-- § Domains & Tasks -->
       <section id="ov-domains" class="ov-section">
         <div class="ov-section-head">
-          <div class="ov-eyebrow">02 · Coverage</div>
+          <div class="ov-eyebrow">03 · Coverage</div>
           <p>29 real-world ML tasks across five research domains. Each task ships with a description,
              a primary metric, a compute budget, and an automated evaluator.</p>
         </div>
@@ -5214,7 +5192,7 @@ window.FARBENCH_STATIC_DASHBOARD = true;
       <!-- § Key Findings -->
       <section id="ov-findings" class="ov-section">
         <div class="ov-section-head">
-          <div class="ov-eyebrow">03 · What we learned</div>
+          <div class="ov-eyebrow">04 · What we learned</div>
           <p>Headline takeaways from <span x-text="rqData?.summary?.episodes ?? 319"></span> agent–task
              episodes across <span x-text="rqData?.summary?.models ?? 11"></span> frontier models.</p>
         </div>
@@ -5348,65 +5326,98 @@ window.FARBENCH_STATIC_DASHBOARD = true;
       </section>
 
       <!-- § Case Study -->
-      <section id="ov-case-studies" class="ov-section trajectory-case-section" x-show="isStatic && (failureCasesLoading || failureCases?.cases?.length)">
+      <section id="ov-case-studies" class="ov-section trajectory-case-section" x-show="isStatic">
         <div class="ov-section-head">
-          <div class="ov-eyebrow">04 · Case Study</div>
+          <div class="ov-eyebrow">05 · Case Study</div>
           <p>Five representative trajectories connect the aggregate findings above to concrete agent-task episodes:
              one productive loop, and four ways feedback fails to become a better research decision.</p>
         </div>
-        <div x-show="failureCasesLoading && !failureCases" class="lb-chart-card skeleton" style="height:180px"></div>
-        <div x-show="failureCases?.cases?.length" class="case-study-intro">
-          <strong>Case Study: Five Recurring Regimes.</strong>
-          The figure shows one representative trajectory per regime. Read them as evidence for the aggregate diagnostics,
-          not as another leaderboard: the productive regime couples evaluator signal to a new hypothesis, while the other
-          four exhibit <em>wrong-layer fixation</em>, where the agent keeps editing the same layer despite negative feedback.
-        </div>
-        <div class="case-study-layout" x-show="failureCases?.cases?.length">
-          <figure class="case-study-figure">
-            <img src="figs/trajectory_case_studies.png" loading="lazy"
-                 alt="Five recurring regimes: productive iteration, early plateau, stuck-low, submitted but scored zero, and never enters the loop." />
-            <figcaption>x-axis = iteration · y-axis = task-normalized achievement. Blue = valid eval, orange step = best-so-far, gray ✗ = no valid score.</figcaption>
-          </figure>
-          <ol class="regime-explanations">
-            <template x-for="study in failureCases?.cases || []" :key="study.id">
-              <li>
-                <button type="button" class="regime-case-button"
-                        @click="goToCaseExperiment(study)"
-                        :aria-label="'Open trajectory for ' + (study.title || 'case study')">
-                  <span class="regime-case-head">
-                    <span class="regime-tag" x-text="'(' + (study.index || '').toLowerCase() + ') ' + study.title"></span>
-                    <span class="regime-case-action">Open trajectory</span>
-                  </span>
-                  <span class="regime-case-meta">
-                    <span x-text="study.model"></span>
-                    <span x-text="study.task"></span>
-                    <span x-show="study.achievement_summary" x-text="study.achievement_summary"></span>
-                  </span>
-                  <p x-text="study.thesis"></p>
-                </button>
-              </li>
-            </template>
-          </ol>
+        <div class="cr" x-data="caseReplays()" aria-label="Research trajectory player">
+          <div x-show="loading" class="cr-message">Loading research trajectories…</div>
+          <div x-show="error" class="cr-message"><span x-text="error"></span> <button class="btn" @click="load()">Retry</button></div>
+          <template x-if="study">
+            <div>
+              <div class="cr-selector" role="group" aria-label="Choose a case study">
+                <template x-for="(item, i) in cases" :key="item.id">
+                  <button type="button" :class="{ 'is-selected': selected === i }" :aria-pressed="selected === i" :aria-label="'Case ' + (i + 1) + ': ' + item.title" @click="choose(i)">
+                    <span x-text="'Case ' + (i + 1)"></span>
+                  </button>
+                </template>
+              </div>
+              <div class="cr-stage" :class="'cr-tone-' + study.tone">
+                <div class="cr-heading">
+                  <div><div class="cr-kicker">FIELD NOTES <span> / </span> <span x-text="'CASE ' + (selected + 1)"></span></div><h3 x-text="study.title"></h3><p x-text="study.tagline"></p></div>
+                  <div class="cr-identity"><strong x-text="study.model"></strong><span x-text="study.task"></span><span class="cr-recorded"><i></i> Recorded trajectory</span></div>
+                </div>
+                <div class="cr-workspace">
+                  <div class="cr-narrative">
+                    <div class="cr-panel-label"><span>01 / AGENT DECISION</span><span class="cr-iteration" x-text="'ITER ' + String(frame.iteration).padStart(2, '0')"></span></div>
+                    <div class="cr-decision" x-ref="decision" x-effect="cursor; selected; $nextTick(() => animateFrame())">
+                      <div class="cr-event-label" x-text="evidence?.label || (ended ? 'Final iteration' : 'Research in progress')"></div>
+                      <blockquote x-show="evidence" x-text="evidence ? '“' + evidence.quote + '”' : ''"></blockquote>
+                      <p class="cr-description" x-show="!evidence" x-text="frame.description || 'No decision note recorded for this iteration.'"></p>
+                      <span class="cr-source" x-text="evidence ? 'Curated excerpt from the trajectory' : 'Recorded iteration note'"></span>
+                    </div>
+                    <div class="cr-terminal"><div class="cr-terminal-bar"><span class="cr-terminal-dots">● ● ●</span><span>action / shell</span></div><pre><code x-text="frame.command || 'No shell command recorded in this iteration.'"></code></pre><div class="cr-files" x-text="frame.files.length ? 'Files · ' + frame.files.join(', ') : 'No file writes recorded'"></div></div>
+                  </div>
+                  <div class="cr-results">
+                    <div class="cr-panel-label"><span>02 / EMPIRICAL FEEDBACK</span><span x-text="study.higher_is_better ? '↑ HIGHER IS BETTER' : '↓ LOWER IS BETTER'"></span></div>
+                    <div class="cr-metrics"><div><span>Current evaluation</span><strong x-text="format(frame.value)"></strong></div><div><span>Best so far</span><strong class="cr-best" x-text="format(best)"></strong></div><div><span>Valid scores</span><strong x-text="accepted.length"></strong></div></div>
+                    <div class="cr-chart-label" x-text="study.metric_name + ' · raw metric · theoretical references'"></div>
+                    <div class="cr-theory-summary">
+                      <span class="cr-theory-best">🌟 Theoretical best <strong x-text="format(study.theoretical_best)"></strong></span>
+                      <span x-show="Number.isFinite(study.theoretical_worst)">Theoretical worst <strong x-text="format(study.theoretical_worst)"></strong></span>
+                    </div>
+                    <svg class="cr-chart" viewBox="0 0 560 258" role="img" :aria-label="study.metric_name + ' through iteration ' + frame.iteration + ', theoretical best ' + format(study.theoretical_best)" x-html="chartMarkup"></svg>
+                    <div class="cr-legend"><span><i class="cr-dot"></i>Valid score (connected)</span><span><i class="cr-line"></i>Agent best so far</span><span>× No valid score</span></div>
+                    <div class="cr-bound-note" x-show="study.theoretical_worst === null">RMSE has no finite theoretical worst value.</div>
+                    <div class="cr-feedback" :class="{ 'cr-feedback-invalid': frame.submitted && frame.value === null }"><span class="cr-feedback-dot"></span><span x-text="status"></span></div>
+                  </div>
+                </div>
+                <div class="cr-transport" role="group" aria-label="Playback controls">
+                  <div class="cr-playback-buttons">
+                    <button type="button" class="cr-step" @click="seek(cursor - 1)" :disabled="cursor === 0" aria-label="Previous iteration" title="Previous iteration">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M18 5l-10 7 10 7z"/></svg>
+                    </button>
+                    <button type="button" class="cr-play" @click="toggle()" :aria-label="playing ? 'Pause replay' : ended ? 'Replay case' : 'Play case'" :title="playing ? 'Pause' : ended ? 'Replay' : 'Play'" :aria-pressed="playing">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path x-show="!playing" d="m8 5 11 7-11 7z"/><path x-show="playing" d="M7 5h3v14H7zM14 5h3v14h-3z"/></svg>
+                    </button>
+                    <button type="button" class="cr-step" @click="seek(cursor + 1)" :disabled="ended" aria-label="Next iteration" title="Next iteration">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5v14M6 5l10 7-10 7z"/></svg>
+                    </button>
+                  </div>
+                  <input class="cr-scrubber" type="range" min="0" :max="study.frames.length - 1" :value="cursor" @input="seek($event.target.value)" aria-label="Replay iteration" :aria-valuetext="'Iteration ' + frame.iteration" :style="'--progress:' + (cursor / Math.max(1, study.frames.length - 1) * 100) + '%'">
+                  <span class="cr-counter" :title="'Iteration ' + frame.iteration + ' of ' + study.total_iterations" x-text="frame.iteration + ' / ' + study.total_iterations"></span>
+                  <select class="cr-speed" aria-label="Playback speed" :value="speed" @change="speed = Number($event.target.value); if (playing) schedule()">
+                    <option value="1">1×</option><option value="2">2×</option><option value="3">3×</option><option value="5">5×</option>
+                  </select>
+                </div>
+                <div class="cr-chapters" aria-label="Key moments"><span>KEY MOMENTS</span><template x-for="moment in study.evidence" :key="moment.iteration"><button type="button" @click="jump(moment.iteration)" :class="{ 'is-current': moment.iteration === frame.iteration }"><span x-text="String(moment.iteration).padStart(2, '0')"></span><span x-text="moment.label"></span></button></template></div>
+                <div class="cr-takeaway"><div class="cr-kicker" x-text="ended ? 'THE TAKEAWAY' : 'WHAT TO WATCH'"></div><p x-text="ended ? study.diagnosis : study.thesis"></p><a :href="trajectoryLink">Inspect this iteration <span aria-hidden="true">↗</span></a></div>
+              </div>
+            </div>
+          </template>
         </div>
       </section>
 
       <!-- § Cite -->
       <section id="ov-cite" class="ov-section">
         <div class="ov-section-head">
-          <div class="ov-eyebrow">05 · Citation</div>
+          <div class="ov-eyebrow">06 · Citation</div>
           <p>Paper in preparation (2026). The BibTeX entry will be updated on release.</p>
         </div>
         <div class="ov-cite">@misc{farbench2026,
   title  = {FARBench: How Far Are LLM Agents from Autonomous Research?},
-  author = {Anonymous Authors},
+  author = {Xu, Jiajun and Feng, Xiaoqin and Wu, Yanru and Mao, Jiageng and Wang, Yue},
   year   = {2026},
-  note   = {Under review. Code &amp; data: https://anonymous.4open.science/r/FARBench/}
+  url    = {https://xqfeng-josie.github.io/FARBench/},
+  note   = {Code: https://github.com/physical-superintelligence-lab/FARBench; Dataset: https://huggingface.co/datasets/USC-PSI-Lab/FARBench}
 }</div>
       </section>
 
       <footer class="ov-footer">
         FARBench — a benchmark for autonomous ML-research agents.<br>
-        Anonymous submission · 2026 · <a href="https://anonymous.4open.science/r/FARBench/README.md" target="_blank" rel="noopener">Code &amp; Data</a>
+        2026 · <a href="https://github.com/physical-superintelligence-lab/FARBench" target="_blank" rel="noopener">Code</a> · <a href="https://huggingface.co/datasets/USC-PSI-Lab/FARBench" target="_blank" rel="noopener">Dataset</a> · <a href="https://xqfeng-josie.github.io/FARBench/">Website</a>
       </footer>
 
         </div>

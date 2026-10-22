@@ -1,0 +1,89 @@
+/* Ivory & Olive — color-only theme; loaded after the existing layout styles. */
+:root {
+  --bg-deep: #F4F5EF;
+  --bg-base: #FAFAF7;
+  --bg-surface: #F1F3EC;
+  --bg-elevated: #FFFFFF;
+  --bg-hover: #E9EDE2;
+  --border: #CED5C6;
+  --border-dim: #E0E5D9;
+  --text-primary: #292F26;
+  --text-secondary: #606B59;
+  --text-dim: #697460;
+  --accent: #506440;
+  --accent-dim: #50644010;
+  --accent-glow: #50644024;
+  --success: #506440;
+  --neutral: #697460;
+  --chart-line-1: #506440;
+  --chart-best: #292F2640;
+  --surface-shadow: 0 12px 32px -22px rgba(35, 49, 29, .20), 0 1px 3px rgba(35, 49, 29, .03);
+}
+body, .overview-view { background: var(--bg-base); }
+::selection { background: #DDE6CE; color: #293622; }
+.header { background: #FAFAF7F5; border-bottom-color: var(--border-dim); }
+.header-nav a.active { background: #E9EEDD; color: #40552F; }
+.overview-hero { background: radial-gradient(ellipse at 50% 0%, #EAF0DF70, transparent 70%), linear-gradient(180deg, #FDFEFA, #FAFAF7); border-bottom-color: var(--border-dim); }
+.overview-title strong { color: #40552F; }
+.ov-nav { background: #FAFAF7EB; }
+.ov-nav-item:hover { background: #E9EEDD; }
+.overview-actions .btn { box-shadow: 0 1px 2px #25321D0A; }
+.btn { color: #FFFFFF; }
+.btn:hover { filter: none; }
+.btn-outline { color: var(--accent); border-color: #BAC5AF; background: #FFFFFF80; }
+.btn-outline:hover { background: #ECF1E4; border-color: var(--accent); }
+.btn-primary { background: var(--accent); color: #FFFFFF; box-shadow: 0 4px 12px #40552F1A; }
+.btn-primary:hover { background: #40552F; }
+.overview-actions .btn-soon:disabled { opacity: 1; color: #697460; background: #F1F3EC; border: 1px dashed #CDD5C4; box-shadow: none; }
+.ov-findings-quote { background: #EDF2E6; border-color: #B4C39F; }
+.ov-cite, .ov-fig-examples img, .ov-dom-group { box-shadow: var(--surface-shadow); }
+/* Case playback: white canvas, sage controls, charcoal terminal, restrained brass references. */
+.cr { --cr-accent: #506440; }
+.cr-tone-plateau { --cr-accent: #88682E; }
+.cr-tone-stuck { --cr-accent: #77648B; }
+.cr-tone-zero { --cr-accent: #A45740; }
+.cr-tone-contract { --cr-accent: #536F7C; }
+.cr :focus-visible { outline-color: var(--accent); }
+.cr-selector button:hover { background: #EDF2E6; }
+.cr-selector button.is-selected, .cr-play { background: #435736; border-color: #435736; color: #FFFFFF; }
+.cr-play:hover { background: #35472A; }
+.cr-stage { background: #FFFFFF; border-color: #D5DDCC; box-shadow: 0 18px 48px -28px #2E412329, 0 2px 5px #2E412306; }
+.cr-heading { background: linear-gradient(110deg, #F0F4E9, #FBFCF8); border-color: var(--border-dim); }
+.cr-narrative, .cr-chapters { border-color: var(--border-dim); }
+.cr-panel-label, .cr-source { color: #697460; }
+.cr-terminal { background: #252D24; color: #E5ECDD; }
+.cr-terminal-bar, .cr-files { color: #BAC7AF; border-color: #FFFFFF14; }
+.cr-terminal-dots { color: #87987A; }
+.cr-chart text { fill: #697460; }
+.cr-grid { stroke: #DEE4D7; }
+.cr-playhead { stroke: #9CA98E; }
+.cr-score-dot, .cr-agent-best { stroke: #FFFFFF; }
+.cr-score-dot { fill: #FFFFFF; stroke: #5A8FA0; }
+.cr-chart .cr-missing { fill: #88917F; }
+.cr-feedback { background: #F0F4EA; }
+.cr-feedback-invalid { background: #F8F2E9; }
+.cr-transport { background: #F0F3EB; border-color: var(--border-dim); }
+.cr-step, .cr-speed { color: #606B59; }
+.cr-scrubber { background: linear-gradient(to right, var(--cr-accent) var(--progress), #DCE3D3 var(--progress)); }
+.cr-scrubber::-webkit-slider-thumb { border-color: #FFFFFF; box-shadow: 0 0 0 1px #BFCBB3; }
+.cr-scrubber::-moz-range-thumb { border-color: #FFFFFF; }
+.cr-chapters button { border-color: #DEE4D7; }
+.cr-chapters button:hover, .cr-chapters button.is-current { background: #EEF3E6; border-color: #B6C5A5; }
+.cr-takeaway { background: #F5F7F0; border-color: var(--border-dim); }
+.cr-reference-best line { stroke: #A8893C; }
+.cr-reference-worst line { stroke: #9CA58F; }
+.cr-chart .cr-reference text { stroke: #FFFFFF; }
+.cr-chart .cr-reference-best text { fill: #826522; }
+.cr-chart .cr-reference-worst text { fill: #69735D; }
+.cr-theory-summary { color: #69735D; }
+.cr-theory-summary > span { background: #F4F6EF; border-color: #DEE4D5; }
+.cr-theory-summary .cr-theory-best { background: #FBF6E7; border-color: #DFD0A2; color: #826522; }
+/* Keep data-table surfaces neutral as users move between the three views. */
+.lb-section-nav { background: #FAFAF7F0; border-color: var(--border-dim); }
+.lb-chart-card { background: #FFFFFF; border-color: var(--border-dim); box-shadow: var(--surface-shadow); }
+
+/* The workflow replay is a dark workspace, independent of the light page theme. */
+.agent-demo-panel { background: linear-gradient(180deg, #20251F, #141814); border-color: #343D30; color: #F0F4EA; box-shadow: 0 16px 36px -16px #20251F40; }
+.agent-demo-terminal { background: #0C100C; }
+.agent-demo-step-sub { color: #B4BEAA; }
+.agent-demo-stat-label { color: #B4BEAA; }
