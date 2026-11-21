@@ -18,11 +18,14 @@
       el.innerHTML = '<div class="people">' + people + '</div>' + (aff ? '<div class="aff">' + aff + '</div>' : '') + (C.notes ? '<div class="note">' + esc(C.notes) + '</div>' : '');
     }
     var L = C.links || {};
-    var ext = [['Paper', L.paper], ['arXiv', L.arxiv], ['Code', L.code], ['Dataset', L.dataset]].map(function (b) {
-      return b[1] ? '<a class="btn" href="' + esc(b[1]) + '" target="_blank" rel="noopener">' + b[0] + '</a>'
-                  : '<span class="btn soon">' + b[0] + ' <small>(coming soon)</small></span>';
+    var icon = function (c) { return '<i class="' + c + '" aria-hidden="true"></i>'; };
+    var ext = [['Paper', L.paper, 'fas fa-file-pdf'], ['arXiv', L.arxiv, 'ai ai-arxiv'], ['Code', L.code, 'fab fa-github'], ['Dataset', L.dataset, 'fas fa-database']].map(function (b) {
+      return b[1] ? '<a class="btn btn--solid" href="' + esc(b[1]) + '" target="_blank" rel="noopener">' + icon(b[2]) + b[0] + '</a>'
+                  : '<span class="btn btn--soon">' + icon(b[2]) + b[0] + ' <small>coming soon</small></span>';
     });
-    $('buttons').innerHTML = ext.join('') + '<a class="btn" href="#results">Leaderboard</a><a class="btn" href="#citation">Citation</a>';
+    $('buttons').innerHTML = ext.join('') +
+      '<a class="btn btn--ghost" href="#results">' + icon('fas fa-trophy') + 'Leaderboard</a>' +
+      '<a class="btn btn--ghost" href="#citation">' + icon('fas fa-quote-right') + 'Citation</a>';
   })();
 
   // ---- statistics
@@ -77,7 +80,9 @@
   $('ex-next').addEventListener('click', function () { state.i = (state.i + 1) % state.list.length; renderExample(); });
   $('ex-tabs').addEventListener('click', function (e) { var b = e.target.closest('.tab'); if (b) { state.set = b.dataset.set; renderExample(); } });
   document.addEventListener('click', function (e) {
-    if (e.target.tagName === 'IMG' && e.target.closest('.frames')) { $('zoom').firstElementChild.src = e.target.src; $('zoom').hidden = false; }
+    var fz = e.target.closest('.figure-zoom');
+    if (fz) { $('zoom').firstElementChild.src = fz.querySelector('img').src; $('zoom').hidden = false; }
+    else if (e.target.tagName === 'IMG' && e.target.closest('.frames')) { $('zoom').firstElementChild.src = e.target.src; $('zoom').hidden = false; }
     else if (e.target.closest('#zoom')) { $('zoom').hidden = true; }
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') $('zoom').hidden = true; });
@@ -86,7 +91,7 @@
   var COLS = D.columns, GROUPS = [['all', 'All'], ['instruction', 'Open, instruction'], ['thinking', 'Open, Thinking'], ['closed', 'Closed references']];
   var lb = { sort: 0, dir: -1, group: 'all' };
   $('lb-filter').innerHTML = GROUPS.map(function (g) { return '<button class="seg" data-g="' + g[0] + '" aria-pressed="' + (g[0] === 'all') + '">' + g[1] + '</button>'; }).join('');
-  function heat(v) { return 'background:rgba(var(--heat),' + (v / 100 * 0.32).toFixed(3) + ')'; }
+  function heat(v) { return 'background:rgba(var(--heat),' + (v / 100 * 0.24).toFixed(3) + ')'; }
   function renderBoard() {
     var rows = D.leaderboard.filter(function (r) { return lb.group === 'all' || r.group === lb.group; });
     rows.sort(function (a, b) { return lb.dir * (a.values[lb.sort] - b.values[lb.sort]); });
@@ -117,7 +122,8 @@
   // ---- citation
   $('copy').addEventListener('click', function () {
     var btn = this, text = $('bibtex').textContent;
-    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1500); };
+    var label = btn.querySelector('span') || btn;
+    var done = function () { label.textContent = 'Copied'; setTimeout(function () { label.textContent = 'Copy'; }, 1500); };
     if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, function () {});
     else { var r = document.createRange(); r.selectNodeContents($('bibtex')); var s = getSelection(); s.removeAllRanges(); s.addRange(r); document.execCommand('copy'); done(); }
   });
