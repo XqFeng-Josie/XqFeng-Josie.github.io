@@ -14,12 +14,12 @@
         var name = x.url ? '<a href="' + esc(x.url) + '">' + esc(x.name) + '</a>' : esc(x.name);
         return '<span>' + name + (marks ? '<sup>' + esc(marks) + '</sup>' : '') + '</span>';
       }).join('');
-      var aff = (C.affiliations || []).map(function (x, i) { return '<sup>' + (i + 1) + '</sup>' + esc(x); }).join(' &nbsp; ');
+      var aff = (C.affiliations || []).map(function (x, i) { return '<span class="aff-i"><sup>' + (i + 1) + '</sup>' + esc(x) + '</span>'; }).join(' &nbsp; ');
       el.innerHTML = '<div class="people">' + people + '</div>' + (aff ? '<div class="aff">' + aff + '</div>' : '') + (C.notes ? '<div class="note">' + esc(C.notes) + '</div>' : '');
     }
     var L = C.links || {};
     var icon = function (c) { return '<i class="' + c + '" aria-hidden="true"></i>'; };
-    var ext = [['Paper', L.paper, 'fas fa-file-pdf'], ['arXiv', L.arxiv, 'ai ai-arxiv'], ['Code', L.code, 'fab fa-github'], ['Dataset', L.dataset, 'fas fa-database']].map(function (b) {
+    var ext = [['arXiv', L.arxiv, 'ai ai-arxiv'], ['Code', L.code, 'fab fa-github'], ['Dataset', L.dataset, 'fas fa-database']].map(function (b) {
       return b[1] ? '<a class="btn btn--solid" href="' + esc(b[1]) + '" target="_blank" rel="noopener">' + icon(b[2]) + b[0] + '</a>'
                   : '<span class="btn btn--soon">' + icon(b[2]) + b[0] + ' <small>coming soon</small></span>';
     });
@@ -36,24 +36,42 @@
   var NOTE = { H: 'Four frames, including the intermediate frames that resolve the order.', L: 'Four frames with the same first and last frame as H, without the frames in between.',
                K: 'L plus two critical frames (outlined): the frames that distinguish H from L.', P: 'L plus two peripheral frames (outlined), which are not meant to resolve the order.' };
   var ORDER = { A: 'A before B', B: 'B before A', UNCLEAR: 'UNCLEAR' };
-  var state = { list: D.examples, i: 0, set: 'L' };
+  var GUESS = { A: 'A first', B: 'B first', UNCLEAR: 'Can’t tell' };
+  var GROUP = {}; D.leaderboard.forEach(function (r) { GROUP[r.name] = r.group; });
+  var INST = D.models.map(function (m, k) { return GROUP[m] === 'instruction' ? k : -1; }).filter(function (k) { return k >= 0; });
+  var BEST = D.models.indexOf('GPT-6.1 Sol');
+  var state = { list: D.examples, i: 0, set: 'L', seen: {}, log: [], quiz: true };
   var short = function (s, n) { return s.length > n ? s.slice(0, n - 1) + '…' : s; };
+  var key = function (f, s) { return f.id + '/' + s; };
+  var shown = function (f, s) { return !state.quiz || state.seen[key(f, s)] !== undefined; };
+  var goldText = function (t) { return t.type ? 'UNCLEAR · ' + t.type : ORDER[t.gold]; };
   function fillFamilies() {
     var t = $('ex-filter').value;
     state.list = D.examples.filter(function (f) { return !t || f.sets.L.type === t; });
     $('ex-family').innerHTML = state.list.map(function (f, i) { return '<option value="' + i + '">' + esc(short(f.A, 46) + '  /  ' + short(f.B, 46)) + '</option>'; }).join('');
     state.i = 0;
   }
+  function renderScore() {
+    var n = state.log.length;
+    if (!state.quiz || !n) { $('ex-score').innerHTML = state.quiz ? 'Answer a few inputs to see how you compare with the models.' : ''; return; }
+    var you = 0, best = 0, inst = 0;
+    state.log.forEach(function (x) {
+      you += x.g === x.c.gold; best += x.c.ans[BEST][0] === x.c.gold;
+      INST.forEach(function (k) { inst += x.c.ans[k][0] === x.c.gold; });
+    });
+    $('ex-score').innerHTML = '<b>You: ' + you + ' / ' + n + '</b><span>GPT-6.1 Sol: ' + best + ' / ' + n + '</span>' +
+      '<span>Open instruction models, average: ' + (inst / INST.length).toFixed(1) + ' / ' + n + '</span>';
+  }
   function renderExample() {
     var f = state.list[state.i]; if (!f) return;
-    var c = f.sets[state.set], inL = {};
+    var c = f.sets[state.set], inL = {}, open = shown(f, state.set), g = state.seen[key(f, state.set)];
     f.sets.L.frames.forEach(function (x) { inL[x] = 1; });
     $('ex-family').value = state.i;
     $('ex-a').textContent = f.A; $('ex-b').textContent = f.B;
     $('ex-tabs').innerHTML = SETS.map(function (s) {
-      var t = f.sets[s];
-      return '<button class="tab" role="tab" data-set="' + s + '" aria-selected="' + (s === state.set) + '"><b>' + s + '</b><span class="dot ' + (t.type || '') + '"></span>' +
-             (t.type ? 'UNCLEAR · ' + t.type : ORDER[t.gold]) + '</button>';
+      var t = f.sets[s], o = shown(f, s);
+      return '<button class="tab" role="tab" data-set="' + s + '" aria-selected="' + (s === state.set) + '"><b>' + s + '</b>' +
+             (o ? '<span class="dot ' + (t.type || '') + '"></span>' + goldText(t) : '<span class="dot q"></span>' + t.frames.length + ' frames') + '</button>';
     }).join('');
     $('ex-setnote').textContent = NOTE[state.set];
     $('ex-frames').className = 'frames' + (c.frames.length === 4 ? ' four' : '');
@@ -62,7 +80,21 @@
       return '<figure class="' + (added ? 'added' : '') + '"><img loading="lazy" src="assets/frames/' + f.id + '/' + x + '.webp" alt="Frame at ' + esc(f.times[x]) + '">' +
              '<figcaption><span>' + esc(f.times[x]) + '</span><span>' + (added ? 'added' : '') + '</span></figcaption></figure>';
     }).join('');
-    $('ex-gold').textContent = ORDER[c.gold] + (c.type ? ' · ' + c.type : ''); $('ex-gold').className = 'gold ' + (c.type || '');
+    // quiz
+    $('ex-guess').hidden = !state.quiz;
+    $('ex-card').classList.toggle('is-hidden', !open);
+    $('ex-reveal').setAttribute('aria-hidden', String(!open));
+    Array.prototype.forEach.call($('ex-guess').querySelectorAll('button'), function (b) {
+      b.disabled = open; b.setAttribute('aria-pressed', String(open && b.dataset.g === g && g !== ''));
+      b.classList.toggle('right', open && g && b.dataset.g === g && g === c.gold);
+      b.classList.toggle('wrong', open && g && b.dataset.g === g && g !== c.gold);
+    });
+    if (state.quiz && open && g) {
+      var same = c.ans.filter(function (a) { return a[0] === g; }).length;
+      $('ex-result').innerHTML = (g === c.gold ? '<b class="r">Right.</b> ' : '<b class="w">Not quite.</b> The reference answer is ' + goldText(c) + '. ') +
+        same + ' of ' + D.models.length + ' configurations answered &ldquo;' + GUESS[g] + '&rdquo; too.';
+    } else $('ex-result').textContent = state.quiz && !open ? 'Judge only from the frames shown. The reference answer and model answers appear after you choose.' : '';
+    $('ex-gold').textContent = goldText(c); $('ex-gold').className = 'gold ' + (c.type || '');
     $('ex-occ').innerHTML = ['A', 'B'].map(function (t, k) {
       return '<span class="occ ' + (c.occ[k] ? 'yes' : 'no') + '">Action ' + t + ': <i>' + (c.occ[k] ? 'established' : 'not established') + '</i></span>';
     }).join('');
@@ -72,6 +104,7 @@
     }).join('');
     $('ex-count').textContent = 'Example ' + (state.i + 1) + ' of ' + state.list.length + ' · ' + f.source + ' · family ' + f.id +
       '. A sample of ' + D.examples.length + ' of the ' + D.total + ' families is shown here.';
+    renderScore();
   }
   fillFamilies(); renderExample();
   $('ex-filter').addEventListener('change', function () { fillFamilies(); renderExample(); });
@@ -79,6 +112,15 @@
   $('ex-prev').addEventListener('click', function () { state.i = (state.i - 1 + state.list.length) % state.list.length; renderExample(); });
   $('ex-next').addEventListener('click', function () { state.i = (state.i + 1) % state.list.length; renderExample(); });
   $('ex-tabs').addEventListener('click', function (e) { var b = e.target.closest('.tab'); if (b) { state.set = b.dataset.set; renderExample(); } });
+  $('ex-quiz').addEventListener('change', function () { state.quiz = this.checked; renderExample(); });
+  $('ex-guess').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-g]'); if (!b || b.disabled) return;
+    var f = state.list[state.i], k = key(f, state.set);
+    if (state.seen[k] !== undefined) return;
+    state.seen[k] = b.dataset.g;
+    if (b.dataset.g) state.log.push({ c: f.sets[state.set], g: b.dataset.g });
+    renderExample();
+  });
   document.addEventListener('click', function (e) {
     var fz = e.target.closest('.figure-zoom');
     if (fz) { $('zoom').firstElementChild.src = fz.querySelector('img').src; $('zoom').hidden = false; }
@@ -127,4 +169,16 @@
     if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, function () {});
     else { var r = document.createRange(); r.selectNodeContents($('bibtex')); var s = getSelection(); s.removeAllRanges(); s.addRange(r); document.execCommand('copy'); done(); }
   });
+
+  // ---- teaser video: no autoplay for reduced motion; pause while off screen
+  var tv = $('teaser-video');
+  if (tv) {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { tv.removeAttribute('autoplay'); tv.pause(); }
+    else if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { var p = tv.play(); if (p && p.catch) p.catch(function () {}); } else tv.pause(); });
+      }, { threshold: .25 }).observe(tv);
+    }
+  }
 })();

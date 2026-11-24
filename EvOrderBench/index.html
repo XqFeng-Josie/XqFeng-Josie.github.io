@@ -28,17 +28,19 @@
 </head>
 
 <body>
-  <a class="skip-link" href="#explore">Skip to content</a>
+  <a class="skip-link" href="#abstract">Skip to content</a>
 
   <!-- ===== Top navigation ===== -->
   <header class="site-nav">
     <a class="wordmark" href="#top">Ev<em>Order</em>Bench</a>
     <nav class="nav-links" aria-label="Sections">
-      <a href="#explore">Examples</a>
       <a href="#abstract">Abstract</a>
       <a href="#benchmark">Benchmark</a>
+      <a href="#explore">Examples</a>
       <a href="#results">Leaderboard</a>
       <a href="#findings">Findings</a>
+      <a href="#analysis">Analysis</a>
+      <a href="#use">Use it</a>
       <a href="#citation">Citation</a>
     </nav>
     <a class="nav-home" href="../"><i class="fas fa-arrow-left" aria-hidden="true"></i> Xiaoqin Feng</a>
@@ -58,9 +60,14 @@
   <!-- ===== Teaser ===== -->
   <section class="teaser" aria-label="Overview">
     <div class="container">
-      <figure class="figure figure--lift">
-        <button class="figure-zoom" type="button" aria-label="Enlarge figure"><img src="assets/overview.png" alt="Overview of EvOrderBench: one event family with its four observation sets H, L, K and P, and the three evidence types of insufficient inputs." width="2534" height="831"></button>
-        <figcaption>An event family holds the episode and the question fixed and varies only the frames a model receives.</figcaption>
+      <figure class="figure figure--lift figure--video">
+        <div class="video-frame">
+          <video id="teaser-video" autoplay muted loop playsinline controls preload="metadata" poster="assets/evorderbench-poster.jpg"
+            aria-label="Explainer video: one Perception Test clip, the four observation sets H, L, K and P, model answers, and results across 579 event families.">
+            <source src="assets/evorderbench.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption>One clip, one question, four sets of frames: what models answer when the frames establish the order, and when they do not. <a href="assets/evorderbench-full-1080p.mp4" download>Download the full video (1080p)</a></figcaption>
       </figure>
       <p class="lede">A few sampled frames can show that two actions happened without showing which came first.
         EvOrderBench tests whether a model states an order only when its frames establish it, and <em>withholds</em> otherwise.</p>
@@ -70,68 +77,55 @@
 
   <main>
 
-    <!-- ===== Example explorer ===== -->
-    <section class="section section--alt" id="explore" aria-labelledby="explore-title">
-      <div class="container">
-        <div class="section-head">
-          <p class="kicker">Interactive examples</p>
-          <h2 class="section-title" id="explore-title">Same episode, same question, <em>different frames.</em></h2>
-          <p class="section-sub">Each event family has four observation sets. Switch between them: the question stays fixed, and the reference answer follows what the frames establish.</p>
-        </div>
-
-        <div class="ex-controls">
-          <button id="ex-prev" class="round" type="button" aria-label="Previous example"><i class="fas fa-arrow-left" aria-hidden="true"></i></button>
-          <select id="ex-family" aria-label="Example"></select>
-          <button id="ex-next" class="round" type="button" aria-label="Next example"><i class="fas fa-arrow-right" aria-hidden="true"></i></button>
-          <select id="ex-filter" aria-label="Filter examples">
-            <option value="">All examples</option>
-            <option value="U0">L shows neither action (U0)</option>
-            <option value="U1">L shows one action (U1)</option>
-            <option value="U2">L shows both, not their order (U2)</option>
-          </select>
-        </div>
-
-        <div class="ex-card">
-          <div class="question">
-            <span class="qlabel">Which occurs first?</span>
-            <span class="target"><b>A</b><span id="ex-a"></span></span>
-            <span class="target"><b>B</b><span id="ex-b"></span></span>
-          </div>
-          <div class="tabs" role="tablist" id="ex-tabs" aria-label="Observation set"></div>
-          <p class="setnote" id="ex-setnote"></p>
-          <div class="frames" id="ex-frames"></div>
-          <div class="verdict">
-            <div><span class="k">Reference answer</span><span id="ex-gold" class="gold"></span></div>
-            <div><span class="k">Evidence in these frames</span><span id="ex-occ"></span></div>
-          </div>
-          <div class="answers">
-            <span class="k">Model answers on this input <span class="hint">(original answer letters)</span></span>
-            <div id="ex-answers" class="chips"></div>
-          </div>
-        </div>
-        <p class="fine" id="ex-count"></p>
-      </div>
-    </section>
-
     <!-- ===== Abstract ===== -->
-    <section class="section" id="abstract" aria-labelledby="abstract-title">
+    <section class="section section--rule" id="abstract" aria-labelledby="abstract-title">
       <div class="container split">
         <h2 class="section-title" id="abstract-title">Abstract</h2>
         <div class="prose">
           <p>Vision-language models (VLMs) are often asked which of two actions in a video happened first, given only a few sampled frames. Such frames can show that both actions occurred without showing which came first, so a reliable model should state an order only when the frames establish it. Forced-choice temporal benchmarks treat every input as answerable and reward lucky guesses, while answerability benchmarks do not separate frames that miss an action from frames that show both actions but not their order.</p>
-          <p>We introduce <strong>EvOrderBench</strong>, a real-video benchmark of 579 event families. Each family fixes an episode and a question and varies only the frames: two inputs have the same number of frames but only one establishes the order, and two more add to the insufficient one either the frames that resolve the order or frames that do not. Every input is labeled for whether its frames establish each action and their order.</p>
+          <p>We introduce <strong>EvOrderBench</strong>, a real-video benchmark of 579 event families. Each family fixes an episode and a question and varies only the frames: of two four-frame inputs, only one establishes the order, and two six-frame inputs extend the other one with either the frames that resolve the order or frames that do not. Every input is labeled for whether its frames establish each action and their order.</p>
           <p>Across sixteen open-weight configurations and three closed-source references, the best open models order nearly as accurately as the references when the frames establish the order, but withhold correctly on at most 83% of the inputs where they do not, against at least 90% for every reference; forced-choice accuracy cannot reveal this gap. Open models withhold mainly when the frames show neither action; once the frames show one or both, most of them commit to an order. Thinking narrows the gap, even when it is switched on within a single checkpoint, mainly by separating sufficient from insufficient evidence rather than by making models more cautious overall. Accurate ordering thus does not imply knowing when the frames fall short, and benchmarks should reward withholding alongside ordering.</p>
         </div>
       </div>
     </section>
 
+    <!-- ===== Why it matters ===== -->
+    <section class="section section--alt" id="why" aria-labelledby="why-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Why it matters</p>
+          <h2 class="section-title" id="why-title">A confident wrong order is worse than <em>&ldquo;I can&rsquo;t tell.&rdquo;</em></h2>
+          <p class="section-sub">Every model below was told, in so many words, to answer UNCLEAR when the frames do not establish the order. Most open instruction-tuned models answer anyway. The orders they name are informed guesses: they match what happened more often than chance, but far from reliably, and a forced-choice benchmark would count every match as temporal understanding.</p>
+        </div>
+        <div class="bigstats" id="why-stats"></div>
+        <div class="directions uses">
+          <div class="direction">
+            <h3>Video assistants recap events</h3>
+            <p>Summaries of a home-camera clip, a meeting or a lab recording are built from a handful of frames. An order the frames never showed reads exactly like one they did, and the user has no way to tell the difference.</p>
+          </div>
+          <div class="direction">
+            <h3>Agents verify step order</h3>
+            <p>Robots and computer-use agents verify progress from sparse observations: was the gripper opened before the object was released, was the form saved before the window closed. Treating an unresolved order as resolved means acting on a step that may not have happened yet.</p>
+          </div>
+          <div class="direction">
+            <h3>Scores shouldn&rsquo;t reward guessing</h3>
+            <p>On a forced-choice benchmark a lucky guess scores the same as an observation. Here, how well a model orders tells you little about whether it knows when it cannot: <span id="why-rho"></span>. EvOrderBench scores both, on the same episodes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== Benchmark ===== -->
-    <section class="section section--alt" id="benchmark" aria-labelledby="benchmark-title">
+    <section class="section" id="benchmark" aria-labelledby="benchmark-title">
       <div class="container">
         <div class="section-head">
           <p class="kicker">Design</p>
           <h2 class="section-title" id="benchmark-title">The benchmark</h2>
         </div>
+        <figure class="figure figure--overview">
+          <button class="figure-zoom" type="button" aria-label="Enlarge figure"><img src="assets/overview.png" alt="Overview of EvOrderBench: one event family with its four observation sets H, L, K and P, and the three evidence types of insufficient inputs." loading="lazy" width="2567" height="1234"></button>
+          <figcaption>An event family holds the episode and the question fixed and varies only the frames a model receives.</figcaption>
+        </figure>
         <div class="directions">
           <div class="direction">
             <h3>Four observation sets per family</h3>
@@ -144,7 +138,7 @@
             <p>H vs. L and K vs. P compare inputs with the same number of frames, so differences cannot be attributed to input length. Joint metrics require a model to order H and withhold on L.</p>
           </div>
           <div class="direction">
-            <h3>Three ways the evidence can fall short</h3>
+            <h3>Three ways evidence falls short</h3>
             <dl class="sets">
               <dt><span class="pill u0">U0</span></dt><dd>The frames establish neither action.</dd>
               <dt><span class="pill u1">U1</span></dt><dd>The frames establish one action; the other is missing.</dd>
@@ -153,10 +147,76 @@
             <p>Every input carries occurrence labels for both actions and an order label, so a missing action can be told apart from an unresolved order.</p>
           </div>
           <figure class="figure figure--plain">
-            <button class="figure-zoom" type="button" aria-label="Enlarge figure"><img src="assets/stats.png" alt="Evidence type of each observation set, and the action classes of the 1,158 target actions." loading="lazy" width="650" height="500"></button>
+            <div class="set-chart" id="set-chart" role="img" aria-label="Evidence type of each observation set, and the action classes of the 1,158 target actions."></div>
             <figcaption>H and K are nearly always orderable; L and P span all three evidence types. Targets fall into four action classes.</figcaption>
           </figure>
         </div>
+        <details class="prompt-box">
+          <summary>
+            <span class="prompt-k">The exact prompt every model receives</span>
+            <span class="prompt-q">&ldquo;Choose A or B only when the supplied images establish the order of both specified actions. Otherwise choose UNCLEAR.&rdquo;</span>
+            <span class="prompt-more">Show the full prompt</span>
+          </summary>
+          <pre id="prompt-text"></pre>
+          <p class="fine">Each input is asked twice, with the answer letters A and B exchanged between the two actions, so a model cannot score by preferring one letter.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ===== Example explorer ===== -->
+    <section class="section section--alt" id="explore" aria-labelledby="explore-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Examples</p>
+          <h2 class="section-title" id="explore-title">Same episode, same question, <em>different frames.</em></h2>
+          <p class="section-sub">Each event family has four observation sets. Look only at the frames, make your call, then see the reference answer and what all 19 configurations said on the same input. Your score is compared with theirs on exactly the inputs you answered.</p>
+        </div>
+
+        <div class="ex-controls">
+          <button id="ex-prev" class="round" type="button" aria-label="Previous example"><i class="fas fa-arrow-left" aria-hidden="true"></i></button>
+          <select id="ex-family" aria-label="Example"></select>
+          <button id="ex-next" class="round" type="button" aria-label="Next example"><i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+          <select id="ex-filter" aria-label="Filter examples">
+            <option value="">All examples</option>
+            <option value="U0">L shows neither action (U0)</option>
+            <option value="U1">L shows one action (U1)</option>
+            <option value="U2">L shows both, not their order (U2)</option>
+          </select>
+          <label class="switch"><input type="checkbox" id="ex-quiz" checked> <span>Quiz mode</span></label>
+        </div>
+
+        <div class="ex-card" id="ex-card">
+          <div class="question">
+            <span class="qlabel">Which occurs first?</span>
+            <span class="target"><b>A</b><span id="ex-a"></span></span>
+            <span class="target"><b>B</b><span id="ex-b"></span></span>
+          </div>
+          <div class="tabs" role="tablist" id="ex-tabs" aria-label="Observation set"></div>
+          <p class="setnote" id="ex-setnote"></p>
+          <div class="frames" id="ex-frames"></div>
+          <div class="guess" id="ex-guess">
+            <span class="k">Your call, from these frames only</span>
+            <div class="guess-btns" role="group" aria-label="Your answer">
+              <button type="button" data-g="A">A first</button>
+              <button type="button" data-g="B">B first</button>
+              <button type="button" data-g="UNCLEAR">Can&rsquo;t tell</button>
+              <button type="button" class="skip" data-g="">Just show me</button>
+            </div>
+            <p class="guess-result" id="ex-result" aria-live="polite"></p>
+          </div>
+          <div class="reveal" id="ex-reveal">
+          <div class="verdict">
+            <div><span class="k">Reference answer</span><span id="ex-gold" class="gold"></span></div>
+            <div><span class="k">Evidence in these frames</span><span id="ex-occ"></span></div>
+          </div>
+          <div class="answers">
+            <span class="k">Model answers on this input <span class="hint">(original answer letters)</span></span>
+            <div id="ex-answers" class="chips"></div>
+          </div>
+          </div>
+        </div>
+        <p class="score" id="ex-score" aria-live="polite"></p>
+        <p class="fine" id="ex-count"></p>
       </div>
     </section>
 
@@ -170,14 +230,14 @@
         </div>
         <div class="filterrow" id="lb-filter" role="group" aria-label="Model group"></div>
         <div class="tablewrap"><table id="lb"><thead></thead><tbody></tbody></table></div>
-        <p class="fine">† Closed-source reference. Always A and Always UNCLEAR are constant-answer baselines. Predictions for every query and the scoring script are in the code release.</p>
+        <p class="fine">† Closed-source reference. Always A and Always UNCLEAR are constant-answer baselines. Predictions for every query and the scoring script are in the <a href="https://github.com/XqFeng-Josie/EvOrderBench" target="_blank" rel="noopener">code release</a>.</p>
         <div class="figrow">
           <figure class="figure">
-            <button class="figure-zoom" type="button" aria-label="Enlarge figure"><img src="assets/scatter.png" alt="Scatter plot of accuracy on orderable inputs against accuracy on insufficient inputs for all configurations." loading="lazy" width="660" height="444"></button>
+            <button class="figure-zoom" type="button" aria-label="Enlarge figure"><img src="assets/scatter.png" alt="Scatter plot of accuracy on orderable inputs against accuracy on insufficient inputs for all configurations." loading="lazy" width="660" height="443"></button>
             <figcaption>Ordering accuracy does not predict withholding. Arrows connect each instruction model to its Thinking configuration.</figcaption>
           </figure>
           <figure class="figure">
-            <button class="figure-zoom" type="button" aria-label="Enlarge figure"><img src="assets/types.png" alt="Correct-UNCLEAR rate by evidence type for every configuration." loading="lazy" width="660" height="460"></button>
+            <button class="figure-zoom" type="button" aria-label="Enlarge figure"><img src="assets/types.png" alt="Correct-UNCLEAR rate by evidence type for every configuration." loading="lazy" width="660" height="459"></button>
             <figcaption>Withholding depends on what is missing: correct-UNCLEAR rate by evidence type.</figcaption>
           </figure>
         </div>
@@ -192,14 +252,83 @@
           <h2 class="section-title" id="findings-title">Findings</h2>
         </div>
         <ol class="findings">
-          <li><span class="num">01</span><h3>Ordering and withholding <em>come apart</em></h3><p>When the frames establish the order, the best open models nearly match the closed references. Yet only two open configurations withhold correctly on more than 70% of insufficient inputs, against at least 90% for every reference. A forced-choice score cannot see this gap.</p></li>
-          <li><span class="num">02</span><h3>Withholding depends on <em>what is missing</em></h3><p>Open models withhold mainly when the frames show neither action. Once the frames show at least one action, most commit to an order, whether the second action or only the order is missing.</p></li>
+          <li><span class="num">01</span><h3>Ordering and withholding <em>diverge</em></h3><p>When the frames establish the order, the best open models nearly match the closed references. Yet only two open configurations withhold correctly on more than 70% of insufficient inputs, against at least 90% for every reference. A forced-choice score cannot see this gap.</p></li>
+          <li><span class="num">02</span><h3><em>What is missing</em> matters</h3><p>Open models withhold mainly when the frames show neither action. Once the frames show at least one action, most commit to an order, whether the second action or only the order is missing.</p></li>
           <li><span class="num">03</span><h3>Thinking <em>narrows the gap</em></h3><p>Also when it is switched on within one checkpoint, mainly by separating sufficient from insufficient evidence rather than by making models more cautious overall. Even so, the best open configuration answers all eight queries of a family correctly for only two thirds of the families.</p></li>
         </ol>
         <figure class="figure figure--wide">
-          <button class="figure-zoom" type="button" aria-label="Enlarge figure"><img src="assets/case.png" alt="A U1 example: the four frames of L show action A but not action B, yet four of six models answer that A happened first; the two frames added in K show B before A." loading="lazy" width="2567" height="1234"></button>
+          <button class="figure-zoom" type="button" aria-label="Enlarge figure"><img src="assets/case.png" alt="A U1 example: the four frames of L show action A but not action B, yet four of six models answer that A happened first; the two frames added in K show B before A." loading="lazy" width="2534" height="831"></button>
           <figcaption>Ordering an action that no frame shows. On this U1 input, L evidences A but not B, yet four of the six models shown answer that A happened first. The dimmed frames, added in K, show B before A.</figcaption>
         </figure>
+      </div>
+    </section>
+
+    <!-- ===== Analysis ===== -->
+    <section class="section section--alt" id="analysis" aria-labelledby="analysis-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Beyond the leaderboard</p>
+          <h2 class="section-title" id="analysis-title">What the released predictions <em>also show.</em></h2>
+          <p class="section-sub">Four views computed from the answers of all 19 configurations to all 4,632 queries. Hover a mark for its numbers.</p>
+        </div>
+        <div class="filterrow an-tabs" id="an-tabs" role="tablist" aria-label="Analysis"></div>
+        <div class="an-panel" id="an-panel" role="tabpanel">
+          <div class="an-head">
+            <p class="an-big" id="an-big"></p>
+            <h3 id="an-title"></h3>
+          </div>
+          <div class="an-text">
+            <p id="an-body"></p>
+            <p class="fine" id="an-how"></p>
+          </div>
+          <div class="an-chart" id="an-chart"></div>
+        </div>
+        <div class="an-legend">
+          <span><i class="sw g-instruction"></i>Open, instruction</span>
+          <span><i class="sw g-thinking"></i>Open, Thinking</span>
+          <span><i class="sw g-closed"></i>Closed reference</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Use it ===== -->
+    <section class="section" id="use" aria-labelledby="use-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Use EvOrderBench</p>
+          <h2 class="section-title" id="use-title">Evaluate your model in <em>three steps.</em></h2>
+          <p class="section-sub">Any model behind an OpenAI-compatible endpoint, hosted or local (for example vLLM). The scripts need only Python 3.8+.</p>
+          <div class="use-links"><a class="btn-link" href="https://huggingface.co/datasets/xiaoqinfeng/EvOrderBench" target="_blank" rel="noopener"><i class="fas fa-database" aria-hidden="true"></i> Dataset on Hugging Face</a><a class="btn-link" href="https://github.com/XqFeng-Josie/EvOrderBench" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> Code on GitHub</a></div>
+        </div>
+        <ol class="steps">
+          <li>
+            <span class="num">01</span>
+            <h3><a href="https://huggingface.co/datasets/xiaoqinfeng/EvOrderBench" target="_blank" rel="noopener">Get the data</a></h3>
+            <p>579 families, 2,316 inputs, 4,632 queries with prompts, frames and reference answers. Clone the code from GitHub, which includes the answers of all 19 configurations, and download the data into it.</p>
+            <pre><code>hf download \
+  xiaoqinfeng/EvOrderBench \
+  --repo-type dataset \
+  --local-dir datasets</code></pre>
+          </li>
+          <li>
+            <span class="num">02</span>
+            <h3><a href="https://github.com/XqFeng-Josie/EvOrderBench" target="_blank" rel="noopener">Run your model</a></h3>
+            <p>Frames go in their listed order, followed by the prompt. Add <code>--thinking</code> for models that reason first. Runs resume if interrupted.</p>
+            <pre><code>python code/run_openai_api.py \
+  --model MODEL \
+  --base-url http://localhost:8000/v1 \
+  --out outputs/MODEL</code></pre>
+          </li>
+          <li>
+            <span class="num">03</span>
+            <h3>Score it</h3>
+            <p>Prints every column of the leaderboard. <code>--ci</code> adds 95% intervals from a bootstrap over the 558 recording groups.</p>
+            <pre><code>python code/evaluate.py --ci \
+  --predictions \
+  outputs/MODEL/predictions.csv</code></pre>
+          </li>
+        </ol>
+        <p class="use-note"><strong>Reporting results?</strong> Give Ord. and Insuf. together, or a joint metric such as Pair HL. Either one alone can be maximised by always ordering or always withholding: the <em>Always A</em> and <em>Always UNCLEAR</em> rows of the leaderboard do exactly that.</p>
       </div>
     </section>
 
@@ -211,7 +340,7 @@
           <button id="copy" class="copy" type="button"><i class="far fa-copy" aria-hidden="true"></i> <span>Copy</span></button>
 <pre id="bibtex">@misc{feng2026evorderbench,
   title  = {EvOrderBench: When Do Sampled Frames Establish Event Order?},
-  author = {Feng, Xiaoqin and Li, Yuqi and Li, Xinyuan and Rodrigues, Neil and Wang, Xianglong and Ding, Kuiye and Tian, Yingli},
+  author = {Xiaoqin Feng and Yuqi Li and Xinyuan Li and Neil Rodrigues and Xianglong Wang and Kuiye Ding and Yingli Tian},
   year   = {2026},
   url    = {https://xqfeng-josie.github.io/EvOrderBench/}
 }</pre>
@@ -236,6 +365,8 @@
   <div id="zoom" hidden><img alt=""></div>
   <script src="site-config.js"></script>
   <script src="data.js"></script>
+  <script src="insights.js"></script>
   <script src="app.js"></script>
+  <script src="analysis.js"></script>
 </body>
 </html>
